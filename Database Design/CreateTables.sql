@@ -24,19 +24,44 @@ CREATE TABLE [CartItem](
     [id] int UNIQUE not null,
     [P_id] int not null,
     [P_Quantity] int not null,
+    [Cart_id] int not null,
 
 
     PRIMARY KEY(id)
     FOREIGN KEY(P_id)REFERENCES [Product](id)
+    FOREIGN KEY(Cart_id)REFERENCES [Cart](id)
+
 );
 CREATE TABLE [Cart](
 [id] int UNIQUE not null,
-
 
 PRIMARY KEY(id)
 );
 
 CREATE TABLE [Order](
     [id] INT UNIQUE NOT NULL,
-    [C_id]
+    [Cart_id] int not null,
+    [User_id] int not null,
+    [DeliveryAddress] varchar(100) null,
+    [Total_Cost] int not null
+    [DeliveryDate] date null,
+    [CreationDate] date null,
+
+    PRIMARY KEY(id),
+    FOREIGN KEY(Cart_id) REFERENCES [Cart](id),
+    FOREIGN KEY(User_id) REFERENCES [User](id)
+
+);
+CREATE TABLE [Invoice](
+[id] int UNIQUE not null,
+[OrderID] int not null,
+
+[dateCreated] date not null,
+[pdf_Url_Location] varchar(100) not null,
+[Total_Cost] int not null,
+
+PRIMARY KEY(id),
+FOREIGN KEY(OrderID) REFERENCES [Order](id)
+
+
 );
