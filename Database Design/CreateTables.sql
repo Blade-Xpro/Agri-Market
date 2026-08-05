@@ -8,6 +8,7 @@ CREATE Table [User](
 [userType] varchar(10) Not null,
 [creationDate] date
 
+PRIMARY KEY(id)
 );
 CREATE TABLE [Product](
     [id] int UNIQUE NOT NULL,
@@ -16,19 +17,23 @@ CREATE TABLE [Product](
     [Price] int not null,
     [Description] varchar(MAX),
     [imageUrl] varchar(MAX),
-
+    PRIMARY KEY(id)
     FOREIGN KEY (S_id) REFERENCES [Product]()
 );
 CREATE TABLE [CartItem](
     [id] int UNIQUE not null,
     [P_id] int not null,
+    [P_Quantity] int not null,
 
 
-
-    FOREIGN KEY(P_id)REFERENCES [Product]
+    PRIMARY KEY(id)
+    FOREIGN KEY(P_id)REFERENCES [Product](id)
 );
 CREATE TABLE [Cart](
+[id] int UNIQUE not null,
 
+
+PRIMARY KEY(id)
 );
 
 CREATE TABLE [Order](
