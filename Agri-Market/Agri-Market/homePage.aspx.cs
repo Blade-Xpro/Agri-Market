@@ -7,17 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Agri_Market
 {
-    public partial class LoginPage : System.Web.UI.Page
+    public partial class homePage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void loginbtn_Click(object sender, EventArgs e)
-        {
-            loginMessage.Visible = true;
-            loginMessage.Text = "The login button is working.";
         }
     }
 }
