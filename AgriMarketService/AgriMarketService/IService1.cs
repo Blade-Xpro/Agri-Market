@@ -20,6 +20,24 @@ namespace AgriMarketService
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
+        [operationcontract]
+        public string GetProductById(int productId);
+
+        [operationcontract]
+        public List<Product> GetAllProducts();
+
+        [operationcontract]
+        public void AddProduct(Product product);
+
+        [operationcontract]
+        public void UpdateProduct(Product product);
+
+        [operationcontract]
+        public void DeleteProduct(int productId);
+
+        [operationcontract]
+        public List<Product> SearchProducts(string searchTerm);
+
     }
 
 
