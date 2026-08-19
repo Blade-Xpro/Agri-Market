@@ -14,7 +14,16 @@ namespace AgriMarketService
     {
 
         [OperationContract]
-        string GetData(int value);
+        void DoWork();
+
+        //the register function declaration
+       [OperationContract]
+        int registerUser(UserTable utable);
+
+        [OperationContract]
+        int registerAdmin(UserTable utable, string adminCode);
+
+
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
@@ -62,4 +71,10 @@ namespace AgriMarketService
             set { stringValue = value; }
         }
     }
+            string TestService();
+        
+    }
+
+
+    
 }

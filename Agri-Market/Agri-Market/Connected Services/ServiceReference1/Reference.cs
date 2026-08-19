@@ -15,18 +15,36 @@ namespace Agri_Market.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserTable", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
     [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class UserTable : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
+        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SurnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime creationDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string emailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string passwordHashField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string phoneNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string userTypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -39,27 +57,105 @@ namespace Agri_Market.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
+        public int Id {
             get {
-                return this.BoolValueField;
+                return this.IdField;
             }
             set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
+        public string Name {
             get {
-                return this.StringValueField;
+                return this.NameField;
             }
             set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Surname {
+            get {
+                return this.SurnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SurnameField, value) != true)) {
+                    this.SurnameField = value;
+                    this.RaisePropertyChanged("Surname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime creationDate {
+            get {
+                return this.creationDateField;
+            }
+            set {
+                if ((this.creationDateField.Equals(value) != true)) {
+                    this.creationDateField = value;
+                    this.RaisePropertyChanged("creationDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string email {
+            get {
+                return this.emailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.emailField, value) != true)) {
+                    this.emailField = value;
+                    this.RaisePropertyChanged("email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string passwordHash {
+            get {
+                return this.passwordHashField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.passwordHashField, value) != true)) {
+                    this.passwordHashField = value;
+                    this.RaisePropertyChanged("passwordHash");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string phoneNumber {
+            get {
+                return this.phoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.phoneNumberField, value) != true)) {
+                    this.phoneNumberField = value;
+                    this.RaisePropertyChanged("phoneNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string userType {
+            get {
+                return this.userTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.userTypeField, value) != true)) {
+                    this.userTypeField = value;
+                    this.RaisePropertyChanged("userType");
                 }
             }
         }
@@ -78,17 +174,29 @@ namespace Agri_Market.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        string GetData(int value);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DoWork", ReplyAction="http://tempuri.org/IService1/DoWorkResponse")]
+        void DoWork();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(int value);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DoWork", ReplyAction="http://tempuri.org/IService1/DoWorkResponse")]
+        System.Threading.Tasks.Task DoWorkAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        Agri_Market.ServiceReference1.CompositeType GetDataUsingDataContract(Agri_Market.ServiceReference1.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/registerUser", ReplyAction="http://tempuri.org/IService1/registerUserResponse")]
+        int registerUser(Agri_Market.ServiceReference1.UserTable utable);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(Agri_Market.ServiceReference1.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/registerUser", ReplyAction="http://tempuri.org/IService1/registerUserResponse")]
+        System.Threading.Tasks.Task<int> registerUserAsync(Agri_Market.ServiceReference1.UserTable utable);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/registerAdmin", ReplyAction="http://tempuri.org/IService1/registerAdminResponse")]
+        int registerAdmin(Agri_Market.ServiceReference1.UserTable utable, string adminCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/registerAdmin", ReplyAction="http://tempuri.org/IService1/registerAdminResponse")]
+        System.Threading.Tasks.Task<int> registerAdminAsync(Agri_Market.ServiceReference1.UserTable utable, string adminCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TestService", ReplyAction="http://tempuri.org/IService1/TestServiceResponse")]
+        string TestService();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TestService", ReplyAction="http://tempuri.org/IService1/TestServiceResponse")]
+        System.Threading.Tasks.Task<string> TestServiceAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -118,20 +226,36 @@ namespace Agri_Market.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
+        public void DoWork() {
+            base.Channel.DoWork();
         }
         
-        public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
-            return base.Channel.GetDataAsync(value);
+        public System.Threading.Tasks.Task DoWorkAsync() {
+            return base.Channel.DoWorkAsync();
         }
         
-        public Agri_Market.ServiceReference1.CompositeType GetDataUsingDataContract(Agri_Market.ServiceReference1.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
+        public int registerUser(Agri_Market.ServiceReference1.UserTable utable) {
+            return base.Channel.registerUser(utable);
         }
         
-        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(Agri_Market.ServiceReference1.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
+        public System.Threading.Tasks.Task<int> registerUserAsync(Agri_Market.ServiceReference1.UserTable utable) {
+            return base.Channel.registerUserAsync(utable);
+        }
+        
+        public int registerAdmin(Agri_Market.ServiceReference1.UserTable utable, string adminCode) {
+            return base.Channel.registerAdmin(utable, adminCode);
+        }
+        
+        public System.Threading.Tasks.Task<int> registerAdminAsync(Agri_Market.ServiceReference1.UserTable utable, string adminCode) {
+            return base.Channel.registerAdminAsync(utable, adminCode);
+        }
+        
+        public string TestService() {
+            return base.Channel.TestService();
+        }
+        
+        public System.Threading.Tasks.Task<string> TestServiceAsync() {
+            return base.Channel.TestServiceAsync();
         }
     }
 }

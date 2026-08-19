@@ -26,13 +26,6 @@ namespace AgriMarketService
         public void DoWork()
         {
 
-    {
-
-
-        DataClasses1DataContext db = new DataClasses1DataContext();
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
         }
 
         public int registerUser(UserTable utable)
@@ -78,10 +71,10 @@ namespace AgriMarketService
             UserTable utable,
             string adminCode)
         {
-            // Check whether the correct admin code was entered
+            // Check whether the correct manager code was entered
             if (adminCode != adminRegCode)
             {
-                return 3; // Incorrect admin registration code
+                return 3; // Incorrect manager registration code
             }
 
             // Check whether the email already exists
@@ -89,7 +82,7 @@ namespace AgriMarketService
                               where a.email == utable.email
                               select a).SingleOrDefault();
 
-            // If the email was not found, create the admin
+            // If the email was not found, create the manager
             if (checkEmail == null)
             {
                 var newAdmin = new UserTable
@@ -130,23 +123,5 @@ namespace AgriMarketService
         {
             return "Agri Market service is working.";
         }
-        public List<Product> SearchProducts(string searchTerm)
-        {
-            var products = db.Products.Where(p => p.ProductName.Contains(searchTerm)).ToList();
-            if (products.Count == 0)
-            {
-                return null;
-            }
-            else
-            {
-                return products;
-            }
-
-        }
-
     }
-
-
-
 }
-
