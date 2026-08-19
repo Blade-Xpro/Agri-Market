@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Web.UI.HtmlControls;
+using AgriMarketService;
 namespace Agri_Market
 {
     public partial class SearchResultsPage : System.Web.UI.Page
@@ -18,12 +19,12 @@ namespace Agri_Market
                 string searchTerm = Request.QueryString["searchTerm"];
 
                 // Call the WCF service to get the search results
-                List<AgriMarketService.Product> products = client.SearchProducts(searchTerm);
+                List<Product> products = client.SearchProducts(searchTerm);
 
                 foreach (var product in products)
                 {
                     // Create a new div for each product
-                    var productDiv = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
+                    var productDiv = new HtmlGenericControl("div");
                     productDiv.Attributes["class"] = "product-card";
 
                     // Create the inner HTML for the product
