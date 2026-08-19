@@ -30,7 +30,7 @@ namespace AgriMarketService
 
         // TODO: Add your service operations here
         [operationcontract]
-        public string GetProductById(int productId);
+        public Product GetProductById(int productId);
 
         [operationcontract]
         public List<Product> GetAllProducts();

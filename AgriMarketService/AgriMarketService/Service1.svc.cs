@@ -26,10 +26,9 @@ namespace AgriMarketService
         public void DoWork()
         {
 
-    {
+        }
 
 
-        DataClasses1DataContext db = new DataClasses1DataContext();
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
@@ -132,7 +131,9 @@ namespace AgriMarketService
         }
         public List<Product> SearchProducts(string searchTerm)
         {
-            var products = db.Products.Where(p => p.ProductName.Contains(searchTerm)).ToList();
+            var products = (from p in db.Products
+                            where p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm)
+                            select p).ToList();
             if (products.Count == 0)
             {
                 return null;
@@ -143,10 +144,35 @@ namespace AgriMarketService
             }
 
         }
+        public Product GetProductById(int productId)
+        {
+            var product = (from p in db.Products
+                           where p.id == productId
+                           select p).SingleOrDefault();
+            if (product != null)
+            {
+                return product;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public List<Product> GetAllProducts()
+        {
+            var products = (from p in db.Products
+                            select p).ToList();
+            if (products.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return products;
+            }
+        }
 
     }
 
 
-
 }
-
