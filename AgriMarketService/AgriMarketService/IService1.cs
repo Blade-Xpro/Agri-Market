@@ -24,31 +24,63 @@ namespace AgriMarketService
         int registerAdmin(UserTable utable, string adminCode);
 
 
-
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
-
         [OperationContract]
         Product GetProductById(int productId);
 
         [OperationContract]
         List<Product> GetAllProducts();
 
-        [OperationContract]
-        void AddProduct(Product product);
+       // [OperationContract]
+       // void AddProduct(Product product);
 
-        [OperationContract]
-        void UpdateProduct(Product product);
+       // [OperationContract]
+       // void UpdateProduct(Product product);
 
-        [OperationContract]
-        void DeleteProduct(int productId);
+       // [OperationContract]
+       // void DeleteProduct(int productId);
 
         [OperationContract]
         List<Product> SearchProducts(string searchTerm);
+
+        [OperationContract]
+        int registerFarmer(UserTable utable, FarmerDetail farmer);
+
+        [OperationContract]
+        int approveFarmer(int farmerId);
+
+        [OperationContract]
+        FarmerDetail getFarmerDetails(int farmerId);
+
+        [OperationContract]
+        List<FarmerDTO> getPendingFarmers();
+
+        [OperationContract]
+        int updateFarmerDetails(FarmerDetail farmer);
+
     }
 
 
+
+
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
+    [DataContract]
+    public class FarmerDTO
+    {
+        [DataMember]
+        public int FarmerId { get; set; }
+
+        [DataMember]
+        public string FarmName { get; set; }
+
+        [DataMember]
+        public string FarmLocation { get; set; }
+
+        [DataMember]
+        public string FarmDescription { get; set; }
+
+        [DataMember]
+        public bool IsApproved { get; set; }
+    }
     [DataContract]
     public class CompositeType
     {

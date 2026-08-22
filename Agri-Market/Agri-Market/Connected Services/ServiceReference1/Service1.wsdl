@@ -25,11 +25,53 @@
   <wsdl:message name="IService1_registerAdmin_OutputMessage">
     <wsdl:part name="parameters" element="tns:registerAdminResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_TestService_InputMessage">
-    <wsdl:part name="parameters" element="tns:TestService" />
+  <wsdl:message name="IService1_GetProductById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductById" />
   </wsdl:message>
-  <wsdl:message name="IService1_TestService_OutputMessage">
-    <wsdl:part name="parameters" element="tns:TestServiceResponse" />
+  <wsdl:message name="IService1_GetProductById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProducts" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SearchProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProducts" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SearchProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_registerFarmer_InputMessage">
+    <wsdl:part name="parameters" element="tns:registerFarmer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_registerFarmer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:registerFarmerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_approveFarmer_InputMessage">
+    <wsdl:part name="parameters" element="tns:approveFarmer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_approveFarmer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:approveFarmerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getFarmerDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:getFarmerDetails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getFarmerDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getFarmerDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getPendingFarmers_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPendingFarmers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getPendingFarmers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPendingFarmersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateFarmerDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateFarmerDetails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateFarmerDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateFarmerDetailsResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="DoWork">
@@ -44,9 +86,37 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/registerAdmin" message="tns:IService1_registerAdmin_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/registerAdminResponse" message="tns:IService1_registerAdmin_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="TestService">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TestService" message="tns:IService1_TestService_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TestServiceResponse" message="tns:IService1_TestService_OutputMessage" />
+    <wsdl:operation name="GetProductById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetProductById" message="tns:IService1_GetProductById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetProductByIdResponse" message="tns:IService1_GetProductById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllProducts" message="tns:IService1_GetAllProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllProductsResponse" message="tns:IService1_GetAllProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SearchProducts" message="tns:IService1_SearchProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SearchProductsResponse" message="tns:IService1_SearchProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="registerFarmer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/registerFarmer" message="tns:IService1_registerFarmer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/registerFarmerResponse" message="tns:IService1_registerFarmer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="approveFarmer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/approveFarmer" message="tns:IService1_approveFarmer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/approveFarmerResponse" message="tns:IService1_approveFarmer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getFarmerDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getFarmerDetails" message="tns:IService1_getFarmerDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getFarmerDetailsResponse" message="tns:IService1_getFarmerDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPendingFarmers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getPendingFarmers" message="tns:IService1_getPendingFarmers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getPendingFarmersResponse" message="tns:IService1_getPendingFarmers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateFarmerDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateFarmerDetails" message="tns:IService1_updateFarmerDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateFarmerDetailsResponse" message="tns:IService1_updateFarmerDetails_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -78,8 +148,71 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="TestService">
-      <soap:operation soapAction="http://tempuri.org/IService1/TestService" style="document" />
+    <wsdl:operation name="GetProductById">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetProductById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProducts">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchProducts">
+      <soap:operation soapAction="http://tempuri.org/IService1/SearchProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerFarmer">
+      <soap:operation soapAction="http://tempuri.org/IService1/registerFarmer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="approveFarmer">
+      <soap:operation soapAction="http://tempuri.org/IService1/approveFarmer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFarmerDetails">
+      <soap:operation soapAction="http://tempuri.org/IService1/getFarmerDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPendingFarmers">
+      <soap:operation soapAction="http://tempuri.org/IService1/getPendingFarmers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateFarmerDetails">
+      <soap:operation soapAction="http://tempuri.org/IService1/updateFarmerDetails" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

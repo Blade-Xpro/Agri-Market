@@ -14,8 +14,8 @@ using System.Web.UI.WebControls;
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchTerm = searchInput.Value; // Get the search term from the input field
-            Response.Redirect($"SearchResultsPage.aspx?searchTerm={searchTerm}"); // Redirect to the search results page with the search term as a query parameter
+       // string searchTerm = searchBar.Value; // Get the search term from the input field
+        //Response.Redirect($"SearchResultsPage.aspx?searchTerm={searchTerm}"); // Redirect to the search results page with the search term as a query parameter
         }
     }
 

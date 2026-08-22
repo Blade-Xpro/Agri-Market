@@ -40,15 +40,112 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="TestService">
+  <xs:element name="GetProductById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="productId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="GetProductByIdResult" nillable="true" type="q3:Product" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProducts">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="TestServiceResponse">
+  <xs:element name="GetAllProductsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="TestServiceResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="GetAllProductsResult" nillable="true" type="q4:ArrayOfProduct" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchProducts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchTerm" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="SearchProductsResult" nillable="true" type="q5:ArrayOfProduct" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="registerFarmer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="utable" nillable="true" type="q6:UserTable" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="farmer" nillable="true" type="q7:FarmerDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="registerFarmerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="registerFarmerResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="approveFarmer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="farmerId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="approveFarmerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="approveFarmerResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFarmerDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="farmerId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFarmerDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getFarmerDetailsResult" nillable="true" type="q8:FarmerDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPendingFarmers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPendingFarmersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getPendingFarmersResult" nillable="true" type="q9:ArrayOfFarmerDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateFarmerDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="farmer" nillable="true" type="q10:FarmerDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateFarmerDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="updateFarmerDetailsResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

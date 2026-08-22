@@ -17,20 +17,16 @@ namespace Agri_Market
         //  Customer or Admin is selected for registration
         // This runs when Customer or Admin is selected.
         protected void roleSelection_SelectedIndexChanged(
-            object sender,
-            EventArgs e)
+    object sender,
+    EventArgs e)
         {
-            if (roleSelection.SelectedValue == "Admin")
-            {
-                // Show the admin code field for admins
-                adminCodePanel.Visible = true;
-            }
-            else
-            {
-                // Hide the admin code field for customers
-                adminCodePanel.Visible = false;
-                adminCode.Text = "";
-            }
+            // Show farmer fields only when Farmer is selected
+            farmerDetailsPanel.Visible =
+                roleSelection.SelectedValue == "Farmer";
+
+            // Show admin code only when Admin is selected
+            adminCodePanel.Visible =
+                roleSelection.SelectedValue == "Admin";
         }
 
 
@@ -70,6 +66,19 @@ namespace Agri_Market
                 return;
             }
 
+            // A farmer must provide their farm details
+            if (roleSelection.SelectedValue == "Farmer" &&
+                (farmName.Text.Trim() == "" ||
+                 farmLocation.Text.Trim() == ""))
+            {
+                lblMessage.CssClass = "form-message error-message";
+
+                lblMessage.Text =
+                    "Please complete the required farm details.";
+
+                return;
+            }
+
 
             // Create a connection to the WCF service.
             ServiceReference1.Service1Client client =
@@ -93,7 +102,6 @@ namespace Agri_Market
 
                 int result;
 
-
                 // Call the correct service method.
                 if (roleSelection.SelectedValue == "Admin")
                 {
@@ -102,12 +110,27 @@ namespace Agri_Market
                         adminCode.Text
                     );
                 }
+                else if (roleSelection.SelectedValue == "Farmer")
+                {
+                    // Create the farmer-specific information
+                    ServiceReference1.FarmerDetail farmer =
+                        new ServiceReference1.FarmerDetail
+                        {
+                            FarmName = farmName.Text.Trim(),
+                            FarmLocation = farmLocation.Text.Trim(),
+                            FarmDescription = farmDescription.Text.Trim()
+                        };
+
+                    result = client.registerFarmer(
+                        addUser,
+                        farmer
+                    );
+                }
                 else
                 {
+                    // Customer registration
                     result = client.registerUser(addUser);
                 }
-
-
                 client.Close();
 
 

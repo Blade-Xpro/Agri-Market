@@ -102,7 +102,7 @@ namespace AgriMarketService
                     passwordHash =
                         passwordHasher.HashPassword(utable.passwordHash),
 
-                    // The service automatically makes this user an admin
+                   
                     userType = "Admin"
                 };
 
@@ -172,7 +172,147 @@ namespace AgriMarketService
             }
         }
 
+        // Register a farmer
+        public int registerFarmer(UserTable utable, FarmerDetail farmer)
+        {
+            // Check whether the email already exists
+            var checkEmail = (from u in db.UserTables
+                              where u.email == utable.email
+                              select u).SingleOrDefault();
+
+            if (checkEmail != null)
+            {
+                return 2; // Email already exists
+            }
+
+            //  creating the farmer as a normal system user
+            var newFarmer = new UserTable
+            {
+                Name = utable.Name,
+                Surname = utable.Surname,
+                email = utable.email,
+                phoneNumber = utable.phoneNumber,
+
+                passwordHash =
+                    passwordHasher.HashPassword(utable.passwordHash),
+
+                userType = "Farmer",
+                creationDate = DateTime.Now
+            };
+
+            db.UserTables.InsertOnSubmit(newFarmer);
+
+            try
+            {
+                
+                db.SubmitChanges();
+
+                // Using the generated User Id as the FarmerId
+                var farmerDetails = new FarmerDetail
+                {
+                    FarmerId = newFarmer.Id,
+                    FarmName = farmer.FarmName,
+                    FarmLocation = farmer.FarmLocation,
+                    FarmDescription = farmer.FarmDescription,
+                    IsApproved = false
+                };
+
+                db.FarmerDetails.InsertOnSubmit(farmerDetails);
+                db.SubmitChanges();
+
+                return 0; // Farmer registered successfully
+            }
+            catch (Exception ex)
+            {
+                ex.GetBaseException();
+
+                return 1; //  reg error
+            }
+        }
+
+        // Approve a registered farmer
+        public int approveFarmer(int farmerId)
+        {
+            var farmer = (from f in db.FarmerDetails
+                          where f.FarmerId == farmerId
+                          select f).SingleOrDefault();
+
+            if (farmer == null)
+            {
+                return 1; // Farmer not found
+            }
+
+            farmer.IsApproved = true;
+
+            try
+            {
+                db.SubmitChanges();
+
+                return 0; // Farmer approved successfully
+            }
+            catch (Exception)
+            {
+                return 2; // Database error
+            }
+        }
+
+        // Get the details of one farmer
+        public FarmerDetail getFarmerDetails(int farmerId)
+        {
+            var farmer = (from f in db.FarmerDetails
+                          where f.FarmerId == farmerId
+                          select f).SingleOrDefault();
+
+            return farmer;
+        }
+
+        // Get farmers that are waiting for approval
+        public List<FarmerDTO> getPendingFarmers()
+        {
+            var farmers = (from f in db.FarmerDetails
+                           where f.IsApproved == false
+                           select new FarmerDTO
+                           {
+                               FarmerId = f.FarmerId,
+                               FarmName = f.FarmName,
+                               FarmLocation = f.FarmLocation,
+                               FarmDescription = f.FarmDescription,
+                               IsApproved = f.IsApproved
+                           }).ToList();
+
+            return farmers;
+        }
+        // Update farmer details
+        public int updateFarmerDetails(FarmerDetail farmer)
+        {
+            var existingFarmer = (from f in db.FarmerDetails
+                                  where f.FarmerId == farmer.FarmerId
+                                  select f).SingleOrDefault();
+
+            if (existingFarmer == null)
+            {
+                return 1; // Farmer not found
+            }
+
+            existingFarmer.FarmName = farmer.FarmName;
+            existingFarmer.FarmLocation = farmer.FarmLocation;
+            existingFarmer.FarmDescription = farmer.FarmDescription;
+
+            try
+            {
+                db.SubmitChanges();
+
+                return 0; // Details updated successfully
+            }
+            catch (Exception)
+            {
+                return 2; // Database error
+            }
+        }
     }
+
+   
+
 
 
 }

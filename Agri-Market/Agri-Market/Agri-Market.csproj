@@ -125,6 +125,16 @@
     <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="bin\System.Web.Optimization.dll" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.FarmerDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.Product.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="PendingFarmers.aspx" />
+    <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.FarmerDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServiceReference1\Service1.disco" />
     <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
@@ -335,6 +345,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="PendingFarmers.aspx.cs">
+      <DependentUpon>PendingFarmers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PendingFarmers.aspx.designer.cs">
+      <DependentUpon>PendingFarmers.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

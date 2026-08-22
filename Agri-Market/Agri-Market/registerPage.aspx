@@ -61,6 +61,36 @@
             box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
         }
 
+        .role-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f5faec;
+    border: 2px solid #81c408;
+    border-radius: 10px;
+}
+
+.role-section h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.role-selection {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.role-selection input {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+}
+
+.role-selection label {
+    margin-right: 30px;
+    cursor: pointer;
+}
+
         .brand-name {
             color: #81c408;
             font-family: 'Raleway', sans-serif;
@@ -254,6 +284,19 @@
             background-color: #fff8e8;
         }
 
+        .farmer-panel {
+    padding: 15px;
+    margin-bottom: 17px;
+    border-left: 4px solid #81c408;
+    border-radius: 8px;
+    background-color: #f5faec;
+}
+
+.farm-description {
+    height: auto;
+    min-height: 90px;
+    padding-top: 12px;
+}
         .admin-note {
             display: block;
             margin-top: 6px;
@@ -321,6 +364,13 @@
             background-color: rgba(25, 48, 16, 0.88);
         }
 
+        .farmer-panel {
+    padding: 18px;
+    margin-bottom: 20px;
+    background-color: #f5faec;
+    border-left: 4px solid #81c408;
+    border-radius: 8px;
+}
         @media (max-width: 991px) {
 
             .register-left {
@@ -488,11 +538,13 @@
                                 </div>
 
                                 <div>
-                                    <h5>Customer and Admin Access</h5>
+                                    <h5>Customer, Farmer and Admin Access</h5>
 
                                     <p>
-                                        Customers shop while authorised admins
-                                        manage products and reports.
+                                        <p>
+    Customers shop, farmers manage their farm details,
+    while authorised admins manage the platform.
+</p>
                                     </p>
                                 </div>
 
@@ -522,27 +574,35 @@
                                     Register as
                                 </span>
 
-                                <asp:RadioButtonList
-                                    ID="roleSelection"
-                                    runat="server"
-                                    CssClass="role-options"
-                                    RepeatDirection="Horizontal"
-                                    RepeatLayout="Flow"
-                                    AutoPostBack="true"
-                                    OnSelectedIndexChanged="roleSelection_SelectedIndexChanged">
+                                <div class="role-section">
 
-                                    <asp:ListItem
-                                        Text="Customer"
-                                        Value="Customer"
-                                        Selected="True">
-                                    </asp:ListItem>
+    <h4>Register as</h4>
 
-                                    <asp:ListItem
-                                        Text="Admin"
-                                        Value="Admin">
-                                    </asp:ListItem>
+    <asp:RadioButtonList
+        ID="roleSelection"
+        runat="server"
+        CssClass="role-selection"
+        RepeatDirection="Horizontal"
+        RepeatLayout="Flow"
+        AutoPostBack="true"
+        OnSelectedIndexChanged="roleSelection_SelectedIndexChanged">
 
-                                </asp:RadioButtonList>
+        <asp:ListItem
+            Text="Customer"
+            Value="Customer"
+            Selected="True" />
+
+        <asp:ListItem
+            Text="Farmer"
+            Value="Farmer" />
+
+        <asp:ListItem
+            Text="Admin"
+            Value="Admin" />
+
+    </asp:RadioButtonList>
+
+</div>
 
                             </div>
 
@@ -662,6 +722,76 @@
                                     </asp:TextBox>
 
                                 </div>
+
+                               <!-- Only appears when Farmer is selected -->
+<asp:Panel
+    ID="farmerDetailsPanel"
+    runat="server"
+    CssClass="farmer-panel"
+    Visible="false">
+
+    <div class="form-group">
+
+        <label for="farmName">
+            Farm name
+        </label>
+
+        <div class="input-wrapper">
+
+            <i class="fas fa-seedling"></i>
+
+            <asp:TextBox
+                ID="farmName"
+                runat="server"
+                CssClass="registration-input"
+                placeholder="Farm name">
+            </asp:TextBox>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="farmLocation">
+            Farm location
+        </label>
+
+        <div class="input-wrapper">
+
+            <i class="fas fa-map-marker-alt"></i>
+
+            <asp:TextBox
+                ID="farmLocation"
+                runat="server"
+                CssClass="registration-input"
+                placeholder="Farm location">
+            </asp:TextBox>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-group mb-0">
+
+        <label for="farmDescription">
+            Farm description
+        </label>
+
+        <asp:TextBox
+            ID="farmDescription"
+            runat="server"
+            CssClass="registration-input farm-description"
+            TextMode="MultiLine"
+            Rows="4"
+            placeholder="Tell us a little about the farm">
+        </asp:TextBox>
+
+    </div>
+
+</asp:Panel>
 
                             </div>
 
