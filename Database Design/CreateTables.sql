@@ -52,6 +52,17 @@ CREATE TABLE [Order](
     FOREIGN KEY(User_id) REFERENCES [User](id)
 
 );
+CREATE TABLE [OrderItem]{
+
+    [id] int UNIQUE not null,
+    [O_id] int not null,
+    [P_id] int not null,
+    [P_Quantity] int not null,
+
+    PRIMARY KEY(id),
+    FOREIGN KEY(O_id) REFERENCES [Order](id),
+    FOREIGN KEY(P_id) REFERENCES [Product](id)
+}
 CREATE TABLE [Invoice](
 [id] int UNIQUE not null,
 [OrderID] int not null,

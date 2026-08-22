@@ -26,6 +26,51 @@ namespace AgriMarketService
 
 
         [OperationContract]
+        CompositeType GetDataUsingDataContract(CompositeType composite);
+
+        // TODO: Add your service operations here
+        [operationcontract]
+        public Product GetProductById(int productId);
+
+        [operationcontract]
+        public List<Product> GetAllProducts();
+
+        [operationcontract]
+        public void AddProduct(Product product);
+
+        [operationcontract]
+        public void UpdateProduct(Product product);
+
+        [operationcontract]
+        public void DeleteProduct(int productId);
+
+        [operationcontract]
+        public List<Product> SearchProducts(string searchTerm);
+
+    }
+
+
+    // Use a data contract as illustrated in the sample below to add composite types to service operations.
+    [DataContract]
+    public class CompositeType
+    {
+        bool boolValue = true;
+        string stringValue = "Hello ";
+
+        [DataMember]
+        public bool BoolValue
+        {
+            get { return boolValue; }
+            set { boolValue = value; }
+        }
+
+        [DataMember]
+        public string StringValue
+        {
+            get { return stringValue; }
+            set { stringValue = value; }
+        }
+    }
             string TestService();
         
     }

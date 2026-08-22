@@ -28,6 +28,12 @@ namespace AgriMarketService
 
         }
 
+
+        public string GetData(int value)
+        {
+            return string.Format("You entered: {0}", value);
+        }
+
         public int registerUser(UserTable utable)
         {
             // Check whether the email already exists
@@ -123,5 +129,50 @@ namespace AgriMarketService
         {
             return "Agri Market service is working.";
         }
+        public List<Product> SearchProducts(string searchTerm)
+        {
+            var products = (from p in db.Products
+                            where p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm)
+                            select p).ToList();
+            if (products.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return products;
+            }
+
+        }
+        public Product GetProductById(int productId)
+        {
+            var product = (from p in db.Products
+                           where p.id == productId
+                           select p).SingleOrDefault();
+            if (product != null)
+            {
+                return product;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public List<Product> GetAllProducts()
+        {
+            var products = (from p in db.Products
+                            select p).ToList();
+            if (products.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return products;
+            }
+        }
+
     }
+
+
 }
