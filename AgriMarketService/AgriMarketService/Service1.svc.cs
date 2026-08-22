@@ -132,7 +132,7 @@ namespace AgriMarketService
         public List<Product> SearchProducts(string searchTerm)
         {
             var products = (from p in db.Products
-                            where p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm)
+                            where p.ProductName.Contains(searchTerm) || p.Description.Contains(searchTerm)
                             select p).ToList();
             if (products.Count == 0)
             {
@@ -147,7 +147,7 @@ namespace AgriMarketService
         public Product GetProductById(int productId)
         {
             var product = (from p in db.Products
-                           where p.id == productId
+                           where p.ProductId == productId
                            select p).SingleOrDefault();
             if (product != null)
             {
