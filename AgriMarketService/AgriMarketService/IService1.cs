@@ -57,12 +57,154 @@ namespace AgriMarketService
         [OperationContract]
         int updateFarmerDetails(FarmerDetail farmer);
 
+        [OperationContract]
+        UserTable getFarmerUserDetails(int farmerId);
+
+        [OperationContract]
+        FarmerProfileDTO getFarmerProfile(int farmerId);
+
+        [OperationContract]
+        List<UserDTO> getAllUsers();
+
+        [OperationContract]
+        List<OrderDTO> getAllOrders();
+
+        [OperationContract]
+        int updateOrderStatus(int orderId, string newStatus);
+
+        [OperationContract]
+        ReportSummaryDTO getReportSummary();
+
+        [OperationContract]
+        List<StockReportDTO> getStockReport();
+
+        [OperationContract]
+        List<UserRegistrationReportDTO> getUserRegistrationsPerDay();
+
     }
 
 
 
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
+    [DataContract]
+    public class UserRegistrationReportDTO
+    {
+        [DataMember]
+        public DateTime RegistrationDate { get; set; }
+
+        [DataMember]
+        public int UserCount { get; set; }
+    }
+
+    [DataContract]
+    public class StockReportDTO
+    {
+        [DataMember]
+        public string ProductName { get; set; }
+
+        [DataMember]
+        public decimal StockQuantity { get; set; }
+
+        [DataMember]
+        public string UnitOfMeasure { get; set; }
+    }
+    [DataContract]
+    public class ReportSummaryDTO
+    {
+        [DataMember]
+        public decimal TotalRevenue { get; set; }
+
+        [DataMember]
+        public int TotalOrders { get; set; }
+
+        [DataMember]
+        public int TotalCustomers { get; set; }
+
+        [DataMember]
+        public int TotalFarmers { get; set; }
+
+        [DataMember]
+        public int DifferentProductsSold { get; set; }
+    }
+
+
+    [DataContract]
+    public class OrderDTO
+    {
+        [DataMember]
+        public int OrderId { get; set; }
+
+        [DataMember]
+        public int UserId { get; set; }
+
+        [DataMember]
+        public string CustomerName { get; set; }
+
+        [DataMember]
+        public DateTime OrderDate { get; set; }
+
+        [DataMember]
+        public string OrderStatus { get; set; }
+
+        [DataMember]
+        public string DeliveryMethod { get; set; }
+
+        [DataMember]
+        public decimal TotalAmount { get; set; }
+    }
+    [DataContract]
+    public class UserDTO
+    {
+        [DataMember]
+        public int UserId { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public string Surname { get; set; }
+
+        [DataMember]
+        public string Email { get; set; }
+
+        [DataMember]
+        public string PhoneNumber { get; set; }
+
+        [DataMember]
+        public string UserType { get; set; }
+    }
+    [DataContract]
+    public class FarmerProfileDTO
+    {
+        [DataMember]
+        public int FarmerId { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public string Surname { get; set; }
+
+        [DataMember]
+        public string Email { get; set; }
+
+        [DataMember]
+        public string PhoneNumber { get; set; }
+
+        [DataMember]
+        public string FarmName { get; set; }
+
+        [DataMember]
+        public string FarmLocation { get; set; }
+
+        [DataMember]
+        public string FarmDescription { get; set; }
+
+        [DataMember]
+        public bool IsApproved { get; set; }
+    }
+
     [DataContract]
     public class FarmerDTO
     {

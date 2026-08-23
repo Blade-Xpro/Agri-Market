@@ -50,7 +50,9 @@ namespace AgriMarketService
                     passwordHash = passwordHasher.HashPassword(utable.passwordHash),
                     phoneNumber = utable.phoneNumber,
                     Surname = utable.Surname,
-                    userType = "Customer"
+                    userType = "Customer",
+
+                    creationDate = DateTime.Now
                 };
 
                 db.UserTables.InsertOnSubmit(newUser);
@@ -103,7 +105,8 @@ namespace AgriMarketService
                         passwordHasher.HashPassword(utable.passwordHash),
 
                    
-                    userType = "Admin"
+                    userType = "Admin",
+                    creationDate = DateTime.Now
                 };
 
                 db.UserTables.InsertOnSubmit(newAdmin);
@@ -282,6 +285,78 @@ namespace AgriMarketService
 
             return farmers;
         }
+
+        public List<OrderDTO> getAllOrders()
+        {
+            var orders =
+                (from o in db.Orders
+                 join u in db.UserTables
+                     on o.UserId equals u.Id
+                 select new OrderDTO
+                 {
+                     OrderId = o.OrderId,
+                     UserId = o.UserId,
+                     CustomerName = u.Name + " " + u.Surname,
+                     OrderDate = o.OrderDate,
+                     OrderStatus = o.OrderStatus,
+                     DeliveryMethod = o.DeliveryMethod,
+                     TotalAmount = o.TotalAmount
+                 }).ToList();
+
+            return orders;
+        }
+
+        public List<UserDTO> getAllUsers()
+        {
+            var users =
+                (from u in db.UserTables
+                 select new UserDTO
+                 {
+                     UserId = u.Id,
+                     Name = u.Name,
+                     Surname = u.Surname,
+                     Email = u.email,
+                     PhoneNumber = u.phoneNumber,
+                     UserType = u.userType
+                 }).ToList();
+
+            return users;
+        }
+
+        public FarmerProfileDTO getFarmerProfile(int farmerId)
+        {
+            var profile =
+                (from u in db.UserTables
+                 join f in db.FarmerDetails
+                     on u.Id equals f.FarmerId
+                 where u.Id == farmerId
+                       && u.userType == "Farmer"
+                 select new FarmerProfileDTO
+                 {
+                     FarmerId = f.FarmerId,
+
+                     Name = u.Name,
+                     Surname = u.Surname,
+                     Email = u.email,
+                     PhoneNumber = u.phoneNumber,
+
+                     FarmName = f.FarmName,
+                     FarmLocation = f.FarmLocation,
+                     FarmDescription = f.FarmDescription,
+                     IsApproved = f.IsApproved
+                 }).SingleOrDefault();
+
+            return profile;
+        }
+        public UserTable getFarmerUserDetails(int farmerId)
+        {
+            var farmerUser = (from u in db.UserTables
+                              where u.Id == farmerId
+                              && u.userType == "Farmer"
+                              select u).SingleOrDefault();
+
+            return farmerUser;
+        }
         // Update farmer details
         public int updateFarmerDetails(FarmerDetail farmer)
         {
@@ -309,9 +384,103 @@ namespace AgriMarketService
                 return 2; // Database error
             }
         }
+
+        public int updateOrderStatus(int orderId, string newStatus)
+        {
+            var order =
+                (from o in db.Orders
+                 where o.OrderId == orderId
+                 select o).SingleOrDefault();
+
+            if (order == null)
+                return 1;
+
+            order.OrderStatus = newStatus;
+
+            try
+            {
+                db.SubmitChanges();
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 2;
+            }
+        }
+
+        public ReportSummaryDTO getReportSummary()
+        {
+            ReportSummaryDTO report = new ReportSummaryDTO();
+
+            // Total sales revenue
+            if (db.Orders.Any())
+            {
+                report.TotalRevenue =
+                    db.Orders.Sum(o => o.TotalAmount);
+            }
+            else
+            {
+                report.TotalRevenue = 0;
+            }
+
+            // Total orders
+            report.TotalOrders =
+                db.Orders.Count();
+
+            // Total customers
+            report.TotalCustomers =
+                db.UserTables.Count(u => u.userType == "Customer");
+
+            // Total farmers
+            report.TotalFarmers =
+                db.UserTables.Count(u => u.userType == "Farmer");
+
+            // Number of different products that have been sold
+            report.DifferentProductsSold =
+                db.OrderItems
+                  .Select(oi => oi.ProductId)
+                  .Distinct()
+                  .Count();
+
+            return report;
+        }
+
+        public List<StockReportDTO> getStockReport()
+        {
+            var stock =
+                (from p in db.Products
+                 select new StockReportDTO
+                 {
+                     ProductName = p.ProductName,
+                     StockQuantity = p.StockQuantity,
+                     UnitOfMeasure = p.UnitOfMeasure
+                 }).ToList();
+
+            return stock;
+        }
+
+        public List<UserRegistrationReportDTO> getUserRegistrationsPerDay()
+        {
+            var registrations =
+                db.UserTables
+                  .Select(u => u.creationDate)
+                  .AsEnumerable()
+                  .GroupBy(date => date.Date)
+                  .Select(group => new UserRegistrationReportDTO
+                  {
+                      RegistrationDate = group.Key,
+                      UserCount = group.Count()
+                  })
+                  .OrderBy(r => r.RegistrationDate)
+                  .ToList();
+
+            return registrations;
+        }
     }
 
-   
+    
+
+
 
 
 

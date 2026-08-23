@@ -73,6 +73,54 @@
   <wsdl:message name="IService1_updateFarmerDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:updateFarmerDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getFarmerUserDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:getFarmerUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getFarmerUserDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getFarmerUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getFarmerProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:getFarmerProfile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getFarmerProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getFarmerProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAllOrders_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllOrders" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAllOrders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateOrderStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateOrderStatus" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateOrderStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateOrderStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getReportSummary_InputMessage">
+    <wsdl:part name="parameters" element="tns:getReportSummary" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getReportSummary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getReportSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getStockReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:getStockReport" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getStockReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getStockReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserRegistrationsPerDay_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserRegistrationsPerDay" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserRegistrationsPerDay_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserRegistrationsPerDayResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DoWork" message="tns:IService1_DoWork_InputMessage" />
@@ -117,6 +165,38 @@
     <wsdl:operation name="updateFarmerDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateFarmerDetails" message="tns:IService1_updateFarmerDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateFarmerDetailsResponse" message="tns:IService1_updateFarmerDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getFarmerUserDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getFarmerUserDetails" message="tns:IService1_getFarmerUserDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getFarmerUserDetailsResponse" message="tns:IService1_getFarmerUserDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getFarmerProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getFarmerProfile" message="tns:IService1_getFarmerProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getFarmerProfileResponse" message="tns:IService1_getFarmerProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getAllUsers" message="tns:IService1_getAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getAllUsersResponse" message="tns:IService1_getAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllOrders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getAllOrders" message="tns:IService1_getAllOrders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getAllOrdersResponse" message="tns:IService1_getAllOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateOrderStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateOrderStatus" message="tns:IService1_updateOrderStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateOrderStatusResponse" message="tns:IService1_updateOrderStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getReportSummary">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getReportSummary" message="tns:IService1_getReportSummary_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getReportSummaryResponse" message="tns:IService1_getReportSummary_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getStockReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getStockReport" message="tns:IService1_getStockReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getStockReportResponse" message="tns:IService1_getStockReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserRegistrationsPerDay">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUserRegistrationsPerDay" message="tns:IService1_getUserRegistrationsPerDay_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUserRegistrationsPerDayResponse" message="tns:IService1_getUserRegistrationsPerDay_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -213,6 +293,78 @@
     </wsdl:operation>
     <wsdl:operation name="updateFarmerDetails">
       <soap:operation soapAction="http://tempuri.org/IService1/updateFarmerDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFarmerUserDetails">
+      <soap:operation soapAction="http://tempuri.org/IService1/getFarmerUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFarmerProfile">
+      <soap:operation soapAction="http://tempuri.org/IService1/getFarmerProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/getAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllOrders">
+      <soap:operation soapAction="http://tempuri.org/IService1/getAllOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateOrderStatus">
+      <soap:operation soapAction="http://tempuri.org/IService1/updateOrderStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReportSummary">
+      <soap:operation soapAction="http://tempuri.org/IService1/getReportSummary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStockReport">
+      <soap:operation soapAction="http://tempuri.org/IService1/getStockReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserRegistrationsPerDay">
+      <soap:operation soapAction="http://tempuri.org/IService1/getUserRegistrationsPerDay" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

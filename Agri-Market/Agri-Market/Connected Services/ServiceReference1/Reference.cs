@@ -1868,6 +1868,692 @@ namespace Agri_Market.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FarmerProfileDTO", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
+    [System.SerializableAttribute()]
+    public partial class FarmerProfileDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FarmDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FarmLocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FarmNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FarmerIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsApprovedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhoneNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SurnameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FarmDescription {
+            get {
+                return this.FarmDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FarmDescriptionField, value) != true)) {
+                    this.FarmDescriptionField = value;
+                    this.RaisePropertyChanged("FarmDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FarmLocation {
+            get {
+                return this.FarmLocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FarmLocationField, value) != true)) {
+                    this.FarmLocationField = value;
+                    this.RaisePropertyChanged("FarmLocation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FarmName {
+            get {
+                return this.FarmNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FarmNameField, value) != true)) {
+                    this.FarmNameField = value;
+                    this.RaisePropertyChanged("FarmName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FarmerId {
+            get {
+                return this.FarmerIdField;
+            }
+            set {
+                if ((this.FarmerIdField.Equals(value) != true)) {
+                    this.FarmerIdField = value;
+                    this.RaisePropertyChanged("FarmerId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsApproved {
+            get {
+                return this.IsApprovedField;
+            }
+            set {
+                if ((this.IsApprovedField.Equals(value) != true)) {
+                    this.IsApprovedField = value;
+                    this.RaisePropertyChanged("IsApproved");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PhoneNumber {
+            get {
+                return this.PhoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
+                    this.PhoneNumberField = value;
+                    this.RaisePropertyChanged("PhoneNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Surname {
+            get {
+                return this.SurnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SurnameField, value) != true)) {
+                    this.SurnameField = value;
+                    this.RaisePropertyChanged("Surname");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserDTO", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
+    [System.SerializableAttribute()]
+    public partial class UserDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhoneNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SurnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserTypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PhoneNumber {
+            get {
+                return this.PhoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
+                    this.PhoneNumberField = value;
+                    this.RaisePropertyChanged("PhoneNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Surname {
+            get {
+                return this.SurnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SurnameField, value) != true)) {
+                    this.SurnameField = value;
+                    this.RaisePropertyChanged("Surname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserType {
+            get {
+                return this.UserTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserTypeField, value) != true)) {
+                    this.UserTypeField = value;
+                    this.RaisePropertyChanged("UserType");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderDTO", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
+    [System.SerializableAttribute()]
+    public partial class OrderDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DeliveryMethodField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime OrderDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalAmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerName {
+            get {
+                return this.CustomerNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerNameField, value) != true)) {
+                    this.CustomerNameField = value;
+                    this.RaisePropertyChanged("CustomerName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeliveryMethod {
+            get {
+                return this.DeliveryMethodField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeliveryMethodField, value) != true)) {
+                    this.DeliveryMethodField = value;
+                    this.RaisePropertyChanged("DeliveryMethod");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime OrderDate {
+            get {
+                return this.OrderDateField;
+            }
+            set {
+                if ((this.OrderDateField.Equals(value) != true)) {
+                    this.OrderDateField = value;
+                    this.RaisePropertyChanged("OrderDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderId {
+            get {
+                return this.OrderIdField;
+            }
+            set {
+                if ((this.OrderIdField.Equals(value) != true)) {
+                    this.OrderIdField = value;
+                    this.RaisePropertyChanged("OrderId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderStatus {
+            get {
+                return this.OrderStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderStatusField, value) != true)) {
+                    this.OrderStatusField = value;
+                    this.RaisePropertyChanged("OrderStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalAmount {
+            get {
+                return this.TotalAmountField;
+            }
+            set {
+                if ((this.TotalAmountField.Equals(value) != true)) {
+                    this.TotalAmountField = value;
+                    this.RaisePropertyChanged("TotalAmount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ReportSummaryDTO", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
+    [System.SerializableAttribute()]
+    public partial class ReportSummaryDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DifferentProductsSoldField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalCustomersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalFarmersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalOrdersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalRevenueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DifferentProductsSold {
+            get {
+                return this.DifferentProductsSoldField;
+            }
+            set {
+                if ((this.DifferentProductsSoldField.Equals(value) != true)) {
+                    this.DifferentProductsSoldField = value;
+                    this.RaisePropertyChanged("DifferentProductsSold");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalCustomers {
+            get {
+                return this.TotalCustomersField;
+            }
+            set {
+                if ((this.TotalCustomersField.Equals(value) != true)) {
+                    this.TotalCustomersField = value;
+                    this.RaisePropertyChanged("TotalCustomers");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalFarmers {
+            get {
+                return this.TotalFarmersField;
+            }
+            set {
+                if ((this.TotalFarmersField.Equals(value) != true)) {
+                    this.TotalFarmersField = value;
+                    this.RaisePropertyChanged("TotalFarmers");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalOrders {
+            get {
+                return this.TotalOrdersField;
+            }
+            set {
+                if ((this.TotalOrdersField.Equals(value) != true)) {
+                    this.TotalOrdersField = value;
+                    this.RaisePropertyChanged("TotalOrders");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalRevenue {
+            get {
+                return this.TotalRevenueField;
+            }
+            set {
+                if ((this.TotalRevenueField.Equals(value) != true)) {
+                    this.TotalRevenueField = value;
+                    this.RaisePropertyChanged("TotalRevenue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StockReportDTO", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
+    [System.SerializableAttribute()]
+    public partial class StockReportDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal StockQuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UnitOfMeasureField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductName {
+            get {
+                return this.ProductNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
+                    this.ProductNameField = value;
+                    this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal StockQuantity {
+            get {
+                return this.StockQuantityField;
+            }
+            set {
+                if ((this.StockQuantityField.Equals(value) != true)) {
+                    this.StockQuantityField = value;
+                    this.RaisePropertyChanged("StockQuantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UnitOfMeasure {
+            get {
+                return this.UnitOfMeasureField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UnitOfMeasureField, value) != true)) {
+                    this.UnitOfMeasureField = value;
+                    this.RaisePropertyChanged("UnitOfMeasure");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserRegistrationReportDTO", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
+    [System.SerializableAttribute()]
+    public partial class UserRegistrationReportDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime RegistrationDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserCountField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime RegistrationDate {
+            get {
+                return this.RegistrationDateField;
+            }
+            set {
+                if ((this.RegistrationDateField.Equals(value) != true)) {
+                    this.RegistrationDateField = value;
+                    this.RaisePropertyChanged("RegistrationDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserCount {
+            get {
+                return this.UserCountField;
+            }
+            set {
+                if ((this.UserCountField.Equals(value) != true)) {
+                    this.UserCountField = value;
+                    this.RaisePropertyChanged("UserCount");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -1937,6 +2623,54 @@ namespace Agri_Market.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateFarmerDetails", ReplyAction="http://tempuri.org/IService1/updateFarmerDetailsResponse")]
         System.Threading.Tasks.Task<int> updateFarmerDetailsAsync(Agri_Market.ServiceReference1.FarmerDetail farmer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getFarmerUserDetails", ReplyAction="http://tempuri.org/IService1/getFarmerUserDetailsResponse")]
+        Agri_Market.ServiceReference1.UserTable getFarmerUserDetails(int farmerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getFarmerUserDetails", ReplyAction="http://tempuri.org/IService1/getFarmerUserDetailsResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.UserTable> getFarmerUserDetailsAsync(int farmerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getFarmerProfile", ReplyAction="http://tempuri.org/IService1/getFarmerProfileResponse")]
+        Agri_Market.ServiceReference1.FarmerProfileDTO getFarmerProfile(int farmerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getFarmerProfile", ReplyAction="http://tempuri.org/IService1/getFarmerProfileResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.FarmerProfileDTO> getFarmerProfileAsync(int farmerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getAllUsers", ReplyAction="http://tempuri.org/IService1/getAllUsersResponse")]
+        Agri_Market.ServiceReference1.UserDTO[] getAllUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getAllUsers", ReplyAction="http://tempuri.org/IService1/getAllUsersResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.UserDTO[]> getAllUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getAllOrders", ReplyAction="http://tempuri.org/IService1/getAllOrdersResponse")]
+        Agri_Market.ServiceReference1.OrderDTO[] getAllOrders();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getAllOrders", ReplyAction="http://tempuri.org/IService1/getAllOrdersResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.OrderDTO[]> getAllOrdersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateOrderStatus", ReplyAction="http://tempuri.org/IService1/updateOrderStatusResponse")]
+        int updateOrderStatus(int orderId, string newStatus);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateOrderStatus", ReplyAction="http://tempuri.org/IService1/updateOrderStatusResponse")]
+        System.Threading.Tasks.Task<int> updateOrderStatusAsync(int orderId, string newStatus);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getReportSummary", ReplyAction="http://tempuri.org/IService1/getReportSummaryResponse")]
+        Agri_Market.ServiceReference1.ReportSummaryDTO getReportSummary();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getReportSummary", ReplyAction="http://tempuri.org/IService1/getReportSummaryResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.ReportSummaryDTO> getReportSummaryAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getStockReport", ReplyAction="http://tempuri.org/IService1/getStockReportResponse")]
+        Agri_Market.ServiceReference1.StockReportDTO[] getStockReport();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getStockReport", ReplyAction="http://tempuri.org/IService1/getStockReportResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.StockReportDTO[]> getStockReportAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserRegistrationsPerDay", ReplyAction="http://tempuri.org/IService1/getUserRegistrationsPerDayResponse")]
+        Agri_Market.ServiceReference1.UserRegistrationReportDTO[] getUserRegistrationsPerDay();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserRegistrationsPerDay", ReplyAction="http://tempuri.org/IService1/getUserRegistrationsPerDayResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.UserRegistrationReportDTO[]> getUserRegistrationsPerDayAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2052,6 +2786,70 @@ namespace Agri_Market.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> updateFarmerDetailsAsync(Agri_Market.ServiceReference1.FarmerDetail farmer) {
             return base.Channel.updateFarmerDetailsAsync(farmer);
+        }
+        
+        public Agri_Market.ServiceReference1.UserTable getFarmerUserDetails(int farmerId) {
+            return base.Channel.getFarmerUserDetails(farmerId);
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.UserTable> getFarmerUserDetailsAsync(int farmerId) {
+            return base.Channel.getFarmerUserDetailsAsync(farmerId);
+        }
+        
+        public Agri_Market.ServiceReference1.FarmerProfileDTO getFarmerProfile(int farmerId) {
+            return base.Channel.getFarmerProfile(farmerId);
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.FarmerProfileDTO> getFarmerProfileAsync(int farmerId) {
+            return base.Channel.getFarmerProfileAsync(farmerId);
+        }
+        
+        public Agri_Market.ServiceReference1.UserDTO[] getAllUsers() {
+            return base.Channel.getAllUsers();
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.UserDTO[]> getAllUsersAsync() {
+            return base.Channel.getAllUsersAsync();
+        }
+        
+        public Agri_Market.ServiceReference1.OrderDTO[] getAllOrders() {
+            return base.Channel.getAllOrders();
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.OrderDTO[]> getAllOrdersAsync() {
+            return base.Channel.getAllOrdersAsync();
+        }
+        
+        public int updateOrderStatus(int orderId, string newStatus) {
+            return base.Channel.updateOrderStatus(orderId, newStatus);
+        }
+        
+        public System.Threading.Tasks.Task<int> updateOrderStatusAsync(int orderId, string newStatus) {
+            return base.Channel.updateOrderStatusAsync(orderId, newStatus);
+        }
+        
+        public Agri_Market.ServiceReference1.ReportSummaryDTO getReportSummary() {
+            return base.Channel.getReportSummary();
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.ReportSummaryDTO> getReportSummaryAsync() {
+            return base.Channel.getReportSummaryAsync();
+        }
+        
+        public Agri_Market.ServiceReference1.StockReportDTO[] getStockReport() {
+            return base.Channel.getStockReport();
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.StockReportDTO[]> getStockReportAsync() {
+            return base.Channel.getStockReportAsync();
+        }
+        
+        public Agri_Market.ServiceReference1.UserRegistrationReportDTO[] getUserRegistrationsPerDay() {
+            return base.Channel.getUserRegistrationsPerDay();
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.UserRegistrationReportDTO[]> getUserRegistrationsPerDayAsync() {
+            return base.Channel.getUserRegistrationsPerDayAsync();
         }
     }
 }

@@ -199,4 +199,90 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="FarmerDTO" nillable="true" type="tns:FarmerDTO" />
+  <xs:complexType name="FarmerProfileDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FarmDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FarmLocation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FarmName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FarmerId" type="xs:int" />
+      <xs:element minOccurs="0" name="IsApproved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FarmerProfileDTO" nillable="true" type="tns:FarmerProfileDTO" />
+  <xs:complexType name="ArrayOfUserDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDTO" nillable="true" type="tns:UserDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserDTO" nillable="true" type="tns:ArrayOfUserDTO" />
+  <xs:complexType name="UserDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDTO" nillable="true" type="tns:UserDTO" />
+  <xs:complexType name="ArrayOfOrderDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDTO" nillable="true" type="tns:OrderDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderDTO" nillable="true" type="tns:ArrayOfOrderDTO" />
+  <xs:complexType name="OrderDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryMethod" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderDTO" nillable="true" type="tns:OrderDTO" />
+  <xs:complexType name="ReportSummaryDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DifferentProductsSold" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalCustomers" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalFarmers" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalOrders" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRevenue" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportSummaryDTO" nillable="true" type="tns:ReportSummaryDTO" />
+  <xs:complexType name="ArrayOfStockReportDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StockReportDTO" nillable="true" type="tns:StockReportDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStockReportDTO" nillable="true" type="tns:ArrayOfStockReportDTO" />
+  <xs:complexType name="StockReportDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StockQuantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UnitOfMeasure" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StockReportDTO" nillable="true" type="tns:StockReportDTO" />
+  <xs:complexType name="ArrayOfUserRegistrationReportDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserRegistrationReportDTO" nillable="true" type="tns:UserRegistrationReportDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserRegistrationReportDTO" nillable="true" type="tns:ArrayOfUserRegistrationReportDTO" />
+  <xs:complexType name="UserRegistrationReportDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RegistrationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserRegistrationReportDTO" nillable="true" type="tns:UserRegistrationReportDTO" />
 </xs:schema>
