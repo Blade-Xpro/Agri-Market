@@ -163,6 +163,36 @@
   <wsdl:message name="IService1_getReportSummaryByDate_OutputMessage">
     <wsdl:part name="parameters" element="tns:getReportSummaryByDateResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_addToCartByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:addToCartByName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addToCartByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addToCartByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_processCheckout_InputMessage">
+    <wsdl:part name="parameters" element="tns:processCheckout" />
+  </wsdl:message>
+  <wsdl:message name="IService1_processCheckout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:processCheckoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getInvoiceByOrderId_InputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceByOrderId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getInvoiceByOrderId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceByOrderIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getOrderItemsByOrderId_InputMessage">
+    <wsdl:part name="parameters" element="tns:getOrderItemsByOrderId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getOrderItemsByOrderId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getOrderItemsByOrderIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addFarmerProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:addFarmerProduct" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addFarmerProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addFarmerProductResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DoWork" message="tns:IService1_DoWork_InputMessage" />
@@ -267,6 +297,26 @@
     <wsdl:operation name="getReportSummaryByDate">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getReportSummaryByDate" message="tns:IService1_getReportSummaryByDate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getReportSummaryByDateResponse" message="tns:IService1_getReportSummaryByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addToCartByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/addToCartByName" message="tns:IService1_addToCartByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/addToCartByNameResponse" message="tns:IService1_addToCartByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="processCheckout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/processCheckout" message="tns:IService1_processCheckout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/processCheckoutResponse" message="tns:IService1_processCheckout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceByOrderId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getInvoiceByOrderId" message="tns:IService1_getInvoiceByOrderId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getInvoiceByOrderIdResponse" message="tns:IService1_getInvoiceByOrderId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrderItemsByOrderId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getOrderItemsByOrderId" message="tns:IService1_getOrderItemsByOrderId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getOrderItemsByOrderIdResponse" message="tns:IService1_getOrderItemsByOrderId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addFarmerProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/addFarmerProduct" message="tns:IService1_addFarmerProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/addFarmerProductResponse" message="tns:IService1_addFarmerProduct_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -498,6 +548,51 @@
     </wsdl:operation>
     <wsdl:operation name="getReportSummaryByDate">
       <soap:operation soapAction="http://tempuri.org/IService1/getReportSummaryByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addToCartByName">
+      <soap:operation soapAction="http://tempuri.org/IService1/addToCartByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="processCheckout">
+      <soap:operation soapAction="http://tempuri.org/IService1/processCheckout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceByOrderId">
+      <soap:operation soapAction="http://tempuri.org/IService1/getInvoiceByOrderId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderItemsByOrderId">
+      <soap:operation soapAction="http://tempuri.org/IService1/getOrderItemsByOrderId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addFarmerProduct">
+      <soap:operation soapAction="http://tempuri.org/IService1/addFarmerProduct" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -16,8 +16,8 @@ namespace Agri_Market
 
 
         protected void AddToCart_Command(
-            object sender,
-            CommandEventArgs e)
+    object sender,
+    CommandEventArgs e)
         {
             if (Session["UserId"] == null)
             {
@@ -25,67 +25,34 @@ namespace Agri_Market
                 return;
             }
 
-
             int userId =
                 Convert.ToInt32(Session["UserId"]);
 
             string productName =
                 e.CommandArgument.ToString();
 
-
             ServiceReference1.Service1Client client =
                 new ServiceReference1.Service1Client();
 
-
             try
             {
-                var products =
-                    client.SearchProducts(productName);
-
-
-                if (products == null ||
-                    products.Length == 0)
-                {
-                    lblProductMessage.Text =
-                        "Product could not be found.";
-
-                    client.Close();
-                    return;
-                }
-
-
-                var product =
-                    products.FirstOrDefault(p =>
-                        p.ProductName.Equals(
-                            productName,
-                            StringComparison.OrdinalIgnoreCase));
-
-
-                if (product == null)
-                {
-                    lblProductMessage.Text =
-                        "Product could not be found.";
-
-                    client.Close();
-                    return;
-                }
-
-
                 int result =
-                    client.addToCart(
+                    client.addToCartByName(
                         userId,
-                        product.ProductId,
+                        productName,
                         1);
 
-
                 client.Close();
-
 
                 if (result == 0)
                 {
                     lblProductMessage.Text =
-                        product.ProductName +
-                        " added to your cart.";
+                        productName + " added to your cart.";
+                }
+                else if (result == 2)
+                {
+                    lblProductMessage.Text =
+                        "Product could not be found.";
                 }
                 else
                 {

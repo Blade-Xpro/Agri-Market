@@ -303,4 +303,32 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserRegistrationReportDTO" nillable="true" type="tns:UserRegistrationReportDTO" />
+  <xs:complexType name="InvoiceDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DiscountAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="InvoiceDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InvoiceId" type="xs:int" />
+      <xs:element minOccurs="0" name="InvoiceNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+      <xs:element minOccurs="0" name="Subtotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TaxAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvoiceDTO" nillable="true" type="tns:InvoiceDTO" />
+  <xs:complexType name="ArrayOfOrderItemDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderItemDTO" nillable="true" type="tns:OrderItemDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderItemDTO" nillable="true" type="tns:ArrayOfOrderItemDTO" />
+  <xs:complexType name="OrderItemDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LineTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitPrice" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderItemDTO" nillable="true" type="tns:OrderItemDTO" />
 </xs:schema>

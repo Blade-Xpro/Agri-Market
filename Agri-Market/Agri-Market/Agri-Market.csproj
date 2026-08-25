@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AddProduct.aspx" />
     <Content Include="AdminProfile.aspx" />
     <Content Include="AllProductsPage.aspx" />
     <Content Include="App_Data\AgriDatabase.mdf" />
@@ -127,6 +128,7 @@
     <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="bin\System.Web.Optimization.dll" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="Checkout.aspx" />
     <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.FarmerDetail.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -136,6 +138,7 @@
     <Content Include="CustomerProfile.aspx" />
     <Content Include="FarmerProfile.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="Invoice.aspx" />
     <Content Include="ManageOrders.aspx" />
     <Content Include="ManageUsers.aspx" />
     <Content Include="PendingFarmers.aspx" />
@@ -165,6 +168,12 @@
     </Content>
     <Content Include="ShoppingCart.aspx" />
     <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.CartItemDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.InvoiceDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.OrderItemDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\ServiceReference1\Service1.disco" />
@@ -296,6 +305,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminProfile.aspx.cs">
       <DependentUpon>AdminProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -319,6 +335,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Checkout.aspx.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout.aspx.designer.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -358,6 +381,13 @@
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Invoice.aspx.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Invoice.aspx.designer.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>

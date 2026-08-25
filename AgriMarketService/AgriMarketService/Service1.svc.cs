@@ -15,13 +15,13 @@ namespace AgriMarketService
 
     {
 
-        // Connection to the database through the DBML
+        // Connection 
         DataClasses1DataContext db = new DataClasses1DataContext();
 
         // Used to hash passwords
         PasswordHasher passwordHasher = new PasswordHasher();
 
-        // Temporary code required when registering a manager so that only an existing 
+        // code for admin
         private const string adminRegCode = "AGRI2026";
         public void DoWork()
         {
@@ -61,7 +61,7 @@ namespace AgriMarketService
                 {
                     db.SubmitChanges();
 
-                    return 0; // Account created successfully
+                    return 0; //aacount created
                 }
                 catch (Exception ex)
                 {
@@ -121,11 +121,11 @@ namespace AgriMarketService
                 {
                     ex.GetBaseException();
 
-                    return 1; // Database or registration error
+                    return 1; 
                 }
             }
 
-            return 2; // Email already exists
+            return 2;
         }
 
         public string TestService()
@@ -306,11 +306,11 @@ namespace AgriMarketService
             {
                 db.SubmitChanges();
 
-                return 0; // Farmer approved successfully
+                return 0; // Farmer approved 
             }
             catch (Exception)
             {
-                return 2; // Database error
+                return 2; 
             }
         }
 
@@ -432,11 +432,11 @@ namespace AgriMarketService
             {
                 db.SubmitChanges();
 
-                return 0; // Details updated successfully
+                return 0; 
             }
             catch (Exception)
             {
-                return 2; // Database error
+                return 2; 
             }
         }
 
@@ -536,7 +536,7 @@ namespace AgriMarketService
     DateTime startDate,
     DateTime endDate)
         {
-            // Include the whole end date
+            // Include alld ates
             DateTime start = startDate.Date;
             DateTime end = endDate.Date.AddDays(1);
 
@@ -663,18 +663,412 @@ namespace AgriMarketService
                 return 2;
             }
         }
+
+        public int addToCartByName(int userId, string productName, int quantity)
+        {
+            try
+            {
+                DataClasses1DataContext cartDb =
+                    new DataClasses1DataContext();
+
+                // Find product
+                var product =
+                    (from p in cartDb.Products
+                     where p.ProductName == productName
+                     && p.IsActive == true
+                     select p).FirstOrDefault();
+
+                if (product == null)
+                {
+                    return 2;
+                }
+
+
+                // Find active cart
+                var cart =
+                    (from c in cartDb.ShoppingCarts
+                     where c.UserId == userId
+                     && c.IsActive == true
+                     select c).FirstOrDefault();
+
+
+                // Create cart if none exists
+                if (cart == null)
+                {
+                    cart = new ShoppingCart
+                    {
+                        UserId = userId,
+                        CreatedDate = DateTime.Now,
+                        UpdatedDate = DateTime.Now,
+                        IsActive = true
+                    };
+
+                    cartDb.ShoppingCarts.InsertOnSubmit(cart);
+                    cartDb.SubmitChanges();
+                }
+
+
+                // Check if product already exists in cart
+                var existingItem =
+                    (from i in cartDb.ShoppingCartItems
+                     where i.ShoppingCartId == cart.ShoppingCartId
+                     && i.ProductId == product.ProductId
+                     select i).FirstOrDefault();
+
+
+                if (existingItem == null)
+                {
+                    ShoppingCartItem item =
+                        new ShoppingCartItem
+                        {
+                            ShoppingCartId = cart.ShoppingCartId,
+                            ProductId = product.ProductId,
+                            Quantity = quantity,
+                            DateAdded = DateTime.Now
+                        };
+
+                    cartDb.ShoppingCartItems.InsertOnSubmit(item);
+                }
+                else
+                {
+                    existingItem.Quantity += quantity;
+                }
+
+
+                cart.UpdatedDate = DateTime.Now;
+
+                cartDb.SubmitChanges();
+
+                return 0;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
+        public int processCheckout(int userId, string deliveryMethod)
+        {
+            try
+            {
+                DataClasses1DataContext orderDb =
+                    new DataClasses1DataContext();
+
+
+                // Find customer's active cart
+                var cart =
+                    (from c in orderDb.ShoppingCarts
+                     where c.UserId == userId
+                     && c.IsActive == true
+                     select c).FirstOrDefault();
+
+
+                if (cart == null)
+                {
+                    return -1;
+                }
+
+
+                // Get cart items
+                var cartItems =
+                    (from item in orderDb.ShoppingCartItems
+                     where item.ShoppingCartId == cart.ShoppingCartId
+                     select item).ToList();
+
+
+                if (cartItems.Count == 0)
+                {
+                    return -1;
+                }
+
+
+                decimal subtotal = 0;
+
+
+                // calculate total
+                foreach (var item in cartItems)
+                {
+                    var product =
+                        (from p in orderDb.Products
+                         where p.ProductId == item.ProductId
+                         select p).FirstOrDefault();
+
+
+                    if (product == null)
+                    {
+                        return -2;
+                    }
+
+
+                    //  enough stock exists
+                    if (product.StockQuantity < item.Quantity)
+                    {
+                        return -3;
+                    }
+
+
+                    subtotal +=
+                        product.Price * item.Quantity;
+                }
+
+
+                // Keep these simple for now
+                decimal tax = 0;
+                decimal discount = 0;
+
+                decimal total =
+                    subtotal + tax - discount;
+
+
+                // Create order
+                Order newOrder =
+                    new Order
+                    {
+                        UserId = userId,
+                        OrderDate = DateTime.Now,
+                        OrderStatus = "Pending",
+                        DeliveryMethod = deliveryMethod,
+                        TotalAmount = total
+                    };
+
+
+                orderDb.Orders.InsertOnSubmit(newOrder);
+
+                // Submit so OrderId is generated
+                orderDb.SubmitChanges();
+
+
+                // Create OrderItems
+                foreach (var item in cartItems)
+                {
+                    var product =
+                        (from p in orderDb.Products
+                         where p.ProductId == item.ProductId
+                         select p).FirstOrDefault();
+
+
+                    OrderItem orderItem =
+          new OrderItem
+          {
+              OrderId = newOrder.OrderId,
+              ProductId = product.ProductId,
+
+              ProductName = product.ProductName,
+
+              Quantity = item.Quantity,
+              UnitPrice = product.Price,
+              LineTotal = product.Price * item.Quantity
+          };
+
+
+                    orderDb.OrderItems.InsertOnSubmit(orderItem);
+
+
+                    // minis available stock
+                    product.StockQuantity -= item.Quantity;
+                }
+
+
+                
+     Invoice newInvoice =
+    new Invoice
+    {
+        OrderId = newOrder.OrderId,
+
+        InvoiceNumber =
+            "INV-" + newOrder.OrderId.ToString("D5"),
+
+        InvoiceDate = DateTime.Now
+    };
+
+
+                orderDb.Invoices.InsertOnSubmit(newInvoice);
+
+
+                // Close the cart
+                cart.IsActive = false;
+                cart.UpdatedDate = DateTime.Now;
+
+
+                orderDb.SubmitChanges();
+
+
+                // Return the new OrderId
+                return newOrder.OrderId;
+            }
+            catch (Exception ex)
+            {
+                return -2; 
+            }
+        }
+
+        public List<OrderItemDTO> getOrderItemsByOrderId(int orderId)
+        {
+            var items =
+                (from oi in db.OrderItems
+
+                 join p in db.Products
+                     on oi.ProductId equals p.ProductId
+
+                 where oi.OrderId == orderId
+
+                 select new OrderItemDTO
+                 {
+                     ProductName = p.ProductName,
+                     Quantity = (int)oi.Quantity,
+                     UnitPrice = oi.UnitPrice,
+                     LineTotal = oi.LineTotal
+                 }).ToList();
+
+
+            return items;
+        }
+        public InvoiceDTO getInvoiceByOrderId(int orderId)
+        {
+            var result =
+                (from i in db.Invoices
+
+                 join o in db.Orders
+                     on i.OrderId equals o.OrderId
+
+                 where i.OrderId == orderId
+
+                 select new InvoiceDTO
+                 {
+                     InvoiceId = i.InvoiceId,
+
+                     OrderId = i.OrderId,
+
+                     InvoiceNumber = i.InvoiceNumber,
+
+                     InvoiceDate = i.InvoiceDate,
+
+                     Subtotal = o.TotalAmount,
+
+                     TaxAmount = 0,
+
+                     DiscountAmount = 0,
+
+                     TotalAmount = o.TotalAmount
+
+                 }).FirstOrDefault();
+
+            return result;
+        }
+
+        // temp farmer
+        public int addFarmerProduct(
+            int farmerId,
+            int categoryId,
+            string productName,
+            string description,
+            decimal price,
+            string unitOfMeasure,
+            int stockQuantity,
+            string imageUrl)
+        {
+            try
+            {
+                DataClasses1DataContext productDb =
+                    new DataClasses1DataContext();
+
+
+                // Check that the farmer exists
+                var farmer =
+                    (from u in productDb.UserTables
+                     where u.Id == farmerId
+                     && u.userType == "Farmer"
+                     select u).FirstOrDefault();
+
+
+                if (farmer == null)
+                {
+                    return -2;
+                }
+
+
+                // validate
+                if (string.IsNullOrWhiteSpace(productName) ||
+                    price <= 0 ||
+                    stockQuantity < 0)
+                {
+                    return -3;
+                }
+
+
+               
+                if (string.IsNullOrWhiteSpace(imageUrl))
+                {
+                    if (categoryId == 2)
+                    {
+                        imageUrl = "img/fruite-item-6.jpg";
+                    }
+                    else
+                    {
+                        imageUrl = "img/vegetable-item-5.jpg";
+                    }
+                }
+
+
+                Product newProduct =
+                    new Product
+                    {
+                        FarmerId = farmerId,
+
+                        CategoryId = categoryId,
+
+                        ProductName =
+                            productName.Trim(),
+
+                        Description =
+                            description,
+
+                        Price =
+                            price,
+
+                        UnitOfMeasure =
+                            unitOfMeasure,
+
+                        StockQuantity =
+                            stockQuantity,
+
+                        ImageUrl =
+                            imageUrl,
+
+                        DateCreated =
+                            DateTime.Now,
+
+                        IsActive =
+                            true
+                    };
+
+
+                productDb.Products.InsertOnSubmit(
+                    newProduct
+                );
+
+
+                productDb.SubmitChanges();
+
+
+                // Return generated ProductId
+                return newProduct.ProductId;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
         public int addToCart(int userId, int productId, int quantity)
         {
             try
             {
-                // Find the customer's active cart
+                // Find the customer
                 var cart = (from c in db.ShoppingCarts
                             where c.UserId == userId
                             && c.IsActive == true
                             select c).SingleOrDefault();
 
-                // If the customer does not have a cart yet,
-                // create one
                 if (cart == null)
                 {
                     cart = new ShoppingCart
@@ -700,7 +1094,7 @@ namespace AgriMarketService
 
                 if (existingItem == null)
                 {
-                    // Product is not in cart yet
+                    // Product is not in cart
                     ShoppingCartItem newItem =
                         new ShoppingCartItem
                         {
@@ -714,7 +1108,7 @@ namespace AgriMarketService
                 }
                 else
                 {
-                    // Product already exists, increase quantity
+                    // Product already exists
                     existingItem.Quantity += quantity;
                 }
 

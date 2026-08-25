@@ -110,6 +110,13 @@
             font-weight: 700;
         }
 
+        .product-price {
+            color: #5fa800;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
         .cart-button {
             display: inline-block;
             margin-top: 8px;
@@ -274,6 +281,8 @@
 
                                 <h4>Grapes</h4>
 
+                                <div class="product-price">R 35.00 / kg</div>
+
                                 <asp:Button
                                     ID="btnGrapesCartAll"
                                     runat="server"
@@ -307,6 +316,8 @@
                                 </span>
 
                                 <h4>Oranges</h4>
+
+                                <div class="product-price">R 22.00 / kg</div>
 
                                 <asp:Button
                                     ID="btnOrangesCartAll"
@@ -342,6 +353,8 @@
 
                                 <h4>Raspberries</h4>
 
+                                <div class="product-price">R 40.00 / kg</div>
+
                                 <asp:Button
                                     ID="btnRaspberriesCartAll"
                                     runat="server"
@@ -375,6 +388,8 @@
                                 </span>
 
                                 <h4>Bananas</h4>
+
+                                <div class="product-price">R 20.00 / kg</div>
 
                                 <asp:Button
                                     ID="btnBananasCartAll"
@@ -410,6 +425,8 @@
 
                                 <h4>Apricots</h4>
 
+                                <div class="product-price">R 30.00 / kg</div>
+
                                 <asp:Button
                                     ID="btnApricotsCartAll"
                                     runat="server"
@@ -443,6 +460,8 @@
                                 </span>
 
                                 <h4>Apples</h4>
+
+                                <div class="product-price">R 25.00 / kg</div>
 
                                 <asp:Button
                                     ID="btnApplesCartAll"
@@ -478,6 +497,8 @@
 
                                 <h4>Bell Peppers</h4>
 
+                                <div class="product-price">R 28.00 / kg</div>
+
                                 <asp:Button
                                     ID="btnPeppersCartAll"
                                     runat="server"
@@ -512,6 +533,8 @@
 
                                 <h4>Potatoes</h4>
 
+                                <div class="product-price">R 18.00 / kg</div>
+
                                 <asp:Button
                                     ID="btnPotatoesCartAll"
                                     runat="server"
@@ -545,6 +568,8 @@
                                 </span>
 
                                 <h4>Parsley</h4>
+
+                                <div class="product-price">R 12.00 / bunch</div>
 
                                 <asp:Button
                                     ID="btnParsleyCartAll"
@@ -596,6 +621,8 @@
 
                                 <h4>Grapes</h4>
 
+                                <div class="product-price">R 35.00 / kg</div>
+
                                 <asp:Button
                                     ID="btnGrapesCartFruit"
                                     runat="server"
@@ -629,6 +656,8 @@
                                 </span>
 
                                 <h4>Oranges</h4>
+
+                                <div class="product-price">R 22.00 / kg</div>
 
                                 <asp:Button
                                     ID="btnOrangesCartFruit"
@@ -664,6 +693,8 @@
 
                                 <h4>Raspberries</h4>
 
+                                <div class="product-price">R 40.00 / kg</div>
+
                                 <asp:Button
                                     ID="btnRaspberriesCartFruit"
                                     runat="server"
@@ -697,6 +728,8 @@
                                 </span>
 
                                 <h4>Bananas</h4>
+
+                                <div class="product-price">R 20.00 / kg</div>
 
                                 <asp:Button
                                     ID="btnBananasCartFruit"
@@ -732,6 +765,8 @@
 
                                 <h4>Apricots</h4>
 
+                                <div class="product-price">R 30.00 / kg</div>
+
                                 <asp:Button
                                     ID="btnApricotsCartFruit"
                                     runat="server"
@@ -765,6 +800,8 @@
                                 </span>
 
                                 <h4>Apples</h4>
+
+                                <div class="product-price">R 25.00 / kg</div>
 
                                 <asp:Button
                                     ID="btnApplesCartFruit"
@@ -816,6 +853,8 @@
 
                                 <h4>Bell Peppers</h4>
 
+                                <div class="product-price">R 28.00 / kg</div>
+
                                 <asp:Button
                                     ID="btnPeppersCartVegetable"
                                     runat="server"
@@ -850,6 +889,8 @@
 
                                 <h4>Potatoes</h4>
 
+                                <div class="product-price">R 18.00 / kg</div>
+
                                 <asp:Button
                                     ID="btnPotatoesCartVegetable"
                                     runat="server"
@@ -883,6 +924,8 @@
                                 </span>
 
                                 <h4>Parsley</h4>
+
+                                <div class="product-price">R 12.00 / bunch</div>
 
                                 <asp:Button
                                     ID="btnParsleyCartVegetable"

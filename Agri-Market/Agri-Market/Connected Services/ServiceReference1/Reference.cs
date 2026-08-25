@@ -2695,6 +2695,256 @@ namespace Agri_Market.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InvoiceDTO", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
+    [System.SerializableAttribute()]
+    public partial class InvoiceDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal DiscountAmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime InvoiceDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int InvoiceIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvoiceNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal SubtotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TaxAmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalAmountField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal DiscountAmount {
+            get {
+                return this.DiscountAmountField;
+            }
+            set {
+                if ((this.DiscountAmountField.Equals(value) != true)) {
+                    this.DiscountAmountField = value;
+                    this.RaisePropertyChanged("DiscountAmount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime InvoiceDate {
+            get {
+                return this.InvoiceDateField;
+            }
+            set {
+                if ((this.InvoiceDateField.Equals(value) != true)) {
+                    this.InvoiceDateField = value;
+                    this.RaisePropertyChanged("InvoiceDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int InvoiceId {
+            get {
+                return this.InvoiceIdField;
+            }
+            set {
+                if ((this.InvoiceIdField.Equals(value) != true)) {
+                    this.InvoiceIdField = value;
+                    this.RaisePropertyChanged("InvoiceId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvoiceNumber {
+            get {
+                return this.InvoiceNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvoiceNumberField, value) != true)) {
+                    this.InvoiceNumberField = value;
+                    this.RaisePropertyChanged("InvoiceNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderId {
+            get {
+                return this.OrderIdField;
+            }
+            set {
+                if ((this.OrderIdField.Equals(value) != true)) {
+                    this.OrderIdField = value;
+                    this.RaisePropertyChanged("OrderId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Subtotal {
+            get {
+                return this.SubtotalField;
+            }
+            set {
+                if ((this.SubtotalField.Equals(value) != true)) {
+                    this.SubtotalField = value;
+                    this.RaisePropertyChanged("Subtotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TaxAmount {
+            get {
+                return this.TaxAmountField;
+            }
+            set {
+                if ((this.TaxAmountField.Equals(value) != true)) {
+                    this.TaxAmountField = value;
+                    this.RaisePropertyChanged("TaxAmount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalAmount {
+            get {
+                return this.TotalAmountField;
+            }
+            set {
+                if ((this.TotalAmountField.Equals(value) != true)) {
+                    this.TotalAmountField = value;
+                    this.RaisePropertyChanged("TotalAmount");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderItemDTO", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
+    [System.SerializableAttribute()]
+    public partial class OrderItemDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal LineTotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal UnitPriceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal LineTotal {
+            get {
+                return this.LineTotalField;
+            }
+            set {
+                if ((this.LineTotalField.Equals(value) != true)) {
+                    this.LineTotalField = value;
+                    this.RaisePropertyChanged("LineTotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductName {
+            get {
+                return this.ProductNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
+                    this.ProductNameField = value;
+                    this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal UnitPrice {
+            get {
+                return this.UnitPriceField;
+            }
+            set {
+                if ((this.UnitPriceField.Equals(value) != true)) {
+                    this.UnitPriceField = value;
+                    this.RaisePropertyChanged("UnitPrice");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -2854,6 +3104,36 @@ namespace Agri_Market.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getReportSummaryByDate", ReplyAction="http://tempuri.org/IService1/getReportSummaryByDateResponse")]
         System.Threading.Tasks.Task<Agri_Market.ServiceReference1.ReportSummaryDTO> getReportSummaryByDateAsync(System.DateTime startDate, System.DateTime endDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addToCartByName", ReplyAction="http://tempuri.org/IService1/addToCartByNameResponse")]
+        int addToCartByName(int userId, string productName, int quantity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addToCartByName", ReplyAction="http://tempuri.org/IService1/addToCartByNameResponse")]
+        System.Threading.Tasks.Task<int> addToCartByNameAsync(int userId, string productName, int quantity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/processCheckout", ReplyAction="http://tempuri.org/IService1/processCheckoutResponse")]
+        int processCheckout(int userId, string deliveryMethod);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/processCheckout", ReplyAction="http://tempuri.org/IService1/processCheckoutResponse")]
+        System.Threading.Tasks.Task<int> processCheckoutAsync(int userId, string deliveryMethod);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getInvoiceByOrderId", ReplyAction="http://tempuri.org/IService1/getInvoiceByOrderIdResponse")]
+        Agri_Market.ServiceReference1.InvoiceDTO getInvoiceByOrderId(int orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getInvoiceByOrderId", ReplyAction="http://tempuri.org/IService1/getInvoiceByOrderIdResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.InvoiceDTO> getInvoiceByOrderIdAsync(int orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getOrderItemsByOrderId", ReplyAction="http://tempuri.org/IService1/getOrderItemsByOrderIdResponse")]
+        Agri_Market.ServiceReference1.OrderItemDTO[] getOrderItemsByOrderId(int orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getOrderItemsByOrderId", ReplyAction="http://tempuri.org/IService1/getOrderItemsByOrderIdResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.OrderItemDTO[]> getOrderItemsByOrderIdAsync(int orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFarmerProduct", ReplyAction="http://tempuri.org/IService1/addFarmerProductResponse")]
+        int addFarmerProduct(int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFarmerProduct", ReplyAction="http://tempuri.org/IService1/addFarmerProductResponse")]
+        System.Threading.Tasks.Task<int> addFarmerProductAsync(int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3089,6 +3369,46 @@ namespace Agri_Market.ServiceReference1 {
         
         public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.ReportSummaryDTO> getReportSummaryByDateAsync(System.DateTime startDate, System.DateTime endDate) {
             return base.Channel.getReportSummaryByDateAsync(startDate, endDate);
+        }
+        
+        public int addToCartByName(int userId, string productName, int quantity) {
+            return base.Channel.addToCartByName(userId, productName, quantity);
+        }
+        
+        public System.Threading.Tasks.Task<int> addToCartByNameAsync(int userId, string productName, int quantity) {
+            return base.Channel.addToCartByNameAsync(userId, productName, quantity);
+        }
+        
+        public int processCheckout(int userId, string deliveryMethod) {
+            return base.Channel.processCheckout(userId, deliveryMethod);
+        }
+        
+        public System.Threading.Tasks.Task<int> processCheckoutAsync(int userId, string deliveryMethod) {
+            return base.Channel.processCheckoutAsync(userId, deliveryMethod);
+        }
+        
+        public Agri_Market.ServiceReference1.InvoiceDTO getInvoiceByOrderId(int orderId) {
+            return base.Channel.getInvoiceByOrderId(orderId);
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.InvoiceDTO> getInvoiceByOrderIdAsync(int orderId) {
+            return base.Channel.getInvoiceByOrderIdAsync(orderId);
+        }
+        
+        public Agri_Market.ServiceReference1.OrderItemDTO[] getOrderItemsByOrderId(int orderId) {
+            return base.Channel.getOrderItemsByOrderId(orderId);
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.OrderItemDTO[]> getOrderItemsByOrderIdAsync(int orderId) {
+            return base.Channel.getOrderItemsByOrderIdAsync(orderId);
+        }
+        
+        public int addFarmerProduct(int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl) {
+            return base.Channel.addFarmerProduct(farmerId, categoryId, productName, description, price, unitOfMeasure, stockQuantity, imageUrl);
+        }
+        
+        public System.Threading.Tasks.Task<int> addFarmerProductAsync(int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl) {
+            return base.Channel.addFarmerProductAsync(farmerId, categoryId, productName, description, price, unitOfMeasure, stockQuantity, imageUrl);
         }
     }
 }

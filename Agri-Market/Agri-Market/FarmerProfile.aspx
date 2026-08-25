@@ -91,6 +91,13 @@
             Farmer Profile
         </h2>
 
+        <a href="AddProduct.aspx"
+    class="btn btn-success">
+
+    Add Product
+
+</a>
+
         <p class="profile-subtitle">
             View and update your farm information.
         </p>

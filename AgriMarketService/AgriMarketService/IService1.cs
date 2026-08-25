@@ -106,6 +106,31 @@ namespace AgriMarketService
         [OperationContract]
         ReportSummaryDTO getReportSummaryByDate(DateTime startDate, DateTime endDate);
 
+        [OperationContract]
+        int addToCartByName(int userId, string productName, int quantity);
+
+        [OperationContract]
+        int processCheckout(int userId, string deliveryMethod);
+
+        [OperationContract]
+        InvoiceDTO getInvoiceByOrderId(int orderId);
+
+        [OperationContract]
+        List<OrderItemDTO> getOrderItemsByOrderId(int orderId);
+
+        // Temporary farmer product integration
+        [OperationContract]
+        int addFarmerProduct(
+            int farmerId,
+            int categoryId,
+            string productName,
+            string description,
+            decimal price,
+            string unitOfMeasure,
+            int stockQuantity,
+            string imageUrl
+        );
+
     }
 
 
@@ -151,6 +176,52 @@ namespace AgriMarketService
 
         [DataMember]
         public int DifferentProductsSold { get; set; }
+
+    }
+    [DataContract]
+    public class InvoiceDTO
+    {
+        [DataMember]
+        public int InvoiceId { get; set; }
+
+        [DataMember]
+        public int OrderId { get; set; }
+
+        [DataMember]
+        public DateTime InvoiceDate { get; set; }
+
+        [DataMember]
+        public decimal Subtotal { get; set; }
+
+        [DataMember]
+        public decimal TaxAmount { get; set; }
+
+        [DataMember]
+        public decimal DiscountAmount { get; set; }
+
+        [DataMember]
+        public decimal TotalAmount { get; set; }
+
+        [DataMember]
+        public string InvoiceNumber { get; set; }
+    }
+
+
+
+    [DataContract]
+    public class OrderItemDTO
+    {
+        [DataMember]
+        public string ProductName { get; set; }
+
+        [DataMember]
+        public int Quantity { get; set; }
+
+        [DataMember]
+        public decimal UnitPrice { get; set; }
+
+        [DataMember]
+        public decimal LineTotal { get; set; }
     }
 
 
