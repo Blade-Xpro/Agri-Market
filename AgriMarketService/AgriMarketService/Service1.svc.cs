@@ -132,6 +132,61 @@ namespace AgriMarketService
         {
             return "Agri Market service is working.";
         }
+
+        //temp login for user
+
+        public bool loginUser(string email, string password)
+        {
+            var user = (from u in db.UserTables
+                        where u.email == email
+                        select u).SingleOrDefault();
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            //verify hashed password
+            var result = passwordHasher.VerifyHashedPassword(
+                user.passwordHash,
+                password
+            );
+
+            if (result == PasswordVerificationResult.Failed)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public string getUserType(string email)
+        {
+            var user = (from u in db.UserTables
+                        where u.email == email
+                        select u).SingleOrDefault();
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user.userType;
+        }
+
+        public int getUserId(string email)
+        {
+            var user = (from u in db.UserTables
+                        where u.email == email
+                        select u).SingleOrDefault();
+
+            if (user == null)
+            {
+                return 0;
+            }
+
+            return user.Id;
+        }
         public List<Product> SearchProducts(string searchTerm)
         {
             var products = (from p in db.Products
@@ -475,6 +530,65 @@ namespace AgriMarketService
                   .ToList();
 
             return registrations;
+        }
+
+        public ReportSummaryDTO getReportSummaryByDate(
+    DateTime startDate,
+    DateTime endDate)
+        {
+            // Include the whole end date
+            DateTime start = startDate.Date;
+            DateTime end = endDate.Date.AddDays(1);
+
+            var orders =
+                db.Orders.Where(o =>
+                    o.OrderDate >= start &&
+                    o.OrderDate < end);
+
+            ReportSummaryDTO report =
+                new ReportSummaryDTO();
+
+            // Revenue during selected period
+            if (orders.Any())
+            {
+                report.TotalRevenue =
+                    orders.Sum(o => o.TotalAmount);
+            }
+            else
+            {
+                report.TotalRevenue = 0;
+            }
+
+            // Orders during the time
+            report.TotalOrders =
+                orders.Count();
+
+            // Customers registered during the time
+            report.TotalCustomers =
+                db.UserTables.Count(u =>
+                    u.userType == "Customer" &&
+                    u.creationDate >= start &&
+                    u.creationDate < end);
+
+            // Farmers registered during that time
+            report.TotalFarmers =
+                db.UserTables.Count(u =>
+                    u.userType == "Farmer" &&
+                    u.creationDate >= start &&
+                    u.creationDate < end);
+
+            // Different products sold during that time
+            report.DifferentProductsSold =
+                (from oi in db.OrderItems
+                 join o in db.Orders
+                     on oi.OrderId equals o.OrderId
+                 where o.OrderDate >= start
+                       && o.OrderDate < end
+                 select oi.ProductId)
+                .Distinct()
+                .Count();
+
+            return report;
         }
     }
 

@@ -2576,6 +2576,24 @@ namespace Agri_Market.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/registerAdmin", ReplyAction="http://tempuri.org/IService1/registerAdminResponse")]
         System.Threading.Tasks.Task<int> registerAdminAsync(Agri_Market.ServiceReference1.UserTable utable, string adminCode);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/loginUser", ReplyAction="http://tempuri.org/IService1/loginUserResponse")]
+        bool loginUser(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/loginUser", ReplyAction="http://tempuri.org/IService1/loginUserResponse")]
+        System.Threading.Tasks.Task<bool> loginUserAsync(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserType", ReplyAction="http://tempuri.org/IService1/getUserTypeResponse")]
+        string getUserType(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserType", ReplyAction="http://tempuri.org/IService1/getUserTypeResponse")]
+        System.Threading.Tasks.Task<string> getUserTypeAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserId", ReplyAction="http://tempuri.org/IService1/getUserIdResponse")]
+        int getUserId(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserId", ReplyAction="http://tempuri.org/IService1/getUserIdResponse")]
+        System.Threading.Tasks.Task<int> getUserIdAsync(string email);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProductById", ReplyAction="http://tempuri.org/IService1/GetProductByIdResponse")]
         Agri_Market.ServiceReference1.Product GetProductById(int productId);
         
@@ -2671,6 +2689,12 @@ namespace Agri_Market.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserRegistrationsPerDay", ReplyAction="http://tempuri.org/IService1/getUserRegistrationsPerDayResponse")]
         System.Threading.Tasks.Task<Agri_Market.ServiceReference1.UserRegistrationReportDTO[]> getUserRegistrationsPerDayAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getReportSummaryByDate", ReplyAction="http://tempuri.org/IService1/getReportSummaryByDateResponse")]
+        Agri_Market.ServiceReference1.ReportSummaryDTO getReportSummaryByDate(System.DateTime startDate, System.DateTime endDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getReportSummaryByDate", ReplyAction="http://tempuri.org/IService1/getReportSummaryByDateResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.ReportSummaryDTO> getReportSummaryByDateAsync(System.DateTime startDate, System.DateTime endDate);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2722,6 +2746,30 @@ namespace Agri_Market.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> registerAdminAsync(Agri_Market.ServiceReference1.UserTable utable, string adminCode) {
             return base.Channel.registerAdminAsync(utable, adminCode);
+        }
+        
+        public bool loginUser(string email, string password) {
+            return base.Channel.loginUser(email, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> loginUserAsync(string email, string password) {
+            return base.Channel.loginUserAsync(email, password);
+        }
+        
+        public string getUserType(string email) {
+            return base.Channel.getUserType(email);
+        }
+        
+        public System.Threading.Tasks.Task<string> getUserTypeAsync(string email) {
+            return base.Channel.getUserTypeAsync(email);
+        }
+        
+        public int getUserId(string email) {
+            return base.Channel.getUserId(email);
+        }
+        
+        public System.Threading.Tasks.Task<int> getUserIdAsync(string email) {
+            return base.Channel.getUserIdAsync(email);
         }
         
         public Agri_Market.ServiceReference1.Product GetProductById(int productId) {
@@ -2850,6 +2898,14 @@ namespace Agri_Market.ServiceReference1 {
         
         public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.UserRegistrationReportDTO[]> getUserRegistrationsPerDayAsync() {
             return base.Channel.getUserRegistrationsPerDayAsync();
+        }
+        
+        public Agri_Market.ServiceReference1.ReportSummaryDTO getReportSummaryByDate(System.DateTime startDate, System.DateTime endDate) {
+            return base.Channel.getReportSummaryByDate(startDate, endDate);
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.ReportSummaryDTO> getReportSummaryByDateAsync(System.DateTime startDate, System.DateTime endDate) {
+            return base.Channel.getReportSummaryByDateAsync(startDate, endDate);
         }
     }
 }

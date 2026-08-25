@@ -1,24 +1,20 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Reports.aspx.cs" Inherits="Agri_Market.Reports" %>
+﻿<%@ Page Title="Reports - Agri Market"
+    Language="C#"
+    MasterPageFile="~/Site.Master"
+    AutoEventWireup="true"
+    CodeBehind="Reports.aspx.cs"
+    Inherits="Agri_Market.Reports" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Reports - Agri Market</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+<asp:Content ID="ReportsHeadContent"
+    ContentPlaceHolderID="HeadContent"
+    runat="server">
 
     <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #eef5e9;
-        }
 
         .reports-container {
             max-width: 1100px;
-            margin: 60px auto;
+            margin: 35px auto 60px;
             background: white;
             padding: 40px;
             border-radius: 18px;
@@ -36,7 +32,7 @@
             margin-bottom: 30px;
         }
 
-        /* FILTER SECTION */
+        /* Filter section */
         .filter-box {
             background: #f8fbf4;
             border: 1px solid #dfe8d7;
@@ -61,14 +57,19 @@
 
         .filter-button {
             padding: 10px 22px;
-            border: 2px solid #ffb524;
+            border: none;
             border-radius: 22px;
             background-color: #81c408;
             color: white;
             font-weight: 700;
         }
 
-        /* SUMMARY CARDS */
+        .filter-button:hover {
+            background-color: #6eaa07;
+        }
+
+
+        /* Summary cards */
         .summary-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -98,7 +99,8 @@
             font-weight: 700;
         }
 
-        /* REPORT SECTIONS */
+
+        /* Report sections */
         .report-section {
             margin-top: 30px;
             padding: 25px;
@@ -141,9 +143,11 @@
 
         .back-link:hover {
             text-decoration: underline;
+            color: #4c7c05;
         }
 
         @media (max-width: 850px) {
+
             .summary-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -151,12 +155,26 @@
             .filter-grid {
                 grid-template-columns: 1fr;
             }
+
+            .reports-container {
+                width: 92%;
+                padding: 25px;
+            }
         }
+
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div class="reports-container">
+
+</asp:Content>
+
+
+
+<asp:Content ID="ReportsMainContent"
+    ContentPlaceHolderID="MainContent"
+    runat="server">
+
+
+    <div class="reports-container">
+
 
         <h2 class="page-title">
             Reports
@@ -167,16 +185,21 @@
         </p>
 
 
-        <!-- FILTERS -->
+
+        <!-- Filters -->
+
         <div class="filter-box">
 
             <h4 class="filter-title">
                 Filter Reports
             </h4>
 
+
             <div class="filter-grid">
 
+
                 <div>
+
                     <label class="form-label">
                         Start Date
                     </label>
@@ -187,10 +210,13 @@
                         TextMode="Date"
                         CssClass="form-control">
                     </asp:TextBox>
+
                 </div>
 
 
+
                 <div>
+
                     <label class="form-label">
                         End Date
                     </label>
@@ -201,18 +227,23 @@
                         TextMode="Date"
                         CssClass="form-control">
                     </asp:TextBox>
+
                 </div>
+
 
 
                 <asp:Button
                     ID="btnFilter"
                     runat="server"
                     Text="Apply Filter"
-                    CssClass="filter-button" />
+                    CssClass="filter-button"
+                    OnClick="btnFilter_Click" />
+
 
             </div>
 
         </div>
+
 
 
         <asp:Label
@@ -221,8 +252,11 @@
         </asp:Label>
 
 
-        <!-- SUMMARY -->
+
+        <!-- Summary -->
+
         <div class="summary-grid">
+
 
             <div class="summary-card">
 
@@ -236,6 +270,7 @@
                 </asp:Label>
 
             </div>
+
 
 
             <div class="summary-card">
@@ -252,6 +287,7 @@
             </div>
 
 
+
             <div class="summary-card">
 
                 <h5>Total Customers</h5>
@@ -264,6 +300,7 @@
                 </asp:Label>
 
             </div>
+
 
 
             <div class="summary-card">
@@ -279,10 +316,13 @@
 
             </div>
 
+
         </div>
 
 
-        <!-- PRODUCTS SOLD -->
+
+        <!-- Different products sold -->
+
         <div class="report-section">
 
             <h4 class="section-title">
@@ -291,106 +331,139 @@
 
             <p>
                 Number of different products sold:
+
                 <strong>
+
                     <asp:Label
                         ID="lblDifferentProducts"
                         runat="server"
                         Text="0">
                     </asp:Label>
+
                 </strong>
+
             </p>
 
         </div>
 
 
-       <!-- SALES REVENUE GRAPH -->
-<div class="report-section">
 
-    <h4 class="section-title">
-        Sales Revenue Over Time
-    </h4>
+        <!-- Sales graph -->
 
-    <p style="color:#777;">
-        Shows whether sales are increasing or decreasing over time.
-    </p>
+        <div class="report-section">
 
-    <canvas id="salesRevenueChart"
-            style="width:100%; max-height:400px;">
-    </canvas>
+            <h4 class="section-title">
+                Sales Revenue Over Time
+            </h4>
 
-</div>
+            <p style="color:#777;">
+                Shows whether sales are increasing or
+                decreasing over time.
+            </p>
 
-            <!-- STOCK REPORT -->
-<div class="report-section">
+            <canvas
+                id="salesRevenueChart"
+                style="width:100%; max-height:400px;">
+            </canvas>
 
-    <h4 class="section-title">
-        Stock on Hand
-    </h4>
+        </div>
 
-    <table class="report-table">
 
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Stock Quantity</th>
-                <th>Unit</th>
-            </tr>
-        </thead>
 
-        <tbody>
+        <!-- Stock report -->
 
-            <asp:Repeater
-                ID="rptStock"
-                runat="server">
+        <div class="report-section">
 
-                <ItemTemplate>
+            <h4 class="section-title">
+                Stock on Hand
+            </h4>
+
+
+            <table class="report-table">
+
+
+                <thead>
 
                     <tr>
-                        <td>
-                            <%# Eval("ProductName") %>
-                        </td>
-
-                        <td>
-                            <%# Eval("StockQuantity") %>
-                        </td>
-
-                        <td>
-                            <%# Eval("UnitOfMeasure") %>
-                        </td>
+                        <th>Product</th>
+                        <th>Stock Quantity</th>
+                        <th>Unit</th>
                     </tr>
 
-                </ItemTemplate>
-
-            </asp:Repeater>
-
-        </tbody>
-
-    </table>
-
-</div>
+                </thead>
 
 
-        <!-- REGISTERED USERS -->
+                <tbody>
+
+
+                    <asp:Repeater
+                        ID="rptStock"
+                        runat="server">
+
+
+                        <ItemTemplate>
+
+                            <tr>
+
+                                <td>
+                                    <%# Eval("ProductName") %>
+                                </td>
+
+                                <td>
+                                    <%# Eval("StockQuantity") %>
+                                </td>
+
+                                <td>
+                                    <%# Eval("UnitOfMeasure") %>
+                                </td>
+
+                            </tr>
+
+                        </ItemTemplate>
+
+
+                    </asp:Repeater>
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+
+        <!-- Registered users -->
+
         <div class="report-section">
 
             <h4 class="section-title">
                 Registered Users Per Day
             </h4>
 
+
             <table class="report-table">
 
+
                 <thead>
+
                     <tr>
                         <th>Date</th>
                         <th>Users Registered</th>
                     </tr>
+
                 </thead>
 
+
                 <tbody>
+
 
                     <asp:Repeater
                         ID="rptUserRegistrations"
                         runat="server">
+
 
                         <ItemTemplate>
 
@@ -408,26 +481,33 @@
 
                         </ItemTemplate>
 
+
                     </asp:Repeater>
+
 
                 </tbody>
 
+
             </table>
+
 
         </div>
 
 
+
         <a href="AdminProfile.aspx"
-           class="back-link">
+            class="back-link">
 
             ← Back to Admin Profile
 
         </a>
 
+
     </div>
 
-    </form>
 
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</body>
-</html>
+
+
+</asp:Content>

@@ -23,6 +23,16 @@ namespace AgriMarketService
         [OperationContract]
         int registerAdmin(UserTable utable, string adminCode);
 
+        // temp login needed for user management
+        [OperationContract]
+        bool loginUser(string email, string password);
+
+        [OperationContract]
+        string getUserType(string email);
+
+        [OperationContract]
+        int getUserId(string email);
+
 
         [OperationContract]
         Product GetProductById(int productId);
@@ -80,6 +90,9 @@ namespace AgriMarketService
 
         [OperationContract]
         List<UserRegistrationReportDTO> getUserRegistrationsPerDay();
+
+        [OperationContract]
+        ReportSummaryDTO getReportSummaryByDate(DateTime startDate, DateTime endDate);
 
     }
 

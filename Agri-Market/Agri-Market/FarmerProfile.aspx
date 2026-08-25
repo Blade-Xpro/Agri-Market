@@ -1,24 +1,20 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FarmerProfile.aspx.cs" Inherits="Agri_Market.FarmerProfile" %>
+﻿<%@ Page Title="Farmer Profile - Agri Market"
+    Language="C#"
+    MasterPageFile="~/Site.Master"
+    AutoEventWireup="true"
+    CodeBehind="FarmerProfile.aspx.cs"
+    Inherits="Agri_Market.FarmerProfile" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-   <title>Farmer Profile - Agri Market</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+<asp:Content ID="FarmerHeadContent"
+    ContentPlaceHolderID="HeadContent"
+    runat="server">
 
     <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #eef5e9;
-        }
 
-        .profile-container {
+        .farmer-profile-container {
             max-width: 850px;
-            margin: 60px auto;
+            margin: 35px auto 60px;
             background: white;
             padding: 40px;
             border-radius: 18px;
@@ -51,7 +47,7 @@
             width: 100%;
             padding: 12px;
             margin-top: 20px;
-            border: 2px solid #ffb524;
+            border: none;
             border-radius: 25px;
             background-color: #81c408;
             color: white;
@@ -64,17 +60,32 @@
         }
 
         .approval-status {
-            padding: 10px 15px;
+            padding: 12px 15px;
             border-radius: 8px;
             background-color: #f5faec;
             margin-bottom: 20px;
+            border-left: 4px solid #81c408;
         }
-    </style>
-</head>
-<body>
-   <form id="form1" runat="server">
 
-    <div class="profile-container">
+        @media (max-width: 768px) {
+
+            .farmer-profile-container {
+                width: 92%;
+                padding: 25px;
+            }
+        }
+
+    </style>
+
+</asp:Content>
+
+
+<asp:Content ID="FarmerMainContent"
+    ContentPlaceHolderID="MainContent"
+    runat="server">
+
+
+    <div class="farmer-profile-container">
 
         <h2 class="profile-title">
             Farmer Profile
@@ -84,6 +95,8 @@
             View and update your farm information.
         </p>
 
+
+        <!-- Approval Status -->
 
         <div class="approval-status">
 
@@ -97,11 +110,16 @@
         </div>
 
 
+
+        <!-- Personal Information -->
+
         <h4 class="section-title">
             Personal Information
         </h4>
 
+
         <div class="row">
+
 
             <div class="col-md-6 mb-3">
 
@@ -133,6 +151,7 @@
                 </asp:TextBox>
 
             </div>
+
 
         </div>
 
@@ -168,6 +187,9 @@
 
         </div>
 
+
+
+        <!-- Farm Information -->
 
         <h4 class="section-title">
             Farm Information
@@ -221,6 +243,7 @@
         </div>
 
 
+
         <asp:Button
             ID="btnSave"
             runat="server"
@@ -229,16 +252,17 @@
             OnClick="btnSave_Click" />
 
 
-        <br /><br />
+        <br />
+        <br />
+
 
         <asp:Label
             ID="lblMessage"
             runat="server">
         </asp:Label>
 
+
     </div>
 
-</form>
 
-</body>
-</html>
+</asp:Content>
