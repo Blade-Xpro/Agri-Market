@@ -36,8 +36,15 @@
             margin-bottom: 0;
         }
 
+        .product-message {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #5fa800;
+        }
 
-        /* Category buttons */
+
+        /* Categories */
 
         .category-tabs {
             margin-bottom: 30px;
@@ -60,7 +67,7 @@
         }
 
 
-        /* Product cards */
+        /* Products */
 
         .product-card {
             background-color: white;
@@ -103,25 +110,39 @@
             font-weight: 700;
         }
 
-        .view-button {
+        .cart-button {
             display: inline-block;
             margin-top: 8px;
             padding: 9px 18px;
             border: 1px solid #81c408;
             border-radius: 22px;
+            background-color: white;
             color: #5f9406;
-            text-decoration: none;
             font-weight: 600;
         }
 
-        .view-button:hover {
+        .cart-button:hover {
             background-color: #81c408;
             color: white;
+        }
+
+        .view-cart-link {
+            display: inline-block;
+            margin-left: 15px;
+            margin-top: 15px;
+            color: #5fa800;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .view-cart-link:hover {
+            text-decoration: underline;
         }
 
     </style>
 
 </asp:Content>
+
 
 
 <asp:Content ID="ProductsMainContent"
@@ -132,7 +153,7 @@
     <div class="all-products-container">
 
 
-        <!-- Heading -->
+        <!-- Header -->
 
         <div class="products-header">
 
@@ -142,6 +163,21 @@
                 Browse fruit and vegetables available
                 on Agri Market.
             </p>
+
+
+            <asp:Label
+                ID="lblProductMessage"
+                runat="server"
+                CssClass="product-message">
+            </asp:Label>
+
+
+            <a href="ShoppingCart.aspx"
+                class="view-cart-link">
+
+                View My Cart 🛒
+
+            </a>
 
         </div>
 
@@ -194,19 +230,24 @@
 
         </ul>
 
+
+
+        <!-- Search message -->
+
         <div id="searchResultMessage"
-     style="margin-bottom:20px;
-            font-weight:600;
-            color:#5f9406;">
-</div>
+            style="margin-bottom:20px;
+                   font-weight:600;
+                   color:#5f9406;">
+        </div>
+
 
 
         <div class="tab-content">
 
 
-            <!-- ================================= -->
+            <!-- ===================================== -->
             <!-- ALL PRODUCTS -->
-            <!-- ================================= -->
+            <!-- ===================================== -->
 
             <div id="all-products"
                 class="tab-pane fade show active">
@@ -233,12 +274,13 @@
 
                                 <h4>Grapes</h4>
 
-                                <a href="Products.aspx"
-                                    class="view-button">
-
-                                    View Products
-
-                                </a>
+                                <asp:Button
+                                    ID="btnGrapesCartAll"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Grapes"
+                                    OnCommand="AddToCart_Command" />
 
                             </div>
 
@@ -266,12 +308,13 @@
 
                                 <h4>Oranges</h4>
 
-                                <a href="Products.aspx"
-                                    class="view-button">
-
-                                    View Products
-
-                                </a>
+                                <asp:Button
+                                    ID="btnOrangesCartAll"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Oranges"
+                                    OnCommand="AddToCart_Command" />
 
                             </div>
 
@@ -299,12 +342,13 @@
 
                                 <h4>Raspberries</h4>
 
-                                <a href="Products.aspx"
-                                    class="view-button">
-
-                                    View Products
-
-                                </a>
+                                <asp:Button
+                                    ID="btnRaspberriesCartAll"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Raspberries"
+                                    OnCommand="AddToCart_Command" />
 
                             </div>
 
@@ -314,7 +358,7 @@
 
 
 
-                    <!-- Banana -->
+                    <!-- Bananas -->
 
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
@@ -332,12 +376,13 @@
 
                                 <h4>Bananas</h4>
 
-                                <a href="Products.aspx"
-                                    class="view-button">
-
-                                    View Products
-
-                                </a>
+                                <asp:Button
+                                    ID="btnBananasCartAll"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Bananas"
+                                    OnCommand="AddToCart_Command" />
 
                             </div>
 
@@ -365,12 +410,13 @@
 
                                 <h4>Apricots</h4>
 
-                                <a href="Products.aspx"
-                                    class="view-button">
-
-                                    View Products
-
-                                </a>
+                                <asp:Button
+                                    ID="btnApricotsCartAll"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Apricots"
+                                    OnCommand="AddToCart_Command" />
 
                             </div>
 
@@ -380,7 +426,7 @@
 
 
 
-                    <!-- Apple -->
+                    <!-- Apples -->
 
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
@@ -398,12 +444,13 @@
 
                                 <h4>Apples</h4>
 
-                                <a href="Products.aspx"
-                                    class="view-button">
-
-                                    View Products
-
-                                </a>
+                                <asp:Button
+                                    ID="btnApplesCartAll"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Apples"
+                                    OnCommand="AddToCart_Command" />
 
                             </div>
 
@@ -413,7 +460,7 @@
 
 
 
-                    <!-- Bell Pepper -->
+                    <!-- Bell Peppers -->
 
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
@@ -421,7 +468,7 @@
 
                             <img src="img/vegetable-item-1.jpg"
                                 class="product-image"
-                                alt="Bell peppers" />
+                                alt="Bell Peppers" />
 
                             <div class="product-body">
 
@@ -431,12 +478,13 @@
 
                                 <h4>Bell Peppers</h4>
 
-                                <a href="Products.aspx"
-                                    class="view-button">
-
-                                    View Products
-
-                                </a>
+                                <asp:Button
+                                    ID="btnPeppersCartAll"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Bell Peppers"
+                                    OnCommand="AddToCart_Command" />
 
                             </div>
 
@@ -464,12 +512,13 @@
 
                                 <h4>Potatoes</h4>
 
-                                <a href="Products.aspx"
-                                    class="view-button">
-
-                                    View Products
-
-                                </a>
+                                <asp:Button
+                                    ID="btnPotatoesCartAll"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Potatoes"
+                                    OnCommand="AddToCart_Command" />
 
                             </div>
 
@@ -497,12 +546,13 @@
 
                                 <h4>Parsley</h4>
 
-                                <a href="Products.aspx"
-                                    class="view-button">
-
-                                    View Products
-
-                                </a>
+                                <asp:Button
+                                    ID="btnParsleyCartAll"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Parsley"
+                                    OnCommand="AddToCart_Command" />
 
                             </div>
 
@@ -517,9 +567,9 @@
 
 
 
-            <!-- ================================= -->
+            <!-- ===================================== -->
             <!-- FRUITS -->
-            <!-- ================================= -->
+            <!-- ===================================== -->
 
             <div id="fruits"
                 class="tab-pane fade">
@@ -527,6 +577,8 @@
 
                 <div class="row g-4">
 
+
+                    <!-- Grapes -->
 
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
@@ -544,12 +596,23 @@
 
                                 <h4>Grapes</h4>
 
+                                <asp:Button
+                                    ID="btnGrapesCartFruit"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Grapes"
+                                    OnCommand="AddToCart_Command" />
+
                             </div>
 
                         </div>
 
                     </div>
 
+
+
+                    <!-- Oranges -->
 
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
@@ -567,12 +630,23 @@
 
                                 <h4>Oranges</h4>
 
+                                <asp:Button
+                                    ID="btnOrangesCartFruit"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Oranges"
+                                    OnCommand="AddToCart_Command" />
+
                             </div>
 
                         </div>
 
                     </div>
 
+
+
+                    <!-- Raspberries -->
 
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
@@ -590,12 +664,23 @@
 
                                 <h4>Raspberries</h4>
 
+                                <asp:Button
+                                    ID="btnRaspberriesCartFruit"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Raspberries"
+                                    OnCommand="AddToCart_Command" />
+
                             </div>
 
                         </div>
 
                     </div>
 
+
+
+                    <!-- Bananas -->
 
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
@@ -613,12 +698,23 @@
 
                                 <h4>Bananas</h4>
 
+                                <asp:Button
+                                    ID="btnBananasCartFruit"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Bananas"
+                                    OnCommand="AddToCart_Command" />
+
                             </div>
 
                         </div>
 
                     </div>
 
+
+
+                    <!-- Apricots -->
 
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
@@ -636,12 +732,23 @@
 
                                 <h4>Apricots</h4>
 
+                                <asp:Button
+                                    ID="btnApricotsCartFruit"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Apricots"
+                                    OnCommand="AddToCart_Command" />
+
                             </div>
 
                         </div>
 
                     </div>
 
+
+
+                    <!-- Apples -->
 
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
@@ -659,6 +766,14 @@
 
                                 <h4>Apples</h4>
 
+                                <asp:Button
+                                    ID="btnApplesCartFruit"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Apples"
+                                    OnCommand="AddToCart_Command" />
+
                             </div>
 
                         </div>
@@ -672,9 +787,9 @@
 
 
 
-            <!-- ================================= -->
+            <!-- ===================================== -->
             <!-- VEGETABLES -->
-            <!-- ================================= -->
+            <!-- ===================================== -->
 
             <div id="vegetables"
                 class="tab-pane fade">
@@ -683,13 +798,15 @@
                 <div class="row g-4">
 
 
+                    <!-- Bell Peppers -->
+
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
                         <div class="product-card">
 
                             <img src="img/vegetable-item-1.jpg"
                                 class="product-image"
-                                alt="Bell peppers" />
+                                alt="Bell Peppers" />
 
                             <div class="product-body">
 
@@ -699,12 +816,23 @@
 
                                 <h4>Bell Peppers</h4>
 
+                                <asp:Button
+                                    ID="btnPeppersCartVegetable"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Bell Peppers"
+                                    OnCommand="AddToCart_Command" />
+
                             </div>
 
                         </div>
 
                     </div>
 
+
+
+                    <!-- Potatoes -->
 
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
@@ -722,12 +850,23 @@
 
                                 <h4>Potatoes</h4>
 
+                                <asp:Button
+                                    ID="btnPotatoesCartVegetable"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Potatoes"
+                                    OnCommand="AddToCart_Command" />
+
                             </div>
 
                         </div>
 
                     </div>
 
+
+
+                    <!-- Parsley -->
 
                     <div class="col-md-6 col-lg-4 col-xl-3">
 
@@ -744,6 +883,14 @@
                                 </span>
 
                                 <h4>Parsley</h4>
+
+                                <asp:Button
+                                    ID="btnParsleyCartVegetable"
+                                    runat="server"
+                                    Text="Add to Cart"
+                                    CssClass="cart-button"
+                                    CommandArgument="Parsley"
+                                    OnCommand="AddToCart_Command" />
 
                             </div>
 
@@ -762,114 +909,126 @@
 
     </div>
 
+
+
+    <!-- SEARCH FILTER -->
+
     <script>
 
-    var parameters =
-        new URLSearchParams(window.location.search);
+        var parameters =
+            new URLSearchParams(window.location.search);
 
-    var searchTerm =
-        parameters.get("searchTerm");
-
-
-    if (searchTerm != null && searchTerm.trim() != "") {
-
-        searchTerm =
-            searchTerm.trim().toLowerCase();
+        var searchTerm =
+            parameters.get("searchTerm");
 
 
-        // Hide the category buttons while showing search results
-        var tabs =
-            document.getElementById("productTabs");
+        if (searchTerm != null &&
+            searchTerm.trim() != "") {
 
-        if (tabs != null) {
-            tabs.style.display = "none";
-        }
+            searchTerm =
+                searchTerm.trim().toLowerCase();
 
 
-        // Make sure All Products is the visible section
-        var allProducts =
-            document.getElementById("all-products");
+            // Hide category buttons during search
 
-        var panes =
-            document.querySelectorAll(".tab-pane");
+            var tabs =
+                document.getElementById("productTabs");
 
-        panes.forEach(function (pane) {
-
-            pane.classList.remove("show");
-            pane.classList.remove("active");
-
-        });
-
-        allProducts.classList.add("show");
-        allProducts.classList.add("active");
+            if (tabs != null) {
+                tabs.style.display = "none";
+            }
 
 
-        // Get all product cards from All Products
-        var products =
-            allProducts.querySelectorAll(".product-card");
+            // Show All Products section
 
-        var numberFound = 0;
+            var allProducts =
+                document.getElementById("all-products");
 
-
-        products.forEach(function (product) {
-
-            var productName =
-                product.querySelector("h4")
-                       .innerText
-                       .toLowerCase();
-
-            var category =
-                product.querySelector(".category-badge")
-                       .innerText
-                       .toLowerCase();
-
-            var productColumn =
-                product.parentElement;
+            var panes =
+                document.querySelectorAll(".tab-pane");
 
 
-            if (
-                productName.includes(searchTerm) ||
-                category.includes(searchTerm)
-            ) {
+            panes.forEach(function (pane) {
 
-                productColumn.style.display = "";
-                numberFound++;
+                pane.classList.remove("show");
+                pane.classList.remove("active");
+
+            });
+
+
+            allProducts.classList.add("show");
+            allProducts.classList.add("active");
+
+
+            // Search products
+
+            var products =
+                allProducts.querySelectorAll(".product-card");
+
+            var numberFound = 0;
+
+
+            products.forEach(function (product) {
+
+                var productName =
+                    product.querySelector("h4")
+                        .innerText
+                        .toLowerCase();
+
+                var category =
+                    product.querySelector(".category-badge")
+                        .innerText
+                        .toLowerCase();
+
+
+                var productColumn =
+                    product.parentElement;
+
+
+                if (
+                    productName.includes(searchTerm) ||
+                    category.includes(searchTerm)
+                ) {
+
+                    productColumn.style.display = "";
+                    numberFound++;
+
+                }
+                else {
+
+                    productColumn.style.display = "none";
+
+                }
+
+            });
+
+
+            var message =
+                document.getElementById(
+                    "searchResultMessage"
+                );
+
+
+            if (numberFound > 0) {
+
+                message.innerText =
+                    "Search results for \"" +
+                    searchTerm +
+                    "\"";
 
             }
             else {
 
-                productColumn.style.display = "none";
+                message.innerText =
+                    "No products found for \"" +
+                    searchTerm +
+                    "\"";
 
             }
 
-        });
-
-
-        // Display search result message
-        var message =
-            document.getElementById(
-                "searchResultMessage"
-            );
-
-
-        if (numberFound > 0) {
-
-            message.innerText =
-                "Search results for \"" +
-                searchTerm +
-                "\"";
-
         }
-        else {
-
-            message.innerText =
-                "No products found for \"" +
-                searchTerm +
-                "\"";
-
-        }
-
-    }
 
     </script>
+
+
 </asp:Content>

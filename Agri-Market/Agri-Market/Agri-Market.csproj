@@ -163,6 +163,10 @@
     <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.UserRegistrationReportDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="ShoppingCart.aspx" />
+    <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.CartItemDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServiceReference1\Service1.disco" />
     <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
@@ -419,6 +423,13 @@
     </Compile>
     <Compile Include="PendingFarmers.aspx.designer.cs">
       <DependentUpon>PendingFarmers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShoppingCart.aspx.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShoppingCart.aspx.designer.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

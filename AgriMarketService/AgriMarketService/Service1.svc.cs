@@ -590,6 +590,146 @@ namespace AgriMarketService
 
             return report;
         }
+
+        // temp shopping cart methods
+
+        public List<CartItemDTO> getCartItems(int userId)
+        {
+            // Find the user's active shopping cart
+            var cart =
+                (from c in db.ShoppingCarts
+                 where c.UserId == userId
+                 && c.IsActive == true
+                 select c).SingleOrDefault();
+
+            // User has no active cart
+            if (cart == null)
+            {
+                return new List<CartItemDTO>();
+            }
+
+
+            // Get the products inside the cart
+            var items =
+                (from item in db.ShoppingCartItems
+                 join product in db.Products
+                     on item.ProductId equals product.ProductId
+
+                 where item.ShoppingCartId == cart.ShoppingCartId
+
+                 select new CartItemDTO
+                 {
+                     CartItemId = item.CartItemId,
+                     ProductId = product.ProductId,
+                     ProductName = product.ProductName,
+                     Price = product.Price,
+                     Quantity = item.Quantity,
+
+                     LineTotal =
+                         product.Price * item.Quantity,
+
+                     ImageUrl = product.ImageUrl
+
+                 }).ToList();
+
+
+            return items;
+        }
+
+        public int removeCartItem(int cartItemId)
+        {
+            var item =
+                (from i in db.ShoppingCartItems
+                 where i.CartItemId == cartItemId
+                 select i).SingleOrDefault();
+
+
+            if (item == null)
+            {
+                return 1;
+            }
+
+
+            try
+            {
+                db.ShoppingCartItems.DeleteOnSubmit(item);
+
+                db.SubmitChanges();
+
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 2;
+            }
+        }
+        public int addToCart(int userId, int productId, int quantity)
+        {
+            try
+            {
+                // Find the customer's active cart
+                var cart = (from c in db.ShoppingCarts
+                            where c.UserId == userId
+                            && c.IsActive == true
+                            select c).SingleOrDefault();
+
+                // If the customer does not have a cart yet,
+                // create one
+                if (cart == null)
+                {
+                    cart = new ShoppingCart
+                    {
+                        UserId = userId,
+                        CreatedDate = DateTime.Now,
+                        UpdatedDate = DateTime.Now,
+                        IsActive = true
+                    };
+
+                    db.ShoppingCarts.InsertOnSubmit(cart);
+                    db.SubmitChanges();
+                }
+
+
+                // Check whether this product is already in the cart
+                var existingItem =
+                    (from item in db.ShoppingCartItems
+                     where item.ShoppingCartId == cart.ShoppingCartId
+                     && item.ProductId == productId
+                     select item).SingleOrDefault();
+
+
+                if (existingItem == null)
+                {
+                    // Product is not in cart yet
+                    ShoppingCartItem newItem =
+                        new ShoppingCartItem
+                        {
+                            ShoppingCartId = cart.ShoppingCartId,
+                            ProductId = productId,
+                            Quantity = quantity,
+                            DateAdded = DateTime.Now
+                        };
+
+                    db.ShoppingCartItems.InsertOnSubmit(newItem);
+                }
+                else
+                {
+                    // Product already exists, increase quantity
+                    existingItem.Quantity += quantity;
+                }
+
+
+                cart.UpdatedDate = DateTime.Now;
+
+                db.SubmitChanges();
+
+                return 0; 
+            }
+            catch (Exception)
+            {
+                return 1; 
+            }
+        }
     }
 
     

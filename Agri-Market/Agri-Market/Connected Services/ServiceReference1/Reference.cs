@@ -1761,6 +1761,147 @@ namespace Agri_Market.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CartItemDTO", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
+    [System.SerializableAttribute()]
+    public partial class CartItemDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CartItemIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageUrlField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal LineTotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal QuantityField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CartItemId {
+            get {
+                return this.CartItemIdField;
+            }
+            set {
+                if ((this.CartItemIdField.Equals(value) != true)) {
+                    this.CartItemIdField = value;
+                    this.RaisePropertyChanged("CartItemId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageUrl {
+            get {
+                return this.ImageUrlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageUrlField, value) != true)) {
+                    this.ImageUrlField = value;
+                    this.RaisePropertyChanged("ImageUrl");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal LineTotal {
+            get {
+                return this.LineTotalField;
+            }
+            set {
+                if ((this.LineTotalField.Equals(value) != true)) {
+                    this.LineTotalField = value;
+                    this.RaisePropertyChanged("LineTotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductId {
+            get {
+                return this.ProductIdField;
+            }
+            set {
+                if ((this.ProductIdField.Equals(value) != true)) {
+                    this.ProductIdField = value;
+                    this.RaisePropertyChanged("ProductId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductName {
+            get {
+                return this.ProductNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
+                    this.ProductNameField = value;
+                    this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="FarmerDTO", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
     [System.SerializableAttribute()]
     public partial class FarmerDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -2606,6 +2747,24 @@ namespace Agri_Market.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllProducts", ReplyAction="http://tempuri.org/IService1/GetAllProductsResponse")]
         System.Threading.Tasks.Task<Agri_Market.ServiceReference1.Product[]> GetAllProductsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getCartItems", ReplyAction="http://tempuri.org/IService1/getCartItemsResponse")]
+        Agri_Market.ServiceReference1.CartItemDTO[] getCartItems(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getCartItems", ReplyAction="http://tempuri.org/IService1/getCartItemsResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.CartItemDTO[]> getCartItemsAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/removeCartItem", ReplyAction="http://tempuri.org/IService1/removeCartItemResponse")]
+        int removeCartItem(int cartItemId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/removeCartItem", ReplyAction="http://tempuri.org/IService1/removeCartItemResponse")]
+        System.Threading.Tasks.Task<int> removeCartItemAsync(int cartItemId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addToCart", ReplyAction="http://tempuri.org/IService1/addToCartResponse")]
+        int addToCart(int userId, int productId, int quantity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addToCart", ReplyAction="http://tempuri.org/IService1/addToCartResponse")]
+        System.Threading.Tasks.Task<int> addToCartAsync(int userId, int productId, int quantity);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SearchProducts", ReplyAction="http://tempuri.org/IService1/SearchProductsResponse")]
         Agri_Market.ServiceReference1.Product[] SearchProducts(string searchTerm);
         
@@ -2786,6 +2945,30 @@ namespace Agri_Market.ServiceReference1 {
         
         public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.Product[]> GetAllProductsAsync() {
             return base.Channel.GetAllProductsAsync();
+        }
+        
+        public Agri_Market.ServiceReference1.CartItemDTO[] getCartItems(int userId) {
+            return base.Channel.getCartItems(userId);
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.CartItemDTO[]> getCartItemsAsync(int userId) {
+            return base.Channel.getCartItemsAsync(userId);
+        }
+        
+        public int removeCartItem(int cartItemId) {
+            return base.Channel.removeCartItem(cartItemId);
+        }
+        
+        public System.Threading.Tasks.Task<int> removeCartItemAsync(int cartItemId) {
+            return base.Channel.removeCartItemAsync(cartItemId);
+        }
+        
+        public int addToCart(int userId, int productId, int quantity) {
+            return base.Channel.addToCart(userId, productId, quantity);
+        }
+        
+        public System.Threading.Tasks.Task<int> addToCartAsync(int userId, int productId, int quantity) {
+            return base.Channel.addToCartAsync(userId, productId, quantity);
         }
         
         public Agri_Market.ServiceReference1.Product[] SearchProducts(string searchTerm) {

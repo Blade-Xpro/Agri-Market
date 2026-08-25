@@ -183,6 +183,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfShoppingCart" nillable="true" type="tns:ArrayOfShoppingCart" />
+  <xs:complexType name="ArrayOfCartItemDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartItemDTO" nillable="true" type="tns:CartItemDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartItemDTO" nillable="true" type="tns:ArrayOfCartItemDTO" />
+  <xs:complexType name="CartItemDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CartItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LineTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartItemDTO" nillable="true" type="tns:CartItemDTO" />
   <xs:complexType name="ArrayOfFarmerDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="FarmerDTO" nillable="true" type="tns:FarmerDTO" />

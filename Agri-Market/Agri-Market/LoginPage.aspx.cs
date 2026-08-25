@@ -36,35 +36,44 @@ namespace Agri_Market
 
             if (result == true)
             {
+                // Get the logged-in user's details once
                 string userType = client.getUserType(myemail.Text);
+                int userId = client.getUserId(myemail.Text);
+
+                // Keep the logged-in user for cart and transactions
+                Session["UserId"] = userId;
+                Session["UserType"] = userType;
+
+                client.Close();
 
                 if (userType == "Admin")
                 {
-                    int adminId = client.getUserId(myemail.Text);
-
-                    client.Close();
-
                     Response.Redirect(
-                        "AdminProfile.aspx?adminId=" + adminId);
+                        "AdminProfile.aspx?adminId=" + userId
+                    );
                 }
                 else if (userType == "Farmer")
                 {
-                    int farmerId = client.getUserId(myemail.Text);
-
-                    client.Close();
-
-                    Response.Redirect("FarmerProfile.aspx?farmerId=" + farmerId);
+                    Response.Redirect(
+                        "FarmerProfile.aspx?farmerId=" + userId
+                    );
                 }
                 else
                 {
-                    int customerId = client.getUserId(myemail.Text);
-
-                    client.Close();
-
                     Response.Redirect(
-                        "CustomerProfile.aspx?customerId=" + customerId);
+                        "CustomerProfile.aspx?customerId=" + userId
+                    );
                 }
             }
+            else
+            {
+                client.Close();
+
+                loginMessage.Text =
+                    "Incorrect email or password.";
+            }
+        
+    
         }
     }
 }

@@ -109,6 +109,50 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getCartItems">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCartItemsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getCartItemsResult" nillable="true" type="q5:ArrayOfCartItemDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removeCartItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cartItemId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removeCartItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="removeCartItemResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addToCart">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="productId" type="xs:int" />
+        <xs:element minOccurs="0" name="quantity" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addToCartResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="addToCartResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SearchProducts">
     <xs:complexType>
       <xs:sequence>
@@ -119,15 +163,15 @@
   <xs:element name="SearchProductsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="SearchProductsResult" nillable="true" type="q5:ArrayOfProduct" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="SearchProductsResult" nillable="true" type="q6:ArrayOfProduct" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="registerFarmer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="utable" nillable="true" type="q6:UserTable" />
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="farmer" nillable="true" type="q7:FarmerDetail" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="utable" nillable="true" type="q7:UserTable" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="farmer" nillable="true" type="q8:FarmerDetail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -162,7 +206,7 @@
   <xs:element name="getFarmerDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getFarmerDetailsResult" nillable="true" type="q8:FarmerDetail" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getFarmerDetailsResult" nillable="true" type="q9:FarmerDetail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -174,14 +218,14 @@
   <xs:element name="getPendingFarmersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getPendingFarmersResult" nillable="true" type="q9:ArrayOfFarmerDTO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getPendingFarmersResult" nillable="true" type="q10:ArrayOfFarmerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="updateFarmerDetails">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="farmer" nillable="true" type="q10:FarmerDetail" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="farmer" nillable="true" type="q11:FarmerDetail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -202,7 +246,7 @@
   <xs:element name="getFarmerUserDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getFarmerUserDetailsResult" nillable="true" type="q11:UserTable" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getFarmerUserDetailsResult" nillable="true" type="q12:UserTable" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -216,7 +260,7 @@
   <xs:element name="getFarmerProfileResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getFarmerProfileResult" nillable="true" type="q12:FarmerProfileDTO" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getFarmerProfileResult" nillable="true" type="q13:FarmerProfileDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -228,7 +272,7 @@
   <xs:element name="getAllUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getAllUsersResult" nillable="true" type="q13:ArrayOfUserDTO" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getAllUsersResult" nillable="true" type="q14:ArrayOfUserDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -240,7 +284,7 @@
   <xs:element name="getAllOrdersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getAllOrdersResult" nillable="true" type="q14:ArrayOfOrderDTO" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getAllOrdersResult" nillable="true" type="q15:ArrayOfOrderDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -267,7 +311,7 @@
   <xs:element name="getReportSummaryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getReportSummaryResult" nillable="true" type="q15:ReportSummaryDTO" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getReportSummaryResult" nillable="true" type="q16:ReportSummaryDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -279,7 +323,7 @@
   <xs:element name="getStockReportResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getStockReportResult" nillable="true" type="q16:ArrayOfStockReportDTO" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getStockReportResult" nillable="true" type="q17:ArrayOfStockReportDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -291,7 +335,7 @@
   <xs:element name="getUserRegistrationsPerDayResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getUserRegistrationsPerDayResult" nillable="true" type="q17:ArrayOfUserRegistrationReportDTO" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getUserRegistrationsPerDayResult" nillable="true" type="q18:ArrayOfUserRegistrationReportDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -306,7 +350,7 @@
   <xs:element name="getReportSummaryByDateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getReportSummaryByDateResult" nillable="true" type="q18:ReportSummaryDTO" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getReportSummaryByDateResult" nillable="true" type="q19:ReportSummaryDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -201,18 +201,19 @@
 
             <!-- Shopping Cart -->
 
-            <div class="dashboard-card disabled-card">
+            <a href="ShoppingCart.aspx"
+    class="dashboard-card">
 
-                <div class="card-icon">🛒</div>
+    <div class="card-icon">🛒</div>
 
-                <h3>My Cart</h3>
+    <h3>My Cart</h3>
 
-                <p>
-                    View products added to your
-                    shopping cart.
-                </p>
+    <p>
+        View products added to your
+        shopping cart.
+    </p>
 
-            </div>
+</a>
 
 
 

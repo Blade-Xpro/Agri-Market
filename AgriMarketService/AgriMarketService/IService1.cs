@@ -40,14 +40,26 @@ namespace AgriMarketService
         [OperationContract]
         List<Product> GetAllProducts();
 
-       // [OperationContract]
-       // void AddProduct(Product product);
+        [OperationContract]
+        List<CartItemDTO> getCartItems(int userId);
 
-       // [OperationContract]
-       // void UpdateProduct(Product product);
+        [OperationContract]
+        int removeCartItem(int cartItemId);
 
-       // [OperationContract]
-       // void DeleteProduct(int productId);
+        // [OperationContract]
+        // void AddProduct(Product product);
+
+        // [OperationContract]
+        // void UpdateProduct(Product product);
+
+        // [OperationContract]
+        // void DeleteProduct(int productId);
+
+        // Temporary cart integration
+        [OperationContract]
+        int addToCart(int userId, int productId, int quantity);
+
+
 
         [OperationContract]
         List<Product> SearchProducts(string searchTerm);
@@ -256,9 +268,34 @@ namespace AgriMarketService
             set { stringValue = value; }
         }
     }
-            
-        
+
+    [DataContract]
+    public class CartItemDTO
+    {
+        [DataMember]
+        public int CartItemId { get; set; }
+
+        [DataMember]
+        public int ProductId { get; set; }
+
+        [DataMember]
+        public string ProductName { get; set; }
+
+        [DataMember]
+        public decimal Price { get; set; }
+
+        [DataMember]
+        public decimal Quantity { get; set; }
+
+        [DataMember]
+        public decimal LineTotal { get; set; }
+
+        [DataMember]
+        public string ImageUrl { get; set; }
     }
+
+
+}
 
 
     
