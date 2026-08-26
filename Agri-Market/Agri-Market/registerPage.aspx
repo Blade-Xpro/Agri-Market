@@ -421,7 +421,7 @@
 
                 <div class="d-flex justify-content-between align-items-center">
 
-                    <a href="homePage.aspx"
+                    <a href="Home.aspx"
                        class="brand-name">
 
                         <i class="fas fa-leaf me-2"></i>
@@ -431,7 +431,7 @@
 
                     <div class="navbar-links">
 
-                        <a href="homePage.aspx"
+                        <a href="Home.aspx"
                            class="nav-link-custom">
                             Home
                         </a>

@@ -811,13 +811,13 @@ namespace Agri_Market.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CartIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime CreatedDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ShoppingCartIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Agri_Market.ServiceReference1.ShoppingCartItem[] ShoppingCartItemsField;
@@ -838,6 +838,19 @@ namespace Agri_Market.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CartId {
+            get {
+                return this.CartIdField;
+            }
+            set {
+                if ((this.CartIdField.Equals(value) != true)) {
+                    this.CartIdField = value;
+                    this.RaisePropertyChanged("CartId");
+                }
             }
         }
         
@@ -863,19 +876,6 @@ namespace Agri_Market.ServiceReference1 {
                 if ((this.IsActiveField.Equals(value) != true)) {
                     this.IsActiveField = value;
                     this.RaisePropertyChanged("IsActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ShoppingCartId {
-            get {
-                return this.ShoppingCartIdField;
-            }
-            set {
-                if ((this.ShoppingCartIdField.Equals(value) != true)) {
-                    this.ShoppingCartIdField = value;
-                    this.RaisePropertyChanged("ShoppingCartId");
                 }
             }
         }
@@ -1519,6 +1519,9 @@ namespace Agri_Market.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CartIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int CartItemIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1536,9 +1539,6 @@ namespace Agri_Market.ServiceReference1 {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Agri_Market.ServiceReference1.ShoppingCart ShoppingCartField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ShoppingCartIdField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -1546,6 +1546,19 @@ namespace Agri_Market.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CartId {
+            get {
+                return this.CartIdField;
+            }
+            set {
+                if ((this.CartIdField.Equals(value) != true)) {
+                    this.CartIdField = value;
+                    this.RaisePropertyChanged("CartId");
+                }
             }
         }
         
@@ -1623,19 +1636,6 @@ namespace Agri_Market.ServiceReference1 {
                 if ((object.ReferenceEquals(this.ShoppingCartField, value) != true)) {
                     this.ShoppingCartField = value;
                     this.RaisePropertyChanged("ShoppingCart");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ShoppingCartId {
-            get {
-                return this.ShoppingCartIdField;
-            }
-            set {
-                if ((this.ShoppingCartIdField.Equals(value) != true)) {
-                    this.ShoppingCartIdField = value;
-                    this.RaisePropertyChanged("ShoppingCartId");
                 }
             }
         }

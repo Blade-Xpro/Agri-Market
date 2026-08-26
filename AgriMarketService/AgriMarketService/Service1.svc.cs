@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using Microsoft.AspNet.Identity;
+
 
 namespace AgriMarketService
 {
@@ -16,10 +16,10 @@ namespace AgriMarketService
     {
 
         // Connection to the database through the DBML
-        DataClasses1DataContext db = new DataClasses1DataContext();
+        DataClasses2DataContext db = new DataClasses2DataContext();
 
         // Used to hash passwords
-        PasswordHasher passwordHasher = new PasswordHasher();
+        
 
         // Temporary code required when registering a manager so that only an existing 
         private const string adminRegCode = "AGRI2026";
@@ -47,7 +47,7 @@ namespace AgriMarketService
                 {
                     email = utable.email,
                     Name = utable.Name,
-                    passwordHash = passwordHasher.HashPassword(utable.passwordHash),
+                    passwordHash =utable.passwordHash,
                     phoneNumber = utable.phoneNumber,
                     Surname = utable.Surname,
                     userType = "Customer",
@@ -102,7 +102,7 @@ namespace AgriMarketService
 
                     // Hash the entered password before saving it
                     passwordHash =
-                        passwordHasher.HashPassword(utable.passwordHash),
+                        utable.passwordHash,
 
                    
                     userType = "Admin",
@@ -197,7 +197,7 @@ namespace AgriMarketService
                 phoneNumber = utable.phoneNumber,
 
                 passwordHash =
-                    passwordHasher.HashPassword(utable.passwordHash),
+                    utable.passwordHash,
 
                 userType = "Farmer",
                 creationDate = DateTime.Now

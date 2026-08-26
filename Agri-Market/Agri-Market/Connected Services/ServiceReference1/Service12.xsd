@@ -149,21 +149,21 @@
   <xs:element name="ArrayOfShoppingCartItem" nillable="true" type="tns:ArrayOfShoppingCartItem" />
   <xs:complexType name="ShoppingCartItem">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CartId" type="xs:int" />
       <xs:element minOccurs="0" name="CartItemId" type="xs:int" />
       <xs:element minOccurs="0" name="DateAdded" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
       <xs:element minOccurs="0" name="ProductId" type="xs:int" />
       <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
       <xs:element minOccurs="0" name="ShoppingCart" nillable="true" type="tns:ShoppingCart" />
-      <xs:element minOccurs="0" name="ShoppingCartId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ShoppingCartItem" nillable="true" type="tns:ShoppingCartItem" />
   <xs:complexType name="ShoppingCart">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CartId" type="xs:int" />
       <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
-      <xs:element minOccurs="0" name="ShoppingCartId" type="xs:int" />
       <xs:element minOccurs="0" name="ShoppingCartItems" nillable="true" type="tns:ArrayOfShoppingCartItem" />
       <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="UserId" type="xs:int" />
