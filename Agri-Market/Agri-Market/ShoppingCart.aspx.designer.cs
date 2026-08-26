@@ -11,61 +11,61 @@ namespace Agri_Market
 {
 
 
-    public partial class ManageUsers
+    public partial class ShoppingCartPage
     {
 
         /// <summary>
-        /// btnAll control.
+        /// lblCartMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAll;
+        protected global::System.Web.UI.WebControls.Label lblCartMessage;
 
         /// <summary>
-        /// btnCustomers control.
+        /// pnlEmptyCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCustomers;
+        protected global::System.Web.UI.WebControls.Panel pnlEmptyCart;
 
         /// <summary>
-        /// btnFarmers control.
+        /// rptCartItems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFarmers;
+        protected global::System.Web.UI.WebControls.Repeater rptCartItems;
 
         /// <summary>
-        /// btnAdmins control.
+        /// pnlCartSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdmins;
+        protected global::System.Web.UI.WebControls.Panel pnlCartSummary;
 
         /// <summary>
-        /// lblMessage control.
+        /// lblCartTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
+        protected global::System.Web.UI.WebControls.Label lblCartTotal;
 
         /// <summary>
-        /// rptUsers control.
+        /// btnCheckout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptUsers;
+        protected global::System.Web.UI.WebControls.Button btnCheckout;
     }
 }

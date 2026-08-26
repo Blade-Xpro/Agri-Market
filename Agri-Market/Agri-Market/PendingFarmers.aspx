@@ -1,144 +1,196 @@
-﻿<%@ Page Language="C#"
+﻿<%@ Page Title="Pending Farmers - Agri Market"
+    Language="C#"
+    MasterPageFile="~/Site.Master"
     AutoEventWireup="true"
     CodeBehind="PendingFarmers.aspx.cs"
     Inherits="Agri_Market.WebForm1" %>
 
-<!DOCTYPE html>
 
-<html>
-<head runat="server">
-    <title>Pending Farmers - Agri Market</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
+<asp:Content ID="FarmersHeadContent"
+    ContentPlaceHolderID="HeadContent"
+    runat="server">
 
     <style>
-    body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: 'Segoe UI', Arial, sans-serif;
 
-        background:
-            linear-gradient(
-                rgba(48, 94, 40, 0.88),
-                rgba(48, 94, 40, 0.88)
-            ),
-            url('img/your-background-image.jpg');
+        .pending-container {
+            max-width: 900px;
+            margin: 35px auto 60px;
+            padding: 40px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
 
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-    }
+        .pending-title {
+            color: #37474f;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
 
-    .pending-container {
-        max-width: 900px;
-        margin: 80px auto;
-        padding: 40px;
-        background: rgba(255, 255, 255, 0.97);
-        border-radius: 20px;
-        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.18);
-    }
+        .pending-subtitle {
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
 
-    .pending-title {
-        color: #37474f;
-        font-weight: 700;
-        margin-bottom: 8px;
-    }
+        .farmer-card {
+            border: 1px solid #dfe5d8;
+            border-left: 5px solid #81c408;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 20px;
+            background-color: #fbfdf8;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
 
-    .pending-subtitle {
-        color: #6c757d;
-        margin-bottom: 30px;
-    }
+        .farmer-card h4 {
+            font-weight: 700;
+            color: #37474f;
+            margin-bottom: 15px;
+        }
 
-    .farmer-card {
-        border: 1px solid #dfe5d8;
-        border-left: 5px solid #81c408;
-        border-radius: 14px;
-        padding: 25px;
-        margin-bottom: 20px;
-        background-color: #fff;
-    }
+        .farmer-card p {
+            color: #666;
+        }
 
-    .farmer-card h4 {
-        font-weight: 700;
-        color: #37474f;
-    }
+        .approve-button {
+            width: 100%;
+            padding: 11px;
+            background-color: #81c408;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: 700;
+            font-size: 17px;
+            margin-top: 10px;
+        }
 
-    .approve-button {
-        width: 100%;
-        padding: 11px;
-        background-color: #81c408;
-        border: 2px solid #ffb524;
-        border-radius: 25px;
-        color: white;
-        font-weight: 700;
-        font-size: 17px;
-    }
+        .approve-button:hover {
+            background-color: #6eaa07;
+            color: white;
+        }
 
-    .approve-button:hover {
-        background-color: #6eaa07;
-        color: white;
-    }
-</style>
-</head>
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #5f9406;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-<body>
+        .back-link:hover {
+            text-decoration: underline;
+            color: #4c7c05;
+        }
 
-<form id="form1" runat="server">
+        .pending-message {
+            display: block;
+            margin-bottom: 20px;
+        }
 
-    <div class="container" style="margin-top: 80px;">
+        @media (max-width: 768px) {
 
-        <h2>Pending Farmer Applications</h2>
+            .pending-container {
+                width: 92%;
+                padding: 25px;
+            }
+        }
 
-        <p>
+    </style>
+
+</asp:Content>
+
+
+
+<asp:Content ID="FarmersMainContent"
+    ContentPlaceHolderID="MainContent"
+    runat="server">
+
+
+    <div class="pending-container">
+
+
+        <h2 class="pending-title">
+            Pending Farmer Applications
+        </h2>
+
+        <p class="pending-subtitle">
             Review farmers who are waiting for approval.
         </p>
 
+
+
         <asp:Label
             ID="lblMessage"
-            runat="server">
+            runat="server"
+            CssClass="pending-message">
         </asp:Label>
 
+
+
         <asp:Repeater
-    ID="rptFarmers"
-    runat="server"
-    OnItemCommand="rptFarmers_ItemCommand">
+            ID="rptFarmers"
+            runat="server"
+            OnItemCommand="rptFarmers_ItemCommand">
+
 
             <ItemTemplate>
 
-                <div class="card mb-3 p-3">
+
+                <div class="farmer-card">
+
 
                     <h4>
                         <%# Eval("FarmName") %>
                     </h4>
 
-                    <p>
-                        <strong>Location:</strong>
-                        <%# Eval("FarmLocation") %>
-                    </p>
 
                     <p>
-                        <strong>Description:</strong>
-                        <%# Eval("FarmDescription") %>
+
+                        <strong>Location:</strong>
+
+                        <%# Eval("FarmLocation") %>
+
                     </p>
+
+
+                    <p>
+
+                        <strong>Description:</strong>
+
+                        <%# Eval("FarmDescription") %>
+
+                    </p>
+
+
 
                     <asp:Button
                         ID="btnApprove"
                         runat="server"
                         Text="Approve Farmer"
                         CssClass="approve-button"
-    CommandName="Approve"
+                        CommandName="Approve"
                         CommandArgument='<%# Eval("FarmerId") %>' />
+
 
                 </div>
 
+
             </ItemTemplate>
+
 
         </asp:Repeater>
 
+
+
+        <a href="AdminProfile.aspx"
+            class="back-link">
+
+            ← Back to Admin Profile
+
+        </a>
+
+
     </div>
 
-</form>
 
-</body>
-</html>
+</asp:Content>

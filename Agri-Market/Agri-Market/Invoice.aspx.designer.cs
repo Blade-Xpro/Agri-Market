@@ -11,106 +11,97 @@ namespace Agri_Market
 {
 
 
-    public partial class Reports
+    public partial class InvoicePage
     {
 
         /// <summary>
-        /// txtStartDate control.
+        /// lblInvoiceMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStartDate;
+        protected global::System.Web.UI.WebControls.Label lblInvoiceMessage;
 
         /// <summary>
-        /// txtEndDate control.
+        /// pnlInvoice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEndDate;
+        protected global::System.Web.UI.WebControls.Panel pnlInvoice;
 
         /// <summary>
-        /// btnFilter control.
+        /// lblInvoiceNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFilter;
+        protected global::System.Web.UI.WebControls.Label lblInvoiceNumber;
 
         /// <summary>
-        /// lblMessage control.
+        /// lblOrderNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
+        protected global::System.Web.UI.WebControls.Label lblOrderNumber;
 
         /// <summary>
-        /// lblTotalRevenue control.
+        /// lblInvoiceDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalRevenue;
+        protected global::System.Web.UI.WebControls.Label lblInvoiceDate;
 
         /// <summary>
-        /// lblTotalOrders control.
+        /// rptInvoiceItems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalOrders;
+        protected global::System.Web.UI.WebControls.Repeater rptInvoiceItems;
 
         /// <summary>
-        /// lblTotalCustomers control.
+        /// lblSubtotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalCustomers;
+        protected global::System.Web.UI.WebControls.Label lblSubtotal;
 
         /// <summary>
-        /// lblTotalFarmers control.
+        /// lblTax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalFarmers;
+        protected global::System.Web.UI.WebControls.Label lblTax;
 
         /// <summary>
-        /// lblDifferentProducts control.
+        /// lblDiscount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDifferentProducts;
+        protected global::System.Web.UI.WebControls.Label lblDiscount;
 
         /// <summary>
-        /// rptStock control.
+        /// lblTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptStock;
-
-        /// <summary>
-        /// rptUserRegistrations control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptUserRegistrations;
+        protected global::System.Web.UI.WebControls.Label lblTotal;
     }
 }

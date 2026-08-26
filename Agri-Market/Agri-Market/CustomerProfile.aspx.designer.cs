@@ -11,44 +11,17 @@ namespace Agri_Market
 {
 
 
-    public partial class ManageUsers
+    public partial class CustomerProfile
     {
 
         /// <summary>
-        /// btnAll control.
+        /// lblName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAll;
-
-        /// <summary>
-        /// btnCustomers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCustomers;
-
-        /// <summary>
-        /// btnFarmers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFarmers;
-
-        /// <summary>
-        /// btnAdmins control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdmins;
+        protected global::System.Web.UI.WebControls.Label lblName;
 
         /// <summary>
         /// lblMessage control.
@@ -60,12 +33,48 @@ namespace Agri_Market
         protected global::System.Web.UI.WebControls.Label lblMessage;
 
         /// <summary>
-        /// rptUsers control.
+        /// lblProfileName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptUsers;
+        protected global::System.Web.UI.WebControls.Label lblProfileName;
+
+        /// <summary>
+        /// lblSurname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSurname;
+
+        /// <summary>
+        /// lblEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmail;
+
+        /// <summary>
+        /// lblPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPhone;
+
+        /// <summary>
+        /// lblUserType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUserType;
     }
 }

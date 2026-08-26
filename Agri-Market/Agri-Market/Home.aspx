@@ -59,7 +59,10 @@
                      console.log("Product Catalogue");
                  </script>
                 </div>
+
             </div>
+
+
         </div>
     </section>
 </asp:Content>

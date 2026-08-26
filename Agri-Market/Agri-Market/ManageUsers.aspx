@@ -1,24 +1,20 @@
-﻿din<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="Agri_Market.ManageUsers" %>
+﻿<%@ Page Title="Manage Users - Agri Market"
+    Language="C#"
+    MasterPageFile="~/Site.Master"
+    AutoEventWireup="true"
+    CodeBehind="ManageUsers.aspx.cs"
+    Inherits="Agri_Market.ManageUsers" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-  <title>Manage Users - Agri Market</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+<asp:Content ID="UsersHeadContent"
+    ContentPlaceHolderID="HeadContent"
+    runat="server">
 
     <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #eef5e9;
-        }
 
         .users-container {
             max-width: 1050px;
-            margin: 60px auto;
+            margin: 35px auto 60px;
             background-color: white;
             padding: 40px;
             border-radius: 18px;
@@ -102,19 +98,39 @@
         }
 
         .back-link:hover {
+            color: #4c7c05;
             text-decoration: underline;
         }
 
+        .users-message {
+            display: block;
+            margin-bottom: 20px;
+        }
+
         @media (max-width: 768px) {
+
             .user-info {
                 grid-template-columns: 1fr;
             }
+
+            .users-container {
+                width: 92%;
+                padding: 25px;
+            }
         }
+
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
-<div class="users-container">
+
+</asp:Content>
+
+
+<asp:Content ID="UsersMainContent"
+    ContentPlaceHolderID="MainContent"
+    runat="server">
+
+
+    <div class="users-container">
+
 
         <h2 class="page-title">
             Manage Users
@@ -125,98 +141,142 @@
         </p>
 
 
-        <!-- FILTERS -->
+
+        <!-- User Filters -->
+
         <div class="filter-buttons">
 
+
             <asp:Button
-    ID="btnAll"
-    runat="server"
-    Text="All Users"
-    CssClass="filter-button"
-    OnClick="btnAll_Click" />
+                ID="btnAll"
+                runat="server"
+                Text="All Users"
+                CssClass="filter-button"
+                OnClick="btnAll_Click" />
 
-<asp:Button
-    ID="btnCustomers"
-    runat="server"
-    Text="Customers"
-    CssClass="filter-button"
-    OnClick="btnCustomers_Click" />
 
-<asp:Button
-    ID="btnFarmers"
-    runat="server"
-    Text="Farmers"
-    CssClass="filter-button"
-    OnClick="btnFarmers_Click" />
+            <asp:Button
+                ID="btnCustomers"
+                runat="server"
+                Text="Customers"
+                CssClass="filter-button"
+                OnClick="btnCustomers_Click" />
 
-<asp:Button
-    ID="btnAdmins"
-    runat="server"
-    Text="Admins"
-    CssClass="filter-button"
-    OnClick="btnAdmins_Click" />
+
+            <asp:Button
+                ID="btnFarmers"
+                runat="server"
+                Text="Farmers"
+                CssClass="filter-button"
+                OnClick="btnFarmers_Click" />
+
+
+            <asp:Button
+                ID="btnAdmins"
+                runat="server"
+                Text="Admins"
+                CssClass="filter-button"
+                OnClick="btnAdmins_Click" />
+
 
         </div>
 
 
+
         <asp:Label
             ID="lblMessage"
-            runat="server">
+            runat="server"
+            CssClass="users-message">
         </asp:Label>
 
 
-        <!-- USERS WILL APPEAR HERE -->
+
+        <!-- Registered Users -->
+
         <asp:Repeater
             ID="rptUsers"
             runat="server">
 
+
             <ItemTemplate>
+
 
                 <div class="user-card">
 
+
                     <h4>
+
                         <%# Eval("Name") %>
                         <%# Eval("Surname") %>
+
                     </h4>
+
 
                     <div class="user-info">
 
+
                         <p>
+
                             <strong>Email:</strong>
+
                             <%# Eval("Email") %>
+
                         </p>
 
+
                         <p>
+
                             <strong>Phone:</strong>
+
                             <%# Eval("PhoneNumber") %>
+
                         </p>
 
+
                         <p>
+
                             <strong>User ID:</strong>
+
                             <%# Eval("UserId") %>
+
                         </p>
 
+
                         <p>
+
                             <strong>Role:</strong>
+
                             <span class="role-badge">
+
                                 <%# Eval("UserType") %>
+
                             </span>
+
                         </p>
+
 
                     </div>
 
+
                 </div>
 
+
             </ItemTemplate>
+
 
         </asp:Repeater>
 
 
-        <a href="AdminProfile.aspx" class="back-link">
+
+        <a href="AdminProfile.aspx"
+            class="back-link">
+
             ← Back to Admin Profile
+
         </a>
 
+
     </div>
-    </form>
-</body>
-</html>
+
+
+</asp:Content>

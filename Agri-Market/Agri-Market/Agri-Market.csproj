@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -109,7 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="AboutProduct.aspx" />
+    <Content Include="AddProduct.aspx" />
     <Content Include="AdminProfile.aspx" />
     <Content Include="AllProductsPage.aspx" />
     <Content Include="App_Data\AgriDatabase.mdf" />
@@ -128,14 +128,17 @@
     <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="bin\System.Web.Optimization.dll" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="Checkout.aspx" />
     <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.FarmerDetail.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="CustomerProfile.aspx" />
     <Content Include="FarmerProfile.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="Invoice.aspx" />
     <Content Include="ManageOrders.aspx" />
     <Content Include="ManageUsers.aspx" />
     <Content Include="PendingFarmers.aspx" />
@@ -161,6 +164,16 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.UserRegistrationReportDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="ShoppingCart.aspx" />
+    <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.CartItemDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.InvoiceDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.OrderItemDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\ServiceReference1\Service1.disco" />
@@ -292,6 +305,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminProfile.aspx.cs">
       <DependentUpon>AdminProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -322,6 +342,13 @@
       <DependentUpon>AboutProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Checkout.aspx.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout.aspx.designer.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -333,6 +360,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerProfile.aspx.cs">
+      <DependentUpon>CustomerProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerProfile.aspx.designer.cs">
+      <DependentUpon>CustomerProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -355,8 +389,12 @@
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="Invoice.aspx.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Invoice.aspx.designer.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
@@ -422,6 +460,13 @@
     </Compile>
     <Compile Include="PendingFarmers.aspx.designer.cs">
       <DependentUpon>PendingFarmers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShoppingCart.aspx.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShoppingCart.aspx.designer.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

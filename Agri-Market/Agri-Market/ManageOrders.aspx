@@ -1,24 +1,20 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageOrders.aspx.cs" Inherits="Agri_Market.ManageOrders" %>
+﻿<%@ Page Title="Manage Orders - Agri Market"
+    Language="C#"
+    MasterPageFile="~/Site.Master"
+    AutoEventWireup="true"
+    CodeBehind="ManageOrders.aspx.cs"
+    Inherits="Agri_Market.ManageOrders" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-   <title>Manage Orders - Agri Market</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+<asp:Content ID="OrdersHeadContent"
+    ContentPlaceHolderID="HeadContent"
+    runat="server">
 
     <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #eef5e9;
-        }
 
         .orders-container {
             max-width: 1050px;
-            margin: 60px auto;
+            margin: 35px auto 60px;
             background-color: white;
             padding: 40px;
             border-radius: 18px;
@@ -50,6 +46,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 15px;
             margin-bottom: 18px;
         }
 
@@ -95,7 +92,7 @@
 
         .update-button {
             padding: 10px 22px;
-            border: 2px solid #ffb524;
+            border: none;
             border-radius: 22px;
             background-color: #81c408;
             color: white;
@@ -116,9 +113,11 @@
 
         .back-link:hover {
             text-decoration: underline;
+            color: #4c7c05;
         }
 
         @media (max-width: 768px) {
+
             .order-info {
                 grid-template-columns: 1fr;
             }
@@ -127,12 +126,31 @@
                 flex-direction: column;
                 align-items: stretch;
             }
+
+            .order-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .orders-container {
+                width: 92%;
+                padding: 25px;
+            }
         }
+
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
-          <div class="orders-container">
+
+</asp:Content>
+
+
+
+<asp:Content ID="OrdersMainContent"
+    ContentPlaceHolderID="MainContent"
+    runat="server">
+
+
+    <div class="orders-container">
+
 
         <h2 class="page-title">
             View / Manage Orders
@@ -143,21 +161,27 @@
         </p>
 
 
+
         <asp:Label
             ID="lblMessage"
             runat="server">
         </asp:Label>
 
 
-        <!-- ORDERS WILL APPEAR HERE -->
+
+        <!-- Orders -->
+
         <asp:Repeater
-    ID="rptOrders"
-    runat="server"
-    OnItemCommand="rptOrders_ItemCommand">
+            ID="rptOrders"
+            runat="server"
+            OnItemCommand="rptOrders_ItemCommand">
+
 
             <ItemTemplate>
 
+
                 <div class="order-card">
+
 
                     <div class="order-header">
 
@@ -172,45 +196,82 @@
                     </div>
 
 
+
                     <div class="order-info">
 
+
                         <p>
+
                             <strong>Customer:</strong>
+
                             <%# Eval("CustomerName") %>
+
                         </p>
 
+
                         <p>
+
                             <strong>Order Date:</strong>
+
                             <%# Eval("OrderDate", "{0:dd MMM yyyy}") %>
+
                         </p>
 
+
                         <p>
+
                             <strong>Total:</strong>
+
                             R <%# Eval("TotalAmount", "{0:F2}") %>
+
                         </p>
 
+
                         <p>
+
                             <strong>Delivery Method:</strong>
+
                             <%# Eval("DeliveryMethod") %>
+
                         </p>
+
 
                     </div>
 
 
+
                     <div class="status-section">
+
 
                         <asp:DropDownList
                             ID="ddlStatus"
                             runat="server"
                             CssClass="status-dropdown">
 
-                            <asp:ListItem Text="Pending" Value="Pending" />
-                            <asp:ListItem Text="Processing" Value="Processing" />
-                            <asp:ListItem Text="Ready" Value="Ready" />
-                            <asp:ListItem Text="Completed" Value="Completed" />
-                            <asp:ListItem Text="Cancelled" Value="Cancelled" />
+
+                            <asp:ListItem
+                                Text="Pending"
+                                Value="Pending" />
+
+                            <asp:ListItem
+                                Text="Processing"
+                                Value="Processing" />
+
+                            <asp:ListItem
+                                Text="Ready"
+                                Value="Ready" />
+
+                            <asp:ListItem
+                                Text="Completed"
+                                Value="Completed" />
+
+                            <asp:ListItem
+                                Text="Cancelled"
+                                Value="Cancelled" />
+
 
                         </asp:DropDownList>
+
 
 
                         <asp:Button
@@ -221,20 +282,29 @@
                             CommandName="UpdateStatus"
                             CommandArgument='<%# Eval("OrderId") %>' />
 
+
                     </div>
+
 
                 </div>
 
+
             </ItemTemplate>
+
 
         </asp:Repeater>
 
 
-        <a href="AdminProfile.aspx" class="back-link">
+
+        <a href="AdminProfile.aspx"
+            class="back-link">
+
             ← Back to Admin Profile
+
         </a>
 
+
     </div>
-    </form>
-</body>
-</html>
+
+
+</asp:Content>

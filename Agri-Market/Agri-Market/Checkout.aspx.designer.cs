@@ -11,61 +11,61 @@ namespace Agri_Market
 {
 
 
-    public partial class ManageUsers
+    public partial class CheckoutPage
     {
 
         /// <summary>
-        /// btnAll control.
+        /// lblCheckoutMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAll;
+        protected global::System.Web.UI.WebControls.Label lblCheckoutMessage;
 
         /// <summary>
-        /// btnCustomers control.
+        /// rptCheckoutItems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCustomers;
+        protected global::System.Web.UI.WebControls.Repeater rptCheckoutItems;
 
         /// <summary>
-        /// btnFarmers control.
+        /// lblDelivery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFarmers;
+        protected global::System.Web.UI.WebControls.Label lblDelivery;
 
         /// <summary>
-        /// btnAdmins control.
+        /// ddlDeliveryMethod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdmins;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDeliveryMethod;
 
         /// <summary>
-        /// lblMessage control.
+        /// lblOrderTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
+        protected global::System.Web.UI.WebControls.Label lblOrderTotal;
 
         /// <summary>
-        /// rptUsers control.
+        /// btnPlaceOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptUsers;
+        protected global::System.Web.UI.WebControls.Button btnPlaceOrder;
     }
 }

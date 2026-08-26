@@ -23,6 +23,16 @@ namespace AgriMarketService
         [OperationContract]
         int registerAdmin(UserTable utable, string adminCode);
 
+        // temp login needed for user management
+        [OperationContract]
+        bool loginUser(string email, string password);
+
+        [OperationContract]
+        string getUserType(string email);
+
+        [OperationContract]
+        int getUserId(string email);
+
 
         [OperationContract]
         Product GetProductById(int productId);
@@ -30,14 +40,26 @@ namespace AgriMarketService
         [OperationContract]
         List<Product> GetAllProducts();
 
-       // [OperationContract]
-       // void AddProduct(Product product);
+        [OperationContract]
+        List<CartItemDTO> getCartItems(int userId);
 
-       // [OperationContract]
-       // void UpdateProduct(Product product);
+        [OperationContract]
+        int removeCartItem(int cartItemId);
 
-       // [OperationContract]
-       // void DeleteProduct(int productId);
+        // [OperationContract]
+        // void AddProduct(Product product);
+
+        // [OperationContract]
+        // void UpdateProduct(Product product);
+
+        // [OperationContract]
+        // void DeleteProduct(int productId);
+
+        // Temporary cart integration
+        [OperationContract]
+        int addToCart(int userId, int productId, int quantity);
+
+
 
         [OperationContract]
         List<Product> SearchProducts(string searchTerm);
@@ -80,6 +102,34 @@ namespace AgriMarketService
 
         [OperationContract]
         List<UserRegistrationReportDTO> getUserRegistrationsPerDay();
+
+        [OperationContract]
+        ReportSummaryDTO getReportSummaryByDate(DateTime startDate, DateTime endDate);
+
+        [OperationContract]
+        int addToCartByName(int userId, string productName, int quantity);
+
+        [OperationContract]
+        int processCheckout(int userId, string deliveryMethod);
+
+        [OperationContract]
+        InvoiceDTO getInvoiceByOrderId(int orderId);
+
+        [OperationContract]
+        List<OrderItemDTO> getOrderItemsByOrderId(int orderId);
+
+        // Temporary farmer product integration
+        [OperationContract]
+        int addFarmerProduct(
+            int farmerId,
+            int categoryId,
+            string productName,
+            string description,
+            decimal price,
+            string unitOfMeasure,
+            int stockQuantity,
+            string imageUrl
+        );
 
     }
 
@@ -126,6 +176,52 @@ namespace AgriMarketService
 
         [DataMember]
         public int DifferentProductsSold { get; set; }
+
+    }
+    [DataContract]
+    public class InvoiceDTO
+    {
+        [DataMember]
+        public int InvoiceId { get; set; }
+
+        [DataMember]
+        public int OrderId { get; set; }
+
+        [DataMember]
+        public DateTime InvoiceDate { get; set; }
+
+        [DataMember]
+        public decimal Subtotal { get; set; }
+
+        [DataMember]
+        public decimal TaxAmount { get; set; }
+
+        [DataMember]
+        public decimal DiscountAmount { get; set; }
+
+        [DataMember]
+        public decimal TotalAmount { get; set; }
+
+        [DataMember]
+        public string InvoiceNumber { get; set; }
+    }
+
+
+
+    [DataContract]
+    public class OrderItemDTO
+    {
+        [DataMember]
+        public string ProductName { get; set; }
+
+        [DataMember]
+        public int Quantity { get; set; }
+
+        [DataMember]
+        public decimal UnitPrice { get; set; }
+
+        [DataMember]
+        public decimal LineTotal { get; set; }
     }
 
 
@@ -243,9 +339,34 @@ namespace AgriMarketService
             set { stringValue = value; }
         }
     }
-            
-        
+
+    [DataContract]
+    public class CartItemDTO
+    {
+        [DataMember]
+        public int CartItemId { get; set; }
+
+        [DataMember]
+        public int ProductId { get; set; }
+
+        [DataMember]
+        public string ProductName { get; set; }
+
+        [DataMember]
+        public decimal Price { get; set; }
+
+        [DataMember]
+        public decimal Quantity { get; set; }
+
+        [DataMember]
+        public decimal LineTotal { get; set; }
+
+        [DataMember]
+        public string ImageUrl { get; set; }
     }
+
+
+}
 
 
     

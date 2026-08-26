@@ -100,5 +100,62 @@ namespace Agri_Market
                     ex.GetBaseException().Message;
             }
         }
+
+        protected void btnFilter_Click(object sender, EventArgs e)
+        {
+            DateTime startDate;
+            DateTime endDate;
+
+            if (!DateTime.TryParse(txtStartDate.Text, out startDate) ||
+                !DateTime.TryParse(txtEndDate.Text, out endDate))
+            {
+                lblMessage.Text =
+                    "Please select both a start date and an end date.";
+                return;
+            }
+
+            if (startDate > endDate)
+            {
+                lblMessage.Text =
+                    "The start date cannot be after the end date.";
+                return;
+            }
+
+            ServiceReference1.Service1Client client =
+                new ServiceReference1.Service1Client();
+
+            try
+            {
+                var report =
+                    client.getReportSummaryByDate(startDate, endDate);
+
+                lblTotalRevenue.Text =
+                    "R " + report.TotalRevenue.ToString("F2");
+
+                lblTotalOrders.Text =
+                    report.TotalOrders.ToString();
+
+                lblTotalCustomers.Text =
+                    report.TotalCustomers.ToString();
+
+                lblTotalFarmers.Text =
+                    report.TotalFarmers.ToString();
+
+                lblDifferentProducts.Text =
+                    report.DifferentProductsSold.ToString();
+
+                lblMessage.Text =
+                    "Report filtered successfully.";
+
+                client.Close();
+            }
+            catch (Exception ex)
+            {
+                client.Abort();
+
+                lblMessage.Text =
+                    ex.GetBaseException().Message;
+            }
+        }
     }
 }
