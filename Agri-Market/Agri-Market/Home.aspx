@@ -53,14 +53,8 @@
                 <h1 class="text-primary mb-0">Product catalogue</h1>
                 <a href="AllProductsPage.aspx" class="btn border border-secondary rounded-pill px-4 text-primary">View all products</a>
             </div>
-            <div class="row g-4">
-                <div class="product-catalog" id="productCatalog" runat="server">
-                 <script>
-                     console.log("Product Catalogue");
-                 </script>
-                </div>
-
-            </div>
+            <div id="productCatalog" runat="server" class="row g-4">
+             </div>
 
 
         </div>

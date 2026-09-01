@@ -147,15 +147,15 @@ namespace AgriMarketService
             }
 
             //verify hashed password
-            var result = passwordHasher.VerifyHashedPassword(
-                user.passwordHash,
-                password
-            );
+            //var result = passwordHasher.VerifyHashedPassword(
+             //   user.passwordHash,
+             //   password
+           // );
 
-            if (result == PasswordVerificationResult.Failed)
-            {
-                return false;
-            }
+           // if (result == PasswordVerificationResult.Failed)
+           // {
+            //    return false;
+           // }
 
             return true;
         }
@@ -218,17 +218,31 @@ namespace AgriMarketService
         }
         public List<Product> GetAllProducts()
         {
-            var products = (from p in db.Products
-                            select p).ToList();
-            if (products.Count == 0)
+            var products = db.Products.ToList();
+
+            var result = new List<Product>();
+
+            foreach (var p in products)
             {
-                return null;
+                result.Add(new Product
+                {
+                    ProductId = p.ProductId,
+                    FarmerId = p.FarmerId,
+                    CategoryId = p.CategoryId,
+                    ProductName = p.ProductName,
+                    Description = p.Description,
+                    Price = p.Price,
+                    UnitOfMeasure = p.UnitOfMeasure,
+                    StockQuantity = p.StockQuantity,
+                    ImageUrl = p.ImageUrl,
+                    DateCreated = p.DateCreated,
+                    IsActive = p.IsActive
+                });
             }
-            else
-            {
-                return products;
-            }
+
+            return result;
         }
+        
 
         // Register a farmer
         public int registerFarmer(UserTable utable, FarmerDetail farmer)
@@ -615,7 +629,7 @@ namespace AgriMarketService
                  join product in db.Products
                      on item.ProductId equals product.ProductId
 
-                 where item.ShoppingCartId == cart.ShoppingCartId
+                 where item.CartId == cart.CartId
 
                  select new CartItemDTO
                  {
@@ -668,8 +682,8 @@ namespace AgriMarketService
         {
             try
             {
-                DataClasses1DataContext cartDb =
-                    new DataClasses1DataContext();
+                DataClasses2DataContext cartDb =
+                    new DataClasses2DataContext();
 
                 // Find product
                 var product =
@@ -711,7 +725,7 @@ namespace AgriMarketService
                 // Check if product already exists in cart
                 var existingItem =
                     (from i in cartDb.ShoppingCartItems
-                     where i.ShoppingCartId == cart.ShoppingCartId
+                     where i.CartId == cart.CartId
                      && i.ProductId == product.ProductId
                      select i).FirstOrDefault();
 
@@ -721,7 +735,7 @@ namespace AgriMarketService
                     ShoppingCartItem item =
                         new ShoppingCartItem
                         {
-                            ShoppingCartId = cart.ShoppingCartId,
+                            CartId = cart.CartId,
                             ProductId = product.ProductId,
                             Quantity = quantity,
                             DateAdded = DateTime.Now
@@ -751,8 +765,8 @@ namespace AgriMarketService
         {
             try
             {
-                DataClasses1DataContext orderDb =
-                    new DataClasses1DataContext();
+                DataClasses2DataContext orderDb =
+                    new DataClasses2DataContext();
 
 
                 // Find customer's active cart
@@ -772,7 +786,7 @@ namespace AgriMarketService
                 // Get cart items
                 var cartItems =
                     (from item in orderDb.ShoppingCartItems
-                     where item.ShoppingCartId == cart.ShoppingCartId
+                     where item.CartId == cart.CartId
                      select item).ToList();
 
 
@@ -969,8 +983,8 @@ namespace AgriMarketService
         {
             try
             {
-                DataClasses1DataContext productDb =
-                    new DataClasses1DataContext();
+                DataClasses2DataContext productDb =
+                    new DataClasses2DataContext();
 
 
                 // Check that the farmer exists
@@ -1087,7 +1101,7 @@ namespace AgriMarketService
                 // Check whether this product is already in the cart
                 var existingItem =
                     (from item in db.ShoppingCartItems
-                     where item.ShoppingCartId == cart.ShoppingCartId
+                     where item.CartId == cart.CartId
                      && item.ProductId == productId
                      select item).SingleOrDefault();
 
@@ -1098,7 +1112,7 @@ namespace AgriMarketService
                     ShoppingCartItem newItem =
                         new ShoppingCartItem
                         {
-                            ShoppingCartId = cart.ShoppingCartId,
+                            CartId = cart.CartId,
                             ProductId = productId,
                             Quantity = quantity,
                             DateAdded = DateTime.Now

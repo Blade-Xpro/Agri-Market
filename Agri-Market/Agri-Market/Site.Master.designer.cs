@@ -22,13 +22,13 @@ public partial class SiteMaster
     protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
 
     /// <summary>
-    /// searchBar control.
+    /// form1 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl searchBar;
+    protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
     /// <summary>
     /// MainContent control.
@@ -38,4 +38,22 @@ public partial class SiteMaster
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+
+    /// <summary>
+    /// searchBar control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText searchBar;
+
+    /// <summary>
+    /// btnSearch control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnSearch;
 }

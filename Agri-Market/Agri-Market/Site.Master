@@ -44,108 +44,11 @@
     <link href="css/bootstrap.min.css"
         rel="stylesheet" />
 
-    <!-- Template CSS -->
+    <!-- Existing stylesheet -->
     <link href="css/style.css"
         rel="stylesheet" />
 
-
-    <style>
-
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #eef5e9;
-        }
-
-        /* Navbar */
-        .agri-navbar {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-        }
-
-        .agri-brand {
-            color: #5fa800 !important;
-            font-weight: 700;
-            font-size: 30px;
-            text-decoration: none;
-        }
-
-        .agri-brand:hover {
-            color: #4c8b00 !important;
-        }
-
-        .navbar-nav .nav-link {
-            color: #555 !important;
-            font-weight: 500;
-            margin: 0 6px;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #5fa800 !important;
-        }
-
-        .navbar-icon {
-            color: #5fa800;
-        }
-
-        .navbar-icon:hover {
-            color: #4c8b00;
-        }
-
-
-        /* Prevent navbar from covering page content */
-        .main-content-wrapper {
-            padding-top: 100px;
-        }
-
-
-        /* Search modal */
-        .search-heading {
-            color: #5fa800;
-            font-weight: 600;
-        }
-
-
-        /* Footer */
-        .agri-footer {
-            background-color: #26351f;
-            color: #cdd6c8;
-            margin-top: 60px;
-        }
-
-        .footer-brand {
-            color: #8ccf34;
-            font-weight: 700;
-            font-size: 30px;
-        }
-
-        .agri-footer h4 {
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .agri-footer p {
-            line-height: 1.7;
-        }
-
-        .agri-footer a {
-            color: #cdd6c8;
-            text-decoration: none;
-            margin-bottom: 9px;
-        }
-
-        .agri-footer a:hover {
-            color: #8ccf34;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.15);
-            padding: 20px 0;
-            color: #bbb;
-        }
-
-    </style>
-
-
+    <!-- Child page head content -->
     <asp:ContentPlaceHolder
         ID="HeadContent"
         runat="server" />
@@ -154,64 +57,604 @@
 
 
 <body>
-    <form runat="server">
-        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center"><div class="spinner-grow text-primary" role="status"></div></div>
 
-        <!-- Shared header -->
-        <div class="container-fluid fixed-top">
-            <div class="container topbar bg-primary d-none d-lg-block"><div class="d-flex justify-content-between"><div class="top-info ps-2"><small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i><a href="#" class="text-white">123 Street, New York</a></small><small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small></div><div class="top-link pe-2"><a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a><a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a><a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a></div></div></div>
-            <div class="container px-0"><nav class="navbar navbar-light bg-white navbar-expand-xl"><a runat="server" href="~/Home.aspx" class="navbar-brand"><h1 class="text-primary display-6">Agri Market</h1></a><button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="fa fa-bars text-primary"></span></button><div class="collapse navbar-collapse bg-white" id="navbarCollapse"><div class="navbar-nav mx-auto"><a runat="server" href="~/Home.aspx" class="nav-item nav-link active">Home</a><a href="shop.html" class="nav-item nav-link">Shop</a><a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a><div class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a><div class="dropdown-menu m-0 bg-secondary rounded-0"><a href="cart.html" class="dropdown-item">Cart</a><a href="chackout.html" class="dropdown-item">Checkout</a><a href="testimonial.html" class="dropdown-item">Testimonial</a><a href="404.html" class="dropdown-item">404 Page</a></div></div><a href="contact.html" class="nav-item nav-link">Contact</a></div><div class="d-flex m-3 me-0"><button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" type="button" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button><a href="#" class="position-relative me-4 my-auto"><i class="fa fa-shopping-bag fa-2x"></i><span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span></a><a href="#" class="my-auto"><i class="fas fa-user fa-2x"></i></a></div></div></nav></div>
+    <form id="form1" runat="server">
+
+
+        <!-- =========================
+             LOADING SPINNER
+             ========================= -->
+
+        <div id="spinner"
+            class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
+
+            <div class="spinner-grow text-primary"
+                role="status">
+            </div>
+
         </div>
 
 
-    </footer>
+        <!-- =========================
+             HEADER
+             ========================= -->
+
+        <div class="container-fluid fixed-top">
+
+            <!-- Top information bar -->
+
+            <div class="container topbar bg-primary d-none d-lg-block">
+
+                <div class="d-flex justify-content-between">
+
+                    <div class="top-info ps-2">
+
+                        <small class="me-3">
+
+                            <i class="fas fa-map-marker-alt me-2 text-secondary"></i>
+
+                            <a href="#"
+                                class="text-white">
+
+                                123 Street, New York
+
+                            </a>
+
+                        </small>
 
 
+                        <small class="me-3">
 
-    <!-- Back to top -->
+                            <i class="fas fa-envelope me-2 text-secondary"></i>
 
-    <a href="#"
-        class="btn btn-primary border-3 border-primary
-               rounded-circle back-to-top">
+                            <a href="#"
+                                class="text-white">
 
-        <i class="fa fa-arrow-up"></i>
+                                Email@Example.com
 
-    </a>
+                            </a>
 
-    <a runat="server"
-    href="~/About.aspx">
+                        </small>
 
-    About Agri Market
-
-</a>
+                    </div>
 
 
-</form>
+                    <div class="top-link pe-2">
+
+                        <a href="#"
+                            class="text-white">
+
+                            <small class="text-white mx-2">
+                                Privacy Policy
+                            </small>
+
+                            /
+
+                        </a>
 
 
+                        <a href="#"
+                            class="text-white">
 
-<!-- JavaScript Libraries -->
+                            <small class="text-white mx-2">
+                                Terms of Use
+                            </small>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
-</script>
+                            /
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js">
-</script>
+                        </a>
 
-<script src="lib/easing/easing.min.js">
-</script>
 
-<script src="lib/waypoints/waypoints.min.js">
-</script>
+                        <a href="#"
+                            class="text-white">
 
-<script src="lib/lightbox/js/lightbox.min.js">
-</script>
+                            <small class="text-white ms-2">
+                                Sales and Refunds
+                            </small>
 
-<script src="lib/owlcarousel/owl.carousel.min.js">
-</script>
+                        </a>
 
-<script src="js/main.js">
-</script>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Main navigation -->
+
+            <div class="container px-0">
+
+                <nav class="navbar navbar-light bg-white navbar-expand-xl">
+
+
+                    <!-- Logo -->
+
+                    <a runat="server"
+                        href="~/Home.aspx"
+                        class="navbar-brand">
+
+                        <h1 class="text-primary display-6">
+                            Agri Market
+                        </h1>
+
+                    </a>
+
+
+                    <!-- Mobile menu button -->
+
+                    <button class="navbar-toggler py-2 px-3"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse"
+                        aria-controls="navbarCollapse"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+
+                        <span class="fa fa-bars text-primary"></span>
+
+                    </button>
+
+
+                    <!-- Navigation menu -->
+
+                    <div class="collapse navbar-collapse bg-white"
+                        id="navbarCollapse">
+
+
+                        <div class="navbar-nav mx-auto">
+
+
+                            <!-- Home -->
+
+                            <a runat="server"
+                                href="~/Home.aspx"
+                                class="nav-item nav-link active">
+
+                                Home
+
+                            </a>
+
+
+                            <!-- Shop -->
+
+                            <a runat="server"
+                                href="~/Shop.aspx"
+                                class="nav-item nav-link">
+
+                                Shop
+
+                            </a>
+
+
+                            <!-- Shop Detail -->
+
+                            <a runat="server"
+                                href="~/ShopDetail.aspx"
+                                class="nav-item nav-link">
+
+                                Shop Detail
+
+                            </a>
+
+
+                            <!-- Pages dropdown -->
+
+                            <div class="nav-item dropdown">
+
+                                <a href="#"
+                                    class="nav-link dropdown-toggle"
+                                    data-bs-toggle="dropdown">
+
+                                    Pages
+
+                                </a>
+
+
+                                <div class="dropdown-menu m-0 bg-secondary rounded-0">
+
+                                    <a runat="server"
+                                        href="~/Cart.aspx"
+                                        class="dropdown-item">
+
+                                        Cart
+
+                                    </a>
+
+
+                                    <a runat="server"
+                                        href="~/Checkout.aspx"
+                                        class="dropdown-item">
+
+                                        Checkout
+
+                                    </a>
+
+
+                                    <a runat="server"
+                                        href="~/Testimonial.aspx"
+                                        class="dropdown-item">
+
+                                        Testimonial
+
+                                    </a>
+
+
+                                    <a runat="server"
+                                        href="~/Error.aspx"
+                                        class="dropdown-item">
+
+                                        404 Page
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Contact -->
+
+                            <a runat="server"
+                                href="~/Contact.aspx"
+                                class="nav-item nav-link">
+
+                                Contact
+
+                            </a>
+
+
+                            <!-- About -->
+
+                            <a runat="server"
+                                href="~/About.aspx"
+                                class="nav-item nav-link">
+
+                                About
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- Right side controls -->
+
+                        <div class="d-flex m-3 me-0">
+
+
+                            <!-- Search -->
+
+                            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#searchModal">
+
+                                <i class="fas fa-search text-primary"></i>
+
+                            </button>
+
+
+                            <!-- Shopping cart -->
+
+                            <a runat="server"
+                                href="~/Cart.aspx"
+                                class="position-relative me-4 my-auto">
+
+                                <i class="fa fa-shopping-bag fa-2x"></i>
+
+
+                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                                    style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
+
+                                    3
+
+                                </span>
+
+                            </a>
+
+
+                            <!-- User -->
+
+                            <a runat="server"
+                                href="~/Login.aspx"
+                                class="my-auto">
+
+                                <i class="fas fa-user fa-2x"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </nav>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MAIN CONTENT
+             ========================= -->
+
+        <main class="main-content-wrapper">
+
+            <asp:ContentPlaceHolder
+                ID="MainContent"
+                runat="server" />
+
+        </main>
+
+
+        <!-- =========================
+             FOOTER
+             ========================= -->
+
+        <footer class="agri-footer">
+
+            <div class="container py-5">
+
+                <div class="row g-5">
+
+
+                    <!-- About -->
+
+                    <div class="col-lg-4 col-md-6">
+
+                        <h4 class="footer-brand">
+                            Agri Market
+                        </h4>
+
+                        <p>
+
+                            Fresh agricultural products
+                            brought directly to our customers.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- Quick Links -->
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <h4>
+                            Quick Links
+                        </h4>
+
+
+                        <a runat="server"
+                            href="~/Home.aspx"
+                            class="d-block">
+
+                            Home
+
+                        </a>
+
+
+                        <a runat="server"
+                            href="~/Shop.aspx"
+                            class="d-block">
+
+                            Shop
+
+                        </a>
+
+
+                        <a runat="server"
+                            href="~/About.aspx"
+                            class="d-block">
+
+                            About
+
+                        </a>
+
+
+                        <a runat="server"
+                            href="~/Contact.aspx"
+                            class="d-block">
+
+                            Contact
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- Customer Account -->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <h4>
+                            Customer Account
+                        </h4>
+
+
+                        <a runat="server"
+                            href="~/Login.aspx"
+                            class="d-block">
+
+                            Login
+
+                        </a>
+
+
+                        <a runat="server"
+                            href="~/Register.aspx"
+                            class="d-block">
+
+                            Register
+
+                        </a>
+
+
+                        <a runat="server"
+                            href="~/Cart.aspx"
+                            class="d-block">
+
+                            Shopping Cart
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- Contact -->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <h4>
+                            Contact Us
+                        </h4>
+
+
+                        <p>
+
+                            <i class="fas fa-map-marker-alt me-2"></i>
+
+                            123 Street, New York
+
+                        </p>
+
+
+                        <p>
+
+                            <i class="fas fa-envelope me-2"></i>
+
+                            Email@Example.com
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Footer bottom -->
+
+            <div class="footer-bottom">
+
+                <div class="container">
+
+                    <div class="text-center">
+
+                        &copy; 2026 Agri Market.
+                        All Rights Reserved.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+
+        <!-- =========================
+             BACK TO TOP
+             ========================= -->
+
+        <a href="#"
+            class="btn btn-primary border-3 border-primary rounded-circle back-to-top">
+
+            <i class="fa fa-arrow-up"></i>
+
+        </a>
+
+
+        <!-- =========================
+             SEARCH MODAL
+             ========================= -->
+
+       <!-- =========================
+     SEARCH MODAL
+     ========================= -->
+
+<div class="modal fade"
+     id="searchModal"
+     tabindex="-1"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-fullscreen">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Search Products
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close">
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <div class="input-group w-75 mx-auto">
+
+                    <!-- Search input -->
+                    <input id="searchBar"
+                           runat="server"
+                           type="text"
+                           class="form-control p-3"
+                           placeholder="Search for products..." />
+
+
+                    <!-- Search button -->
+                    <asp:Button ID="btnSearch"
+                                runat="server"
+                                Text="Search"
+                                CssClass="btn btn-primary px-4"
+                                OnClick="btnSearch_Click" />
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    </form>
+
+
+    <!-- =========================
+         JAVASCRIPT LIBRARIES
+         ========================= -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script src="lib/easing/easing.min.js">
+    </script>
+
+    <script src="lib/waypoints/waypoints.min.js">
+    </script>
+
+    <script src="lib/lightbox/js/lightbox.min.js">
+    </script>
+
+    <script src="lib/owlcarousel/owl.carousel.min.js">
+    </script>
+
+    <script src="js/main.js">
+    </script>
 
 
 </body>
