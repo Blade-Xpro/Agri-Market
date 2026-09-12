@@ -11,7 +11,25 @@
     runat="server">
 
     <style>
+    .category-filter {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
 
+.category-btn {
+    background-color: white;
+    color: #4f8f00;
+    border: 1px solid #4f8f00;
+    border-radius: 8px;
+    padding: 10px 22px;
+    cursor: pointer;
+}
+
+.category-btn:hover {
+    background-color: #4f8f00;
+    color: white;
+}
         .all-products-container {
             width: 88%;
             max-width: 1200px;
@@ -43,7 +61,71 @@
             color: #5fa800;
         }
 
+      .products-section {
+    background: #f7f8f3;
+    padding: 50px 0;
+}
 
+.product-card {
+    background: white;
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.product-body {
+    padding: 22px;
+}
+
+.product-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #263238;
+    margin-bottom: 8px;
+}
+
+.product-description {
+    color: #6c757d;
+    min-height: 50px;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #4f8f00;
+    margin: 15px 0 5px;
+}
+
+.product-stock {
+    font-size: 14px;
+    color: #777;
+}
+
+.cart-button {
+    background: #4f8f00;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    margin-top: 12px;
+}
+
+.cart-button:hover {
+    background: #3d7000;
+}
         /* Categories */
 
         .category-tabs {
@@ -192,50 +274,33 @@
 
         <!-- Categories -->
 
-        <ul class="nav nav-pills category-tabs justify-content-center"
-            id="productTabs">
+        <div class="category-filter mb-4">
 
+   <asp:Button
+    ID="btnAll"
+    runat="server"
+    Text="All Products"
+    CommandArgument="0"
+    OnCommand="Category_Command"
+    CssClass="category-btn" />
 
-            <li class="nav-item">
+<asp:Button
+    ID="btnFruits"
+    runat="server"
+    Text="Fruits"
+    CommandArgument="1"
+    OnCommand="Category_Command"
+    CssClass="category-btn" />
 
-                <a class="nav-link active"
-                    data-bs-toggle="pill"
-                    href="#all-products">
+<asp:Button
+    ID="btnVegetables"
+    runat="server"
+    Text="Vegetables"
+    CommandArgument="2"
+    OnCommand="Category_Command"
+    CssClass="category-btn" />
 
-                    All Products
-
-                </a>
-
-            </li>
-
-
-            <li class="nav-item">
-
-                <a class="nav-link"
-                    data-bs-toggle="pill"
-                    href="#fruits">
-
-                    Fruits
-
-                </a>
-
-            </li>
-
-
-            <li class="nav-item">
-
-                <a class="nav-link"
-                    data-bs-toggle="pill"
-                    href="#vegetables">
-
-                    Vegetables
-
-                </a>
-
-            </li>
-
-
-        </ul>
+</div>
 
 
 
@@ -249,709 +314,81 @@
 
 
 
-        <div class="tab-content">
+       <div class="row g-4">
 
+           <div class="mb-4 d-flex justify-content-end align-items-center">
 
-            <!-- ===================================== -->
-            <!-- ALL PRODUCTS -->
-            <!-- ===================================== -->
+    <span class="me-2">Sort by:</span>
 
-            <div id="all-products"
-                class="tab-pane fade show active">
+   <asp:DropDownList
+    ID="ddlSort"
+    runat="server"
+    AutoPostBack="true"
+    OnSelectedIndexChanged="ddlSort_SelectedIndexChanged">
 
+    <asp:ListItem Text="Name: A - Z" Value="nameAsc" />
+    <asp:ListItem Text="Price: Low to High" Value="priceAsc" />
 
-                <div class="row g-4">
+</asp:DropDownList>
 
+</div>
+    <asp:Repeater
+        ID="rptProducts"
+        runat="server">
 
-                    <!-- Grapes -->
+        <ItemTemplate>
 
-                    <div class="col-md-6 col-lg-4 col-xl-3">
+           <div class="col-md-6 col-lg-4 col-xl-3 mb-4">
 
-                        <div class="product-card">
+    <div class="product-card">
 
-                            <img src="img/fruite-item-5.jpg"
-                                class="product-image"
-                                alt="Grapes" />
+        <a href='<%# "ProductDetails.aspx?productId=" + Eval("ProductId") %>'>
+            <img
+                src='<%# Eval("ImageUrl") %>'
+                class="product-image"
+                alt='<%# Eval("ProductName") %>' />
+        </a>
 
-                            <div class="product-body">
+        <div class="product-body">
 
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
+            <h4 class="product-name">
+                <a href='<%# "ProductDetails.aspx?productId=" + Eval("ProductId") %>'
+                   style="text-decoration:none; color:inherit;">
+                    <%# Eval("ProductName") %>
+                </a>
+            </h4>
 
-                                <h4>Grapes</h4>
+            <p class="product-description">
+                <%# Eval("Description") %>
+            </p>
 
-                                <div class="product-price">R 35.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnGrapesCartAll"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Grapes"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Oranges -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/fruite-item-1.jpg"
-                                class="product-image"
-                                alt="Oranges" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
-
-                                <h4>Oranges</h4>
-
-                                <div class="product-price">R 22.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnOrangesCartAll"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Oranges"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Raspberries -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/fruite-item-2.jpg"
-                                class="product-image"
-                                alt="Raspberries" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
-
-                                <h4>Raspberries</h4>
-
-                                <div class="product-price">R 40.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnRaspberriesCartAll"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Raspberries"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Bananas -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/fruite-item-3.jpg"
-                                class="product-image"
-                                alt="Bananas" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
-
-                                <h4>Bananas</h4>
-
-                                <div class="product-price">R 20.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnBananasCartAll"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Bananas"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Apricots -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/fruite-item-4.jpg"
-                                class="product-image"
-                                alt="Apricots" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
-
-                                <h4>Apricots</h4>
-
-                                <div class="product-price">R 30.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnApricotsCartAll"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Apricots"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Apples -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/fruite-item-6.jpg"
-                                class="product-image"
-                                alt="Apples" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
-
-                                <h4>Apples</h4>
-
-                                <div class="product-price">R 25.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnApplesCartAll"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Apples"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Bell Peppers -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/vegetable-item-1.jpg"
-                                class="product-image"
-                                alt="Bell Peppers" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Vegetable
-                                </span>
-
-                                <h4>Bell Peppers</h4>
-
-                                <div class="product-price">R 28.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnPeppersCartAll"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Bell Peppers"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Potatoes -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/vegetable-item-5.jpg"
-                                class="product-image"
-                                alt="Potatoes" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Vegetable
-                                </span>
-
-                                <h4>Potatoes</h4>
-
-                                <div class="product-price">R 18.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnPotatoesCartAll"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Potatoes"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Parsley -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/vegetable-item-6.jpg"
-                                class="product-image"
-                                alt="Parsley" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Vegetable
-                                </span>
-
-                                <h4>Parsley</h4>
-
-                                <div class="product-price">R 12.00 / bunch</div>
-
-                                <asp:Button
-                                    ID="btnParsleyCartAll"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Parsley"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
+            <div class="product-price">
+                R <%# Eval("Price", "{0:0.00}") %>
+                / <%# Eval("UnitOfMeasure") %>
             </div>
 
-
-
-            <!-- ===================================== -->
-            <!-- FRUITS -->
-            <!-- ===================================== -->
-
-            <div id="fruits"
-                class="tab-pane fade">
-
-
-                <div class="row g-4">
-
-
-                    <!-- Grapes -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/fruite-item-5.jpg"
-                                class="product-image"
-                                alt="Grapes" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
-
-                                <h4>Grapes</h4>
-
-                                <div class="product-price">R 35.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnGrapesCartFruit"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Grapes"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Oranges -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/fruite-item-1.jpg"
-                                class="product-image"
-                                alt="Oranges" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
-
-                                <h4>Oranges</h4>
-
-                                <div class="product-price">R 22.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnOrangesCartFruit"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Oranges"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Raspberries -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/fruite-item-2.jpg"
-                                class="product-image"
-                                alt="Raspberries" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
-
-                                <h4>Raspberries</h4>
-
-                                <div class="product-price">R 40.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnRaspberriesCartFruit"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Raspberries"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Bananas -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/fruite-item-3.jpg"
-                                class="product-image"
-                                alt="Bananas" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
-
-                                <h4>Bananas</h4>
-
-                                <div class="product-price">R 20.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnBananasCartFruit"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Bananas"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Apricots -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/fruite-item-4.jpg"
-                                class="product-image"
-                                alt="Apricots" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
-
-                                <h4>Apricots</h4>
-
-                                <div class="product-price">R 30.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnApricotsCartFruit"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Apricots"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Apples -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/fruite-item-6.jpg"
-                                class="product-image"
-                                alt="Apples" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Fruit
-                                </span>
-
-                                <h4>Apples</h4>
-
-                                <div class="product-price">R 25.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnApplesCartFruit"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Apples"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
+            <div class="product-stock">
+                <%# Eval("StockQuantity") %> available
             </div>
 
-
-
-            <!-- ===================================== -->
-            <!-- VEGETABLES -->
-            <!-- ===================================== -->
-
-            <div id="vegetables"
-                class="tab-pane fade">
-
-
-                <div class="row g-4">
-
-
-                    <!-- Bell Peppers -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/vegetable-item-1.jpg"
-                                class="product-image"
-                                alt="Bell Peppers" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Vegetable
-                                </span>
-
-                                <h4>Bell Peppers</h4>
-
-                                <div class="product-price">R 28.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnPeppersCartVegetable"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Bell Peppers"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Potatoes -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/vegetable-item-5.jpg"
-                                class="product-image"
-                                alt="Potatoes" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Vegetable
-                                </span>
-
-                                <h4>Potatoes</h4>
-
-                                <div class="product-price">R 18.00 / kg</div>
-
-                                <asp:Button
-                                    ID="btnPotatoesCartVegetable"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Potatoes"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Parsley -->
-
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-
-                        <div class="product-card">
-
-                            <img src="img/vegetable-item-6.jpg"
-                                class="product-image"
-                                alt="Parsley" />
-
-                            <div class="product-body">
-
-                                <span class="category-badge">
-                                    Vegetable
-                                </span>
-
-                                <h4>Parsley</h4>
-
-                                <div class="product-price">R 12.00 / bunch</div>
-
-                                <asp:Button
-                                    ID="btnParsleyCartVegetable"
-                                    runat="server"
-                                    Text="Add to Cart"
-                                    CssClass="cart-button"
-                                    CommandArgument="Parsley"
-                                    OnCommand="AddToCart_Command" />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
+            <asp:Button
+                ID="btnAddToCart"
+                runat="server"
+                Text="Add to Cart"
+                CssClass="cart-button"
+                CommandArgument='<%# Eval("ProductId") %>'
+                OnCommand="AddToCart_Command" />
 
         </div>
 
-
     </div>
 
+</div>
+        </ItemTemplate>
+
+    </asp:Repeater>
+
+</div>
 
 
     <!-- SEARCH FILTER -->

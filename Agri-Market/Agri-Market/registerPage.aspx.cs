@@ -14,8 +14,11 @@ namespace Agri_Market
 
         }
 
-        //  Customer or Admin is selected for registration
-        // This runs when Customer or Admin is selected.
+        ServiceReference1.Service1Client client =
+                new ServiceReference1.Service1Client();
+
+        
+        // This runs when Customer or Admin is selected for registration
         protected void roleSelection_SelectedIndexChanged(
     object sender,
     EventArgs e)
@@ -36,7 +39,7 @@ namespace Agri_Market
         {
             lblMessage.Text = "";
 
-            // Check whether the normal fields are empty.
+            // Check whether the textboxes are empty
             if (myemail.Text == "" ||
                 myname.Text == "" ||
                 mysurname.Text == "" ||
@@ -79,14 +82,15 @@ namespace Agri_Market
                 return;
             }
 
+            string hashedPassword =
+    SecrecyHash.hashFunction(mypassword.Text);
 
-            // Create a connection to the WCF service.
-            ServiceReference1.Service1Client client =
-                new ServiceReference1.Service1Client();
+            
+            
 
             try
             {
-                // Create the user object sent to the service.
+                // Create the user object for a new user
                 ServiceReference1.UserTable addUser =
                     new ServiceReference1.UserTable
                     {
@@ -95,14 +99,14 @@ namespace Agri_Market
                         Surname = mysurname.Text,
                         phoneNumber = myphonenum.Text,
 
-                        // The service hashes this password before saving it.
-                        passwordHash = mypassword.Text
+
+                        passwordHash = hashedPassword
                     };
 
 
                 int result;
 
-                // Call the correct service method.
+                //call the method related to the type of user
                 if (roleSelection.SelectedValue == "Admin")
                 {
                     result = client.registerAdmin(
@@ -134,7 +138,7 @@ namespace Agri_Market
                 client.Close();
 
 
-                // Check the value returned by the service.
+                // Check the return value for registration
                 if (result == 0)
                 {
                     lblMessage.CssClass =

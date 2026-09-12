@@ -135,27 +135,17 @@ namespace AgriMarketService
 
         //temp login for user
 
-        public bool loginUser(string email, string password)
+        public bool loginUser(string email, string hashedPassword)
         {
             var user = (from u in db.UserTables
                         where u.email == email
+                        && u.passwordHash == hashedPassword
                         select u).SingleOrDefault();
 
             if (user == null)
             {
                 return false;
             }
-
-            //verify hashed password
-            //var result = passwordHasher.VerifyHashedPassword(
-             //   user.passwordHash,
-             //   password
-           // );
-
-           // if (result == PasswordVerificationResult.Failed)
-           // {
-            //    return false;
-           // }
 
             return true;
         }
@@ -204,17 +194,29 @@ namespace AgriMarketService
         }
         public Product GetProductById(int productId)
         {
-            var product = (from p in db.Products
-                           where p.ProductId == productId
-                           select p).SingleOrDefault();
-            if (product != null)
-            {
-                return product;
-            }
-            else
+            var p = (from product in db.Products
+                     where product.ProductId == productId
+                     select product).SingleOrDefault();
+
+            if (p == null)
             {
                 return null;
             }
+
+            return new Product
+            {
+                ProductId = p.ProductId,
+                FarmerId = p.FarmerId,
+                CategoryId = p.CategoryId,
+                ProductName = p.ProductName,
+                Description = p.Description,
+                Price = p.Price,
+                UnitOfMeasure = p.UnitOfMeasure,
+                StockQuantity = p.StockQuantity,
+                ImageUrl = p.ImageUrl,
+                DateCreated = p.DateCreated,
+                IsActive = p.IsActive
+            };
         }
         public List<Product> GetAllProducts()
         {

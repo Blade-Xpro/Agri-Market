@@ -77,11 +77,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agri_Market.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Agri_Market.dbml</DependentUpon>
-    </Compile>
     <Compile Include="DataClasses2.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -97,14 +92,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Agri_Market.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Agri_Market.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="Agri_Market.dbml.layout">
-      <DependentUpon>Agri_Market.dbml</DependentUpon>
-    </None>
     <Content Include="DataClasses2.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses2.designer.cs</LastGenOutput>

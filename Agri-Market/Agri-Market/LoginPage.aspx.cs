@@ -29,11 +29,12 @@ namespace Agri_Market
             ServiceReference1.Service1Client client =
                 new ServiceReference1.Service1Client();
 
+            string hashedPassword =
+    SecrecyHash.hashFunction(mypassword.Text);
             bool result = client.loginUser(
-                myemail.Text,
-                mypassword.Text
-            );
-
+    myemail.Text,
+    hashedPassword
+);
             if (result == true)
             {
                 // Get the logged-in user's details once

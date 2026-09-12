@@ -11,13 +11,91 @@ namespace Agri_Market
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                LoadProducts();
+            }
         }
 
+        private void LoadProducts()
+        {
+            ServiceReference1.Service1Client client =
+                new ServiceReference1.Service1Client();
 
-        protected void AddToCart_Command(
+            try
+            {
+                var products = client.GetAllProducts();
+
+               
+                var filteredProducts =
+                    products.Where(p => p.IsActive == true);
+
+               //sorting by category
+                int categoryId = 0;
+
+                if (ViewState["CategoryId"] != null)
+                {
+                    categoryId =
+                        Convert.ToInt32(ViewState["CategoryId"]);
+                }
+
+                if (categoryId != 0)
+                {
+                    filteredProducts =
+                        filteredProducts.Where(
+                            p => p.CategoryId == categoryId);
+                }
+
+             //sorting
+                if (ddlSort.SelectedValue == "nameAsc")
+                {
+                    filteredProducts =
+                        filteredProducts.OrderBy(
+                            p => p.ProductName);
+                }
+                else if (ddlSort.SelectedValue == "priceAsc")
+                {
+                    filteredProducts =
+                        filteredProducts.OrderBy(
+                            p => p.Price);
+                }
+
+                
+                rptProducts.DataSource =
+                    filteredProducts.ToList();
+
+                rptProducts.DataBind();
+
+                client.Close();
+            }
+            catch (Exception ex)
+            {
+                client.Abort();
+
+                lblProductMessage.Text =
+                    ex.GetBaseException().Message;
+            }
+        }
+
+        protected void ddlSort_SelectedIndexChanged(
     object sender,
-    CommandEventArgs e)
+    EventArgs e)
+        {
+            LoadProducts();
+        }
+
+        protected void Category_Command(object sender, CommandEventArgs e)
+        {
+            int categoryId =
+                Convert.ToInt32(e.CommandArgument);
+
+            ViewState["CategoryId"] = categoryId;
+
+            LoadProducts();
+        }
+        protected void AddToCart_Command(
+      object sender,
+      CommandEventArgs e)
         {
             if (Session["UserId"] == null)
             {
@@ -28,8 +106,8 @@ namespace Agri_Market
             int userId =
                 Convert.ToInt32(Session["UserId"]);
 
-            string productName =
-                e.CommandArgument.ToString();
+            int productId =
+                Convert.ToInt32(e.CommandArgument);
 
             ServiceReference1.Service1Client client =
                 new ServiceReference1.Service1Client();
@@ -37,9 +115,9 @@ namespace Agri_Market
             try
             {
                 int result =
-                    client.addToCartByName(
+                    client.addToCart(
                         userId,
-                        productName,
+                        productId,
                         1);
 
                 client.Close();
@@ -47,12 +125,7 @@ namespace Agri_Market
                 if (result == 0)
                 {
                     lblProductMessage.Text =
-                        productName + " added to your cart.";
-                }
-                else if (result == 2)
-                {
-                    lblProductMessage.Text =
-                        "Product could not be found.";
+                        "Product added to your cart.";
                 }
                 else
                 {
