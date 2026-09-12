@@ -10,7 +10,7 @@ namespace Agri_Market
 {
     public partial class SearchResultsPage : System.Web.UI.Page
     {
-         Service1Client client = new Service1Client();
+         ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

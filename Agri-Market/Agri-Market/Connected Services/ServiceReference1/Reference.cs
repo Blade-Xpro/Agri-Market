@@ -3015,6 +3015,12 @@ namespace Agri_Market.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addToCart", ReplyAction="http://tempuri.org/IService1/addToCartResponse")]
         System.Threading.Tasks.Task<int> addToCartAsync(int userId, int productId, int quantity);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateCartItemQuantity", ReplyAction="http://tempuri.org/IService1/updateCartItemQuantityResponse")]
+        int updateCartItemQuantity(int cartItemId, int quantity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateCartItemQuantity", ReplyAction="http://tempuri.org/IService1/updateCartItemQuantityResponse")]
+        System.Threading.Tasks.Task<int> updateCartItemQuantityAsync(int cartItemId, int quantity);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SearchProducts", ReplyAction="http://tempuri.org/IService1/SearchProductsResponse")]
         Agri_Market.ServiceReference1.Product[] SearchProducts(string searchTerm);
         
@@ -3134,6 +3140,18 @@ namespace Agri_Market.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFarmerProduct", ReplyAction="http://tempuri.org/IService1/addFarmerProductResponse")]
         System.Threading.Tasks.Task<int> addFarmerProductAsync(int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserInvoices", ReplyAction="http://tempuri.org/IService1/getUserInvoicesResponse")]
+        Agri_Market.ServiceReference1.InvoiceDTO[] getUserInvoices(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserInvoices", ReplyAction="http://tempuri.org/IService1/getUserInvoicesResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.InvoiceDTO[]> getUserInvoicesAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserOrders", ReplyAction="http://tempuri.org/IService1/getUserOrdersResponse")]
+        Agri_Market.ServiceReference1.OrderDTO[] getUserOrders(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserOrders", ReplyAction="http://tempuri.org/IService1/getUserOrdersResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.OrderDTO[]> getUserOrdersAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3249,6 +3267,14 @@ namespace Agri_Market.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> addToCartAsync(int userId, int productId, int quantity) {
             return base.Channel.addToCartAsync(userId, productId, quantity);
+        }
+        
+        public int updateCartItemQuantity(int cartItemId, int quantity) {
+            return base.Channel.updateCartItemQuantity(cartItemId, quantity);
+        }
+        
+        public System.Threading.Tasks.Task<int> updateCartItemQuantityAsync(int cartItemId, int quantity) {
+            return base.Channel.updateCartItemQuantityAsync(cartItemId, quantity);
         }
         
         public Agri_Market.ServiceReference1.Product[] SearchProducts(string searchTerm) {
@@ -3409,6 +3435,22 @@ namespace Agri_Market.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> addFarmerProductAsync(int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl) {
             return base.Channel.addFarmerProductAsync(farmerId, categoryId, productName, description, price, unitOfMeasure, stockQuantity, imageUrl);
+        }
+        
+        public Agri_Market.ServiceReference1.InvoiceDTO[] getUserInvoices(int userId) {
+            return base.Channel.getUserInvoices(userId);
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.InvoiceDTO[]> getUserInvoicesAsync(int userId) {
+            return base.Channel.getUserInvoicesAsync(userId);
+        }
+        
+        public Agri_Market.ServiceReference1.OrderDTO[] getUserOrders(int userId) {
+            return base.Channel.getUserOrders(userId);
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.OrderDTO[]> getUserOrdersAsync(int userId) {
+            return base.Channel.getUserOrdersAsync(userId);
         }
     }
 }

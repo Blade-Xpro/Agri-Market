@@ -828,13 +828,29 @@ namespace AgriMarketService
                 }
 
 
-                // Keep these simple for now
-                decimal tax = 0;
+                // Rule 1: 15% tax
+                decimal tax =
+                    subtotal * 0.15m;
+
+                // Rule 2: 10% discount if subtotal is R300 or more
                 decimal discount = 0;
 
-                decimal total =
-                    subtotal + tax - discount;
+                if (subtotal >= 300)
+                {
+                    discount =
+                        subtotal * 0.10m;
+                }
 
+                // Rule 3: Delivery fee
+                decimal deliveryFee = 0;
+
+                if (deliveryMethod == "Delivery" &&
+                    subtotal < 450)
+                {
+                    deliveryFee = 60;
+                }
+                decimal total =
+     subtotal + tax - discount + deliveryFee;
 
                 // Create order
                 Order newOrder =
@@ -941,37 +957,93 @@ namespace AgriMarketService
         }
         public InvoiceDTO getInvoiceByOrderId(int orderId)
         {
-            var result =
+            var invoice =
                 (from i in db.Invoices
-
                  join o in db.Orders
                      on i.OrderId equals o.OrderId
-
                  where i.OrderId == orderId
+                 select new
+                 {
+                     i.InvoiceId,
+                     i.InvoiceNumber,
+                     i.InvoiceDate,
+                     o.OrderId,
+                     o.TotalAmount
+                 }).FirstOrDefault();
 
+            if (invoice == null)
+            {
+                return null;
+            }
+
+            decimal subtotal =
+    db.OrderItems
+      .Where(oi => oi.OrderId == orderId)
+      .Sum(oi => oi.LineTotal);
+
+            decimal tax =
+                subtotal * 0.15m;
+
+            decimal discount = 0;
+
+            if (subtotal >= 300)
+            {
+                discount =
+                    subtotal * 0.10m;
+            }
+
+            return new InvoiceDTO
+            {
+                InvoiceId = invoice.InvoiceId,
+                OrderId = invoice.OrderId,
+                InvoiceNumber = invoice.InvoiceNumber,
+                InvoiceDate = invoice.InvoiceDate,
+
+                Subtotal = subtotal,
+                TaxAmount = tax,
+                DiscountAmount = discount,
+                TotalAmount = invoice.TotalAmount
+            };
+        }
+
+        public List<InvoiceDTO> getUserInvoices(int userId)
+        {
+            var invoices =
+                (from i in db.Invoices
+                 join o in db.Orders
+                     on i.OrderId equals o.OrderId
+                 where o.UserId == userId
+                 orderby i.InvoiceDate descending
                  select new InvoiceDTO
                  {
                      InvoiceId = i.InvoiceId,
-
                      OrderId = i.OrderId,
-
                      InvoiceNumber = i.InvoiceNumber,
-
                      InvoiceDate = i.InvoiceDate,
-
-                     Subtotal = o.TotalAmount,
-
-                     TaxAmount = 0,
-
-                     DiscountAmount = 0,
-
                      TotalAmount = o.TotalAmount
+                 }).ToList();
 
-                 }).FirstOrDefault();
-
-            return result;
+            return invoices;
         }
 
+        public List<OrderDTO> getUserOrders(int userId)
+        {
+            var orders =
+                (from o in db.Orders
+                 where o.UserId == userId
+                 orderby o.OrderDate descending
+                 select new OrderDTO
+                 {
+                     OrderId = o.OrderId,
+                     UserId = o.UserId,
+                     OrderDate = o.OrderDate,
+                     OrderStatus = o.OrderStatus,
+                     DeliveryMethod = o.DeliveryMethod,
+                     TotalAmount = o.TotalAmount
+                 }).ToList();
+
+            return orders;
+        }
         // temp farmer
         public int addFarmerProduct(
             int farmerId,
@@ -1073,6 +1145,65 @@ namespace AgriMarketService
             catch (Exception)
             {
                 return -1;
+            }
+        }
+
+        public int updateCartItemQuantity(int cartItemId, int quantity)
+        {
+            // Quantity must be at least 1
+            if (quantity <= 0)
+            {
+                return 2;
+            }
+
+            var item =
+                (from i in db.ShoppingCartItems
+                 where i.CartItemId == cartItemId
+                 select i).SingleOrDefault();
+
+            // Cart item not found
+            if (item == null)
+            {
+                return 1;
+            }
+
+            var product =
+                (from p in db.Products
+                 where p.ProductId == item.ProductId
+                 select p).SingleOrDefault();
+
+            if (product == null)
+            {
+                return 1;
+            }
+
+            // Cannot request more than available stock
+            if (quantity > product.StockQuantity)
+            {
+                return 3;
+            }
+
+            item.Quantity = quantity;
+
+            // Update the cart's modified date
+            var cart =
+                (from c in db.ShoppingCarts
+                 where c.CartId == item.CartId
+                 select c).SingleOrDefault();
+
+            if (cart != null)
+            {
+                cart.UpdatedDate = DateTime.Now;
+            }
+
+            try
+            {
+                db.SubmitChanges();
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 4;
             }
         }
         public int addToCart(int userId, int productId, int quantity)

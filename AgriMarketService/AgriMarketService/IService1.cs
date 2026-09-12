@@ -59,6 +59,9 @@ namespace AgriMarketService
         [OperationContract]
         int addToCart(int userId, int productId, int quantity);
 
+        [OperationContract]
+        int updateCartItemQuantity(int cartItemId, int quantity);
+
 
 
         [OperationContract]
@@ -130,6 +133,12 @@ namespace AgriMarketService
             int stockQuantity,
             string imageUrl
         );
+
+        [OperationContract]
+        List<InvoiceDTO> getUserInvoices(int userId);
+
+        [OperationContract]
+        List<OrderDTO> getUserOrders(int userId);
 
     }
 

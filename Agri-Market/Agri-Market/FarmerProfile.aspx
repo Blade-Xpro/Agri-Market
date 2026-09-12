@@ -12,6 +12,22 @@
 
     <style>
 
+        .logout-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 25px;
+    background-color: #5fa800;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.logout-button:hover {
+    background-color: #4c8b00;
+}
+
         .farmer-profile-container {
             max-width: 850px;
             margin: 35px auto 60px;
@@ -96,6 +112,11 @@
 
     Add Product
 
+</a>
+
+<a href="MyProducts.aspx"
+   class="btn btn-success">
+    My Products
 </a>
 
         <p class="profile-subtitle">
@@ -258,6 +279,12 @@
             CssClass="save-button"
             OnClick="btnSave_Click" />
 
+        <asp:Button
+    ID="btnLogout"
+    runat="server"
+    Text="Log Out"
+    CssClass="logout-button"
+    OnClick="btnLogout_Click" />
 
         <br />
         <br />

@@ -13,7 +13,23 @@ namespace Agri_Market
         {
             if (!IsPostBack)
             {
-                loadCustomerProfile();
+                if (Session["UserId"] == null ||
+           Session["UserType"] == null ||
+           Session["UserType"].ToString() != "Customer")
+
+                   
+                {
+                    Response.Redirect("LoginPage.aspx");
+                    return;
+                }
+
+                
+                if (!IsPostBack)
+                {
+                    loadCustomerProfile();
+                }
+
+
             }
         }
 

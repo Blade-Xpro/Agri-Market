@@ -421,6 +421,19 @@
 
                     </div>
 
+                    <div class="total-row">
+
+    <span>Delivery</span>
+
+    <span>
+        R
+        <asp:Label
+            ID="lblDeliveryFee"
+            runat="server">
+        </asp:Label>
+    </span>
+
+</div>
 
                     <div class="total-row grand-total">
 

@@ -331,4 +331,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="OrderItemDTO" nillable="true" type="tns:OrderItemDTO" />
+  <xs:complexType name="ArrayOfInvoiceDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InvoiceDTO" nillable="true" type="tns:InvoiceDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInvoiceDTO" nillable="true" type="tns:ArrayOfInvoiceDTO" />
 </xs:schema>

@@ -141,6 +141,9 @@
     <Content Include="Invoice.aspx" />
     <Content Include="ManageOrders.aspx" />
     <Content Include="ManageUsers.aspx" />
+    <Content Include="MyInvoices.aspx" />
+    <Content Include="MyOrders.aspx" />
+    <Content Include="MyProducts.aspx" />
     <Content Include="PendingFarmers.aspx" />
     <Content Include="Connected Services\ServiceReference1\Agri_Market.ServiceReference1.FarmerDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -420,6 +423,27 @@
     </Compile>
     <Compile Include="ManageUsers.aspx.designer.cs">
       <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyInvoices.aspx.cs">
+      <DependentUpon>MyInvoices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyInvoices.aspx.designer.cs">
+      <DependentUpon>MyInvoices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyOrders.aspx.cs">
+      <DependentUpon>MyOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyOrders.aspx.designer.cs">
+      <DependentUpon>MyOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyProducts.aspx.cs">
+      <DependentUpon>MyProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyProducts.aspx.designer.cs">
+      <DependentUpon>MyProducts.aspx</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="ProductDetails.aspx.cs">
