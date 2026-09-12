@@ -199,6 +199,18 @@
   <wsdl:message name="IService1_addFarmerProduct_OutputMessage">
     <wsdl:part name="parameters" element="tns:addFarmerProductResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getProductReviews_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProductReviews" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getProductReviews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProductReviewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addProductReview_InputMessage">
+    <wsdl:part name="parameters" element="tns:addProductReview" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addProductReview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addProductReviewResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getUserInvoices_InputMessage">
     <wsdl:part name="parameters" element="tns:getUserInvoices" />
   </wsdl:message>
@@ -339,6 +351,14 @@
     <wsdl:operation name="addFarmerProduct">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/addFarmerProduct" message="tns:IService1_addFarmerProduct_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/addFarmerProductResponse" message="tns:IService1_addFarmerProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getProductReviews">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getProductReviews" message="tns:IService1_getProductReviews_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getProductReviewsResponse" message="tns:IService1_getProductReviews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addProductReview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/addProductReview" message="tns:IService1_addProductReview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/addProductReviewResponse" message="tns:IService1_addProductReview_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getUserInvoices">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUserInvoices" message="tns:IService1_getUserInvoices_InputMessage" />
@@ -632,6 +652,24 @@
     </wsdl:operation>
     <wsdl:operation name="addFarmerProduct">
       <soap:operation soapAction="http://tempuri.org/IService1/addFarmerProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductReviews">
+      <soap:operation soapAction="http://tempuri.org/IService1/getProductReviews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addProductReview">
+      <soap:operation soapAction="http://tempuri.org/IService1/addProductReview" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

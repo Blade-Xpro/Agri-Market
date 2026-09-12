@@ -1026,6 +1026,115 @@ namespace AgriMarketService
             return invoices;
         }
 
+        public List<ProductReviewDTO> getProductReviews(int productId)
+        {
+            var reviews =
+                (from r in db.ProductReviews
+                 join u in db.UserTables
+                     on r.UserId equals u.Id
+
+                 where r.ProductId == productId
+
+                 orderby r.ReviewDate descending
+
+                 select new ProductReviewDTO
+                 {
+                     ReviewId = r.ReviewId,
+                     ProductId = r.ProductId,
+                     UserId = r.UserId,
+
+                     CustomerName =
+                         u.Name + " " + u.Surname,
+
+                     Rating = r.Rating,
+                     Comment = r.ReviewText,
+                     CreatedDate = r.ReviewDate
+                 }).ToList();
+
+            return reviews;
+        }
+
+        public int addProductReview(
+    int productId,
+    int userId,
+    int rating,
+    string comment)
+        {
+            // Rating must be between 1 and 5
+            if (rating < 1 || rating > 5)
+            {
+                return 2;
+            }
+
+            if (string.IsNullOrWhiteSpace(comment))
+            {
+                return 2;
+            }
+
+
+            // Check that the user is a customer
+            var customer =
+                (from u in db.UserTables
+                 where u.Id == userId
+                 && u.userType == "Customer"
+                 select u).SingleOrDefault();
+
+            if (customer == null)
+            {
+                return 3;
+            }
+
+
+            // Check product exists
+            var product =
+                (from p in db.Products
+                 where p.ProductId == productId
+                 select p).SingleOrDefault();
+
+            if (product == null)
+            {
+                return 4;
+            }
+
+
+            // Prevent the same customer from reviewing
+            // the same product more than once
+            var existingReview =
+                (from r in db.ProductReviews
+                 where r.ProductId == productId
+                 && r.UserId == userId
+                 select r).SingleOrDefault();
+
+            if (existingReview != null)
+            {
+                return 5;
+            }
+
+
+            ProductReview review =
+                new ProductReview
+                {
+                    ProductId = productId,
+                    UserId = userId,
+                    Rating = rating,
+                    ReviewText= comment.Trim(),
+                    ReviewDate = DateTime.Now
+                };
+
+            db.ProductReviews.InsertOnSubmit(review);
+
+            try
+            {
+                db.SubmitChanges();
+
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 1;
+            }
+        }
+
         public List<OrderDTO> getUserOrders(int userId)
         {
             var orders =
@@ -1148,6 +1257,7 @@ namespace AgriMarketService
             }
         }
 
+       
         public int updateCartItemQuantity(int cartItemId, int quantity)
         {
             // Quantity must be at least 1

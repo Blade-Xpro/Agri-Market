@@ -133,6 +133,16 @@ namespace AgriMarketService
             int stockQuantity,
             string imageUrl
         );
+        [OperationContract]
+        List<ProductReviewDTO> getProductReviews(int productId);
+        
+
+        [OperationContract]
+        int addProductReview(
+            int productId,
+            int userId,
+            int rating,
+            string comment);
 
         [OperationContract]
         List<InvoiceDTO> getUserInvoices(int userId);
@@ -186,6 +196,31 @@ namespace AgriMarketService
         [DataMember]
         public int DifferentProductsSold { get; set; }
 
+    }
+
+    [DataContract]
+    public class ProductReviewDTO
+    {
+        [DataMember]
+        public int ReviewId { get; set; }
+
+        [DataMember]
+        public int ProductId { get; set; }
+
+        [DataMember]
+        public int UserId { get; set; }
+
+        [DataMember]
+        public string CustomerName { get; set; }
+
+        [DataMember]
+        public int Rating { get; set; }
+
+        [DataMember]
+        public string Comment { get; set; }
+
+        [DataMember]
+        public DateTime CreatedDate { get; set; }
     }
     [DataContract]
     public class InvoiceDTO

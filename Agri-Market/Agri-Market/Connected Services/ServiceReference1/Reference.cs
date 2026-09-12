@@ -2945,6 +2945,147 @@ namespace Agri_Market.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductReviewDTO", Namespace="http://schemas.datacontract.org/2004/07/AgriMarketService")]
+    [System.SerializableAttribute()]
+    public partial class ProductReviewDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CommentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreatedDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RatingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ReviewIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Comment {
+            get {
+                return this.CommentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommentField, value) != true)) {
+                    this.CommentField = value;
+                    this.RaisePropertyChanged("Comment");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreatedDate {
+            get {
+                return this.CreatedDateField;
+            }
+            set {
+                if ((this.CreatedDateField.Equals(value) != true)) {
+                    this.CreatedDateField = value;
+                    this.RaisePropertyChanged("CreatedDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerName {
+            get {
+                return this.CustomerNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerNameField, value) != true)) {
+                    this.CustomerNameField = value;
+                    this.RaisePropertyChanged("CustomerName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductId {
+            get {
+                return this.ProductIdField;
+            }
+            set {
+                if ((this.ProductIdField.Equals(value) != true)) {
+                    this.ProductIdField = value;
+                    this.RaisePropertyChanged("ProductId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Rating {
+            get {
+                return this.RatingField;
+            }
+            set {
+                if ((this.RatingField.Equals(value) != true)) {
+                    this.RatingField = value;
+                    this.RaisePropertyChanged("Rating");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ReviewId {
+            get {
+                return this.ReviewIdField;
+            }
+            set {
+                if ((this.ReviewIdField.Equals(value) != true)) {
+                    this.ReviewIdField = value;
+                    this.RaisePropertyChanged("ReviewId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -3140,6 +3281,18 @@ namespace Agri_Market.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFarmerProduct", ReplyAction="http://tempuri.org/IService1/addFarmerProductResponse")]
         System.Threading.Tasks.Task<int> addFarmerProductAsync(int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getProductReviews", ReplyAction="http://tempuri.org/IService1/getProductReviewsResponse")]
+        Agri_Market.ServiceReference1.ProductReviewDTO[] getProductReviews(int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getProductReviews", ReplyAction="http://tempuri.org/IService1/getProductReviewsResponse")]
+        System.Threading.Tasks.Task<Agri_Market.ServiceReference1.ProductReviewDTO[]> getProductReviewsAsync(int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addProductReview", ReplyAction="http://tempuri.org/IService1/addProductReviewResponse")]
+        int addProductReview(int productId, int userId, int rating, string comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addProductReview", ReplyAction="http://tempuri.org/IService1/addProductReviewResponse")]
+        System.Threading.Tasks.Task<int> addProductReviewAsync(int productId, int userId, int rating, string comment);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUserInvoices", ReplyAction="http://tempuri.org/IService1/getUserInvoicesResponse")]
         Agri_Market.ServiceReference1.InvoiceDTO[] getUserInvoices(int userId);
@@ -3435,6 +3588,22 @@ namespace Agri_Market.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> addFarmerProductAsync(int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl) {
             return base.Channel.addFarmerProductAsync(farmerId, categoryId, productName, description, price, unitOfMeasure, stockQuantity, imageUrl);
+        }
+        
+        public Agri_Market.ServiceReference1.ProductReviewDTO[] getProductReviews(int productId) {
+            return base.Channel.getProductReviews(productId);
+        }
+        
+        public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.ProductReviewDTO[]> getProductReviewsAsync(int productId) {
+            return base.Channel.getProductReviewsAsync(productId);
+        }
+        
+        public int addProductReview(int productId, int userId, int rating, string comment) {
+            return base.Channel.addProductReview(productId, userId, rating, comment);
+        }
+        
+        public System.Threading.Tasks.Task<int> addProductReviewAsync(int productId, int userId, int rating, string comment) {
+            return base.Channel.addProductReviewAsync(productId, userId, rating, comment);
         }
         
         public Agri_Market.ServiceReference1.InvoiceDTO[] getUserInvoices(int userId) {
