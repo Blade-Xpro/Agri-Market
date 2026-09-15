@@ -269,12 +269,19 @@
                             </div>
 
                             <asp:TextBox
-                                ID="txtQuantity"
-                                runat="server"
-                                Text='<%# Eval("Quantity") %>'
-                                CssClass="quantity-box"
-                                ReadOnly="true">
-                            </asp:TextBox>
+    ID="txtQuantity"
+    runat="server"
+    Text='<%# Eval("Quantity") %>'
+    CssClass="quantity-box"
+    TextMode="Number">
+</asp:TextBox>
+
+                            <asp:Button
+    ID="btnUpdate"
+    runat="server"
+    Text="Update"
+    CommandName="UpdateQuantity"
+    CommandArgument='<%# Eval("CartItemId") %>' />
 
                         </div>
 

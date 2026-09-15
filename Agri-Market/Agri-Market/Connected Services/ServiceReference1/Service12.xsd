@@ -331,4 +331,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="OrderItemDTO" nillable="true" type="tns:OrderItemDTO" />
+  <xs:complexType name="ArrayOfProductReviewDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductReviewDTO" nillable="true" type="tns:ProductReviewDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductReviewDTO" nillable="true" type="tns:ArrayOfProductReviewDTO" />
+  <xs:complexType name="ProductReviewDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+      <xs:element minOccurs="0" name="Rating" type="xs:int" />
+      <xs:element minOccurs="0" name="ReviewId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductReviewDTO" nillable="true" type="tns:ProductReviewDTO" />
+  <xs:complexType name="ArrayOfInvoiceDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InvoiceDTO" nillable="true" type="tns:InvoiceDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInvoiceDTO" nillable="true" type="tns:ArrayOfInvoiceDTO" />
 </xs:schema>

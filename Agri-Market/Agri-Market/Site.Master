@@ -81,84 +81,6 @@
 
         <div class="container-fluid fixed-top">
 
-            <!-- Top information bar -->
-
-            <div class="container topbar bg-primary d-none d-lg-block">
-
-                <div class="d-flex justify-content-between">
-
-                    <div class="top-info ps-2">
-
-                        <small class="me-3">
-
-                            <i class="fas fa-map-marker-alt me-2 text-secondary"></i>
-
-                            <a href="#"
-                                class="text-white">
-
-                                123 Street, New York
-
-                            </a>
-
-                        </small>
-
-
-                        <small class="me-3">
-
-                            <i class="fas fa-envelope me-2 text-secondary"></i>
-
-                            <a href="#"
-                                class="text-white">
-
-                                Email@Example.com
-
-                            </a>
-
-                        </small>
-
-                    </div>
-
-
-                    <div class="top-link pe-2">
-
-                        <a href="#"
-                            class="text-white">
-
-                            <small class="text-white mx-2">
-                                Privacy Policy
-                            </small>
-
-                            /
-
-                        </a>
-
-
-                        <a href="#"
-                            class="text-white">
-
-                            <small class="text-white mx-2">
-                                Terms of Use
-                            </small>
-
-                            /
-
-                        </a>
-
-
-                        <a href="#"
-                            class="text-white">
-
-                            <small class="text-white ms-2">
-                                Sales and Refunds
-                            </small>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
 
 
             <!-- Main navigation -->
@@ -201,19 +123,13 @@
                     <div class="collapse navbar-collapse bg-white"
                         id="navbarCollapse">
 
+<div class="navbar-nav mx-auto">
 
-                        <div class="navbar-nav mx-auto">
-
-
-                            <!-- Home -->
-
-                            <a runat="server"
-                                href="~/Home.aspx"
-                                class="nav-item nav-link active">
-
-                                Home
-
-                            </a>
+    <a runat="server"
+        href="~/Home.aspx"
+        class="nav-item nav-link">
+        Home
+    </a>
 
 
                             <!-- Products -->
@@ -240,13 +156,11 @@
 
                             <!-- About -->
 
-                            <a runat="server"
-                                href="~/About.aspx"
-                                class="nav-item nav-link">
-
-                                About
-
-                            </a>
+    <a runat="server"
+        href="~/About.aspx"
+        class="nav-item nav-link">
+        About
+    </a>
 
                             <asp:PlaceHolder ID="customerNav" runat="server" Visible="false">
                                 <a id="customerProfileLink" runat="server" class="nav-item nav-link">My Profile</a>
@@ -291,26 +205,18 @@
                             </button>
 
 
-                            <!-- Shopping cart -->
+                          <!-- Shopping cart -->
 
                             <a runat="server"
                                 href="~/ShoppingCart.aspx"
                                 class="position-relative me-4 my-auto">
 
-                                <i class="fa fa-shopping-bag fa-2x"></i>
+    <i class="fa fa-shopping-bag fa-2x"></i>
+
+</a>
 
 
-                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                                    style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
-
-                                    3
-
-                                </span>
-
-                            </a>
-
-
-                            <!-- User -->
+                           <!-- User -->
 
                             <a id="loginLink" runat="server" href="~/LoginPage.aspx" class="my-auto" title="Log in">
                                 <i class="fas fa-user fa-2x"></i>
@@ -349,86 +255,64 @@
              FOOTER
              ========================= -->
 
-        <footer class="agri-footer">
+       <footer class="agri-footer">
 
-            <div class="container py-5">
+    <div class="container py-5">
 
-                <div class="row g-5">
+        <div class="row g-5">
 
+            <!-- About -->
 
-                    <!-- About -->
+            <div class="col-lg-4 col-md-6">
 
-                    <div class="col-lg-4 col-md-6">
+                <h4 class="footer-brand">
+                    Agri Market
+                </h4>
 
-                        <h4 class="footer-brand">
-                            Agri Market
-                        </h4>
+                <p>
+                    Fresh agricultural products
+                    from local farmers to our customers.
+                </p>
 
-                        <p>
-
-                            Fresh agricultural products
-                            brought directly to our customers.
-
-                        </p>
-
-                    </div>
+            </div>
 
 
-                    <!-- Quick Links -->
+            <!-- Quick Links -->
 
-                    <div class="col-lg-2 col-md-6">
+            <div class="col-lg-4 col-md-6">
 
-                        <h4>
-                            Quick Links
-                        </h4>
+                <h4>
+                    Quick Links
+                </h4>
 
+                <a runat="server"
+                    href="~/Home.aspx"
+                    class="d-block">
+                    Home
+                </a>
 
-                        <a runat="server"
-                            href="~/Home.aspx"
-                            class="d-block">
+                <a runat="server"
+                    href="~/AllProductsPage.aspx"
+                    class="d-block">
+                    Products
+                </a>
 
-                            Home
+                <a runat="server"
+                    href="~/About.aspx"
+                    class="d-block">
+                    About
+                </a>
 
-                        </a>
-
-
-                        <a runat="server"
-                            href="~/Shop.aspx"
-                            class="d-block">
-
-                            Shop
-
-                        </a>
-
-
-                        <a runat="server"
-                            href="~/About.aspx"
-                            class="d-block">
-
-                            About
-
-                        </a>
+            </div>
 
 
-                        <a runat="server"
-                            href="~/Contact.aspx"
-                            class="d-block">
+            <!-- Customer -->
 
-                            Contact
+            <div class="col-lg-4 col-md-6">
 
-                        </a>
-
-                    </div>
-
-
-                    <!-- Customer Account -->
-
-                    <div class="col-lg-3 col-md-6">
-
-                        <h4>
-                            Customer Account
-                        </h4>
-
+                <h4>
+                    Customer
+                </h4>
 
                         <a runat="server"
                             href="~/LoginPage.aspx"
@@ -456,60 +340,29 @@
 
                         </a>
 
-                    </div>
+            </div>
+
+        </div>
+
+    </div>
 
 
-                    <!-- Contact -->
+    <div class="footer-bottom">
 
-                    <div class="col-lg-3 col-md-6">
+        <div class="container">
 
-                        <h4>
-                            Contact Us
-                        </h4>
+            <div class="text-center">
 
-
-                        <p>
-
-                            <i class="fas fa-map-marker-alt me-2"></i>
-
-                            123 Street, New York
-
-                        </p>
-
-
-                        <p>
-
-                            <i class="fas fa-envelope me-2"></i>
-
-                            Email@Example.com
-
-                        </p>
-
-                    </div>
-
-                </div>
+                &copy; 2026 Agri Market.
+                All Rights Reserved.
 
             </div>
 
+        </div>
 
-            <!-- Footer bottom -->
+    </div>
 
-            <div class="footer-bottom">
-
-                <div class="container">
-
-                    <div class="text-center">
-
-                        &copy; 2026 Agri Market.
-                        All Rights Reserved.
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </footer>
+</footer>
 
 
         <!-- =========================
@@ -523,19 +376,14 @@
 
         </a>
 
-
         <!-- =========================
-             SEARCH MODAL
-             ========================= -->
-
-       <!-- =========================
      SEARCH MODAL
      ========================= -->
 
 <div class="modal fade"
-     id="searchModal"
-     tabindex="-1"
-     aria-hidden="true">
+    id="searchModal"
+    tabindex="-1"
+    aria-hidden="true">
 
     <div class="modal-dialog modal-fullscreen">
 
@@ -548,9 +396,9 @@
                 </h5>
 
                 <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close">
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close">
                 </button>
 
             </div>
@@ -560,20 +408,18 @@
 
                 <div class="input-group w-75 mx-auto">
 
-                    <!-- Search input -->
                     <input id="searchBar"
-                           runat="server"
-                           type="text"
-                           class="form-control p-3"
-                           placeholder="Search for products..." />
+                        runat="server"
+                        type="text"
+                        class="form-control p-3"
+                        placeholder="Search for products..." />
 
-
-                    <!-- Search button -->
-                    <asp:Button ID="btnSearch"
-                                runat="server"
-                                Text="Search"
-                                CssClass="btn btn-primary px-4"
-                                OnClick="btnSearch_Click" />
+                    <asp:Button
+                        ID="btnSearch"
+                        runat="server"
+                        Text="Search"
+                        CssClass="btn btn-primary px-4"
+                        OnClick="btnSearch_Click" />
 
                 </div>
 
@@ -584,6 +430,8 @@
     </div>
 
 </div>
+
+      
 
 
     </form>

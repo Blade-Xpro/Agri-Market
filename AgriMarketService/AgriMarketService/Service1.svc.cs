@@ -135,27 +135,17 @@ namespace AgriMarketService
 
         //temp login for user
 
-        public bool loginUser(string email, string password)
+        public bool loginUser(string email, string hashedPassword)
         {
             var user = (from u in db.UserTables
                         where u.email == email
+                        && u.passwordHash == hashedPassword
                         select u).SingleOrDefault();
 
             if (user == null)
             {
                 return false;
             }
-
-            //verify hashed password
-            //var result = passwordHasher.VerifyHashedPassword(
-             //   user.passwordHash,
-             //   password
-           // );
-
-           // if (result == PasswordVerificationResult.Failed)
-           // {
-            //    return false;
-           // }
 
             return true;
         }
@@ -204,17 +194,29 @@ namespace AgriMarketService
         }
         public Product GetProductById(int productId)
         {
-            var product = (from p in db.Products
-                           where p.ProductId == productId
-                           select p).SingleOrDefault();
-            if (product != null)
-            {
-                return product;
-            }
-            else
+            var p = (from product in db.Products
+                     where product.ProductId == productId
+                     select product).SingleOrDefault();
+
+            if (p == null)
             {
                 return null;
             }
+
+            return new Product
+            {
+                ProductId = p.ProductId,
+                FarmerId = p.FarmerId,
+                CategoryId = p.CategoryId,
+                ProductName = p.ProductName,
+                Description = p.Description,
+                Price = p.Price,
+                UnitOfMeasure = p.UnitOfMeasure,
+                StockQuantity = p.StockQuantity,
+                ImageUrl = p.ImageUrl,
+                DateCreated = p.DateCreated,
+                IsActive = p.IsActive
+            };
         }
         public List<Product> GetAllProducts()
         {
@@ -966,37 +968,202 @@ namespace AgriMarketService
         }
         public InvoiceDTO getInvoiceByOrderId(int orderId)
         {
-            var result =
+            var invoice =
                 (from i in db.Invoices
-
                  join o in db.Orders
                      on i.OrderId equals o.OrderId
-
                  where i.OrderId == orderId
+                 select new
+                 {
+                     i.InvoiceId,
+                     i.InvoiceNumber,
+                     i.InvoiceDate,
+                     o.OrderId,
+                     o.TotalAmount
+                 }).FirstOrDefault();
 
+            if (invoice == null)
+            {
+                return null;
+            }
+
+            decimal subtotal =
+    db.OrderItems
+      .Where(oi => oi.OrderId == orderId)
+      .Sum(oi => oi.LineTotal);
+
+            decimal tax =
+                subtotal * 0.15m;
+
+            decimal discount = 0;
+
+            if (subtotal >= 300)
+            {
+                discount =
+                    subtotal * 0.10m;
+            }
+
+            return new InvoiceDTO
+            {
+                InvoiceId = invoice.InvoiceId,
+                OrderId = invoice.OrderId,
+                InvoiceNumber = invoice.InvoiceNumber,
+                InvoiceDate = invoice.InvoiceDate,
+
+                Subtotal = subtotal,
+                TaxAmount = tax,
+                DiscountAmount = discount,
+                TotalAmount = invoice.TotalAmount
+            };
+        }
+
+        public List<InvoiceDTO> getUserInvoices(int userId)
+        {
+            var invoices =
+                (from i in db.Invoices
+                 join o in db.Orders
+                     on i.OrderId equals o.OrderId
+                 where o.UserId == userId
+                 orderby i.InvoiceDate descending
                  select new InvoiceDTO
                  {
                      InvoiceId = i.InvoiceId,
-
                      OrderId = i.OrderId,
-
                      InvoiceNumber = i.InvoiceNumber,
-
                      InvoiceDate = i.InvoiceDate,
-
-                     Subtotal = o.TotalAmount,
-
-                     TaxAmount = 0,
-
-                     DiscountAmount = 0,
-
                      TotalAmount = o.TotalAmount
+                 }).ToList();
 
-                 }).FirstOrDefault();
-
-            return result;
+            return invoices;
         }
 
+        public List<ProductReviewDTO> getProductReviews(int productId)
+        {
+            var reviews =
+                (from r in db.ProductReviews
+                 join u in db.UserTables
+                     on r.UserId equals u.Id
+
+                 where r.ProductId == productId
+
+                 orderby r.ReviewDate descending
+
+                 select new ProductReviewDTO
+                 {
+                     ReviewId = r.ReviewId,
+                     ProductId = r.ProductId,
+                     UserId = r.UserId,
+
+                     CustomerName =
+                         u.Name + " " + u.Surname,
+
+                     Rating = r.Rating,
+                     Comment = r.ReviewText,
+                     CreatedDate = r.ReviewDate
+                 }).ToList();
+
+            return reviews;
+        }
+
+        public int addProductReview(
+    int productId,
+    int userId,
+    int rating,
+    string comment)
+        {
+            // Rating must be between 1 and 5
+            if (rating < 1 || rating > 5)
+            {
+                return 2;
+            }
+
+            if (string.IsNullOrWhiteSpace(comment))
+            {
+                return 2;
+            }
+
+
+            // Check that the user is a customer
+            var customer =
+                (from u in db.UserTables
+                 where u.Id == userId
+                 && u.userType == "Customer"
+                 select u).SingleOrDefault();
+
+            if (customer == null)
+            {
+                return 3;
+            }
+
+
+            // Check product exists
+            var product =
+                (from p in db.Products
+                 where p.ProductId == productId
+                 select p).SingleOrDefault();
+
+            if (product == null)
+            {
+                return 4;
+            }
+
+
+            // Prevent the same customer from reviewing
+            // the same product more than once
+            var existingReview =
+                (from r in db.ProductReviews
+                 where r.ProductId == productId
+                 && r.UserId == userId
+                 select r).SingleOrDefault();
+
+            if (existingReview != null)
+            {
+                return 5;
+            }
+
+
+            ProductReview review =
+                new ProductReview
+                {
+                    ProductId = productId,
+                    UserId = userId,
+                    Rating = rating,
+                    ReviewText= comment.Trim(),
+                    ReviewDate = DateTime.Now
+                };
+
+            db.ProductReviews.InsertOnSubmit(review);
+
+            try
+            {
+                db.SubmitChanges();
+
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 1;
+            }
+        }
+
+        public List<OrderDTO> getUserOrders(int userId)
+        {
+            var orders =
+                (from o in db.Orders
+                 where o.UserId == userId
+                 orderby o.OrderDate descending
+                 select new OrderDTO
+                 {
+                     OrderId = o.OrderId,
+                     UserId = o.UserId,
+                     OrderDate = o.OrderDate,
+                     OrderStatus = o.OrderStatus,
+                     DeliveryMethod = o.DeliveryMethod,
+                     TotalAmount = o.TotalAmount
+                 }).ToList();
+
+            return orders;
+        }
         // temp farmer
         public int addFarmerProduct(
             int farmerId,
@@ -1098,6 +1265,66 @@ namespace AgriMarketService
             catch (Exception)
             {
                 return -1;
+            }
+        }
+
+       
+        public int updateCartItemQuantity(int cartItemId, int quantity)
+        {
+            // Quantity must be at least 1
+            if (quantity <= 0)
+            {
+                return 2;
+            }
+
+            var item =
+                (from i in db.ShoppingCartItems
+                 where i.CartItemId == cartItemId
+                 select i).SingleOrDefault();
+
+            // Cart item not found
+            if (item == null)
+            {
+                return 1;
+            }
+
+            var product =
+                (from p in db.Products
+                 where p.ProductId == item.ProductId
+                 select p).SingleOrDefault();
+
+            if (product == null)
+            {
+                return 1;
+            }
+
+            // Cannot request more than available stock
+            if (quantity > product.StockQuantity)
+            {
+                return 3;
+            }
+
+            item.Quantity = quantity;
+
+            // Update the cart's modified date
+            var cart =
+                (from c in db.ShoppingCarts
+                 where c.CartId == item.CartId
+                 select c).SingleOrDefault();
+
+            if (cart != null)
+            {
+                cart.UpdatedDate = DateTime.Now;
+            }
+
+            try
+            {
+                db.SubmitChanges();
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 4;
             }
         }
         public int addToCart(int userId, int productId, int quantity)

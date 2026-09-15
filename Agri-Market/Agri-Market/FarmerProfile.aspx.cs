@@ -13,7 +13,22 @@ namespace Agri_Market
         {
             if (!IsPostBack)
             {
-                loadFarmerProfile();
+
+                if (Session["UserId"] == null ||
+       Session["UserType"] == null ||
+       Session["UserType"].ToString() != "Farmer")
+                    
+                {
+                    Response.Redirect("LoginPage.aspx");
+                    return;
+                }
+                if (!IsPostBack)
+                {
+                    loadFarmerProfile();
+                }
+
+
+
             }
         }
 
@@ -72,6 +87,15 @@ namespace Agri_Market
             }
         }
 
+        protected void btnLogout_Click(
+            object sender,
+            EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+
+            Response.Redirect("LoginPage.aspx");
+        }
         protected void btnSave_Click(object sender, EventArgs e)
         {
             int farmerId;

@@ -215,25 +215,39 @@
 
 </a>
 
+            <!-- My Invoices -->
+
+<a href="MyInvoices.aspx"
+    class="dashboard-card">
+
+    <div class="card-icon">🧾</div>
+
+    <h3>My Invoices</h3>
+
+    <p>
+        View invoices from your
+        previous purchases.
+    </p>
+
+</a>
 
 
-            <!-- Orders -->
 
-            <div class="dashboard-card disabled-card">
+         <!-- My Orders -->
 
-                <div class="card-icon">📦</div>
+<a href="MyOrders.aspx"
+    class="dashboard-card">
 
-                <h3>My Orders</h3>
+    <div class="card-icon">📦</div>
 
-                <p>
-                    View your previous and
-                    current orders.
-                </p>
+    <h3>My Orders</h3>
 
-            </div>
+    <p>
+        View your previous and
+        current orders.
+    </p>
 
-
-        </div>
+</a>
 
 
 

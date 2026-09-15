@@ -93,6 +93,15 @@ namespace Agri_Market
                 lblDiscount.Text =
                     invoice.DiscountAmount.ToString("F2");
 
+                decimal deliveryFee =
+    invoice.TotalAmount -
+    (invoice.Subtotal +
+     invoice.TaxAmount -
+     invoice.DiscountAmount);
+
+                lblDeliveryFee.Text =
+                    deliveryFee.ToString("F2");
+
 
                 lblTotal.Text =
                     invoice.TotalAmount.ToString("F2");

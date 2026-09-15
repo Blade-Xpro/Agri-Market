@@ -130,6 +130,65 @@ namespace Agri_Market
                         "Unable to remove product.";
                 }
             }
+
+            if (e.CommandName == "UpdateQuantity")
+            {
+                int cartItemId =
+                    Convert.ToInt32(e.CommandArgument);
+
+                TextBox txtQuantity =
+                    (TextBox)e.Item.FindControl("txtQuantity");
+
+                int quantity;
+
+                if (!int.TryParse(txtQuantity.Text, out quantity)
+                    || quantity <= 0)
+                {
+                    lblCartMessage.Text =
+                        "Please enter a valid quantity.";
+
+                    return;
+                }
+
+                ServiceReference1.Service1Client client =
+                    new ServiceReference1.Service1Client();
+
+                try
+                {
+                    int result =
+                        client.updateCartItemQuantity(
+                            cartItemId,
+                            quantity
+                        );
+
+                    client.Close();
+
+                    if (result == 0)
+                    {
+                        lblCartMessage.Text =
+                            "Cart quantity updated.";
+
+                        loadCart();
+                    }
+                    else if (result == 3)
+                    {
+                        lblCartMessage.Text =
+                            "Not enough stock available.";
+                    }
+                    else
+                    {
+                        lblCartMessage.Text =
+                            "Unable to update quantity.";
+                    }
+                }
+                catch (Exception)
+                {
+                    client.Abort();
+
+                    lblCartMessage.Text =
+                        "Unable to update quantity.";
+                }
+            }
         }
 
 

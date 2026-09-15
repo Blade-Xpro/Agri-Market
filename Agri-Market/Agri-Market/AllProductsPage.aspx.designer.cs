@@ -24,165 +24,48 @@ namespace Agri_Market
         protected global::System.Web.UI.WebControls.Label lblProductMessage;
 
         /// <summary>
-        /// btnGrapesCartAll control.
+        /// btnAll control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGrapesCartAll;
+        protected global::System.Web.UI.WebControls.Button btnAll;
 
         /// <summary>
-        /// btnOrangesCartAll control.
+        /// btnFruits control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOrangesCartAll;
+        protected global::System.Web.UI.WebControls.Button btnFruits;
 
         /// <summary>
-        /// btnRaspberriesCartAll control.
+        /// btnVegetables control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRaspberriesCartAll;
+        protected global::System.Web.UI.WebControls.Button btnVegetables;
 
         /// <summary>
-        /// btnBananasCartAll control.
+        /// ddlSort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBananasCartAll;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSort;
 
         /// <summary>
-        /// btnApricotsCartAll control.
+        /// rptProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnApricotsCartAll;
-
-        /// <summary>
-        /// btnApplesCartAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnApplesCartAll;
-
-        /// <summary>
-        /// btnPeppersCartAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPeppersCartAll;
-
-        /// <summary>
-        /// btnPotatoesCartAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPotatoesCartAll;
-
-        /// <summary>
-        /// btnParsleyCartAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnParsleyCartAll;
-
-        /// <summary>
-        /// btnGrapesCartFruit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGrapesCartFruit;
-
-        /// <summary>
-        /// btnOrangesCartFruit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOrangesCartFruit;
-
-        /// <summary>
-        /// btnRaspberriesCartFruit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRaspberriesCartFruit;
-
-        /// <summary>
-        /// btnBananasCartFruit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBananasCartFruit;
-
-        /// <summary>
-        /// btnApricotsCartFruit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnApricotsCartFruit;
-
-        /// <summary>
-        /// btnApplesCartFruit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnApplesCartFruit;
-
-        /// <summary>
-        /// btnPeppersCartVegetable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPeppersCartVegetable;
-
-        /// <summary>
-        /// btnPotatoesCartVegetable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPotatoesCartVegetable;
-
-        /// <summary>
-        /// btnParsleyCartVegetable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnParsleyCartVegetable;
+        protected global::System.Web.UI.WebControls.Repeater rptProducts;
     }
 }
