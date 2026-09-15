@@ -30,6 +30,24 @@ public partial class SiteMaster
     /// </remarks>
     protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
+    protected global::System.Web.UI.WebControls.PlaceHolder customerNav;
+
+    protected global::System.Web.UI.HtmlControls.HtmlAnchor customerProfileLink;
+
+    protected global::System.Web.UI.WebControls.PlaceHolder farmerNav;
+
+    protected global::System.Web.UI.HtmlControls.HtmlAnchor farmerProfileLink;
+
+    protected global::System.Web.UI.WebControls.PlaceHolder adminNav;
+
+    protected global::System.Web.UI.HtmlControls.HtmlAnchor loginLink;
+
+    protected global::System.Web.UI.WebControls.PlaceHolder authenticatedAccount;
+
+    protected global::System.Web.UI.WebControls.Literal userRoleLabel;
+
+    protected global::System.Web.UI.WebControls.LinkButton logoutButton;
+
     /// <summary>
     /// MainContent control.
     /// </summary>

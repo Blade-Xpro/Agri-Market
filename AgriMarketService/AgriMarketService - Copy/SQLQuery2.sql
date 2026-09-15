@@ -1,1 +1,0 @@
-﻿EXEC sp_rename 'dbo.Table', 'Orders';

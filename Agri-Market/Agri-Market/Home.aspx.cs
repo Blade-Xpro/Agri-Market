@@ -27,17 +27,26 @@ namespace Agri_Market
 
                 if (products == null)
                 {
-                    Response.Write("GetAllProducts returned NULL");
+                    pnlNoProducts.Visible = true;
                     return;
                 }
 
-                Response.Write("Products returned: " + products.Length);
+                if (products.Length == 0)
+                {
+                    pnlNoProducts.Visible = true;
+                    return;
+                }
+
+                rptFeaturedProducts.DataSource = products;
+                rptFeaturedProducts.DataBind();
+                pnlProductCarousel.Visible = true;
+
+                rptProductCatalogue.DataSource = products;
+                rptProductCatalogue.DataBind();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Response.Write("<pre>" +
-                    HttpUtility.HtmlEncode(ex.ToString()) +
-                    "</pre>");
+                pnlNoProducts.Visible = true;
             }
         }
 

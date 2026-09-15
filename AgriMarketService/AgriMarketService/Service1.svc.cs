@@ -760,8 +760,22 @@ namespace AgriMarketService
                 return 1;
             }
         }
+    public  int getDiscountID(string discountCode)
+        {
+            var discount = (from d in db.Discounts
+                            where d.DiscountCode == discountCode
+                            select d).SingleOrDefault();
 
-        public int processCheckout(int userId, string deliveryMethod)
+            if (discount == null)
+            {
+                return -1; // Discount code not found
+            }
+
+            return discount.DiscountId;
+        }
+            
+    
+        public int processCheckout(int userId, string deliveryMethod,int discountId )
         {
             try
             {
@@ -828,11 +842,24 @@ namespace AgriMarketService
 
                 // Keep these simple for now
                 decimal tax = 0;
+
                 decimal discount = 0;
 
-                decimal total =
-                    subtotal + tax - discount;
+               
+                //retrive discount amount from the database
+                if (discountId > 0)
+                {
+                    var discountRecord = (from d in orderDb.Discounts
+                                          where d.DiscountId == discountId
+                                          select d).SingleOrDefault();
 
+                    if (discountRecord != null)
+                    {
+                        discount = discountRecord.DiscountAmount;
+                    }
+                }
+                 decimal total =
+                    subtotal + tax - discount;
 
                 // Create order
                 Order newOrder =

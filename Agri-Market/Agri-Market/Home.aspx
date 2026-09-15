@@ -54,7 +54,27 @@
                 <a href="AllProductsPage.aspx" class="btn border border-secondary rounded-pill px-4 text-primary">View all products</a>
             </div>
             <div id="productCatalog" runat="server" class="row g-4">
-             </div>
+                <asp:Repeater ID="rptProductCatalogue" runat="server">
+                    <ItemTemplate>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="rounded position-relative fruite-item">
+                                <div class="fruite-img">
+                                    <img src='<%# ResolveUrl(GetImageUrl(Eval("ImageUrl"))) %>' class="img-fluid w-100 rounded-top" style="height: 220px; object-fit: cover;" alt='<%# GetText(Eval("ProductName")) %>' />
+                                </div>
+                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;"><%# GetCategoryName(Eval("Category")) %></div>
+                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                    <h4><a class="text-dark" href='<%# GetProductUrl(Eval("ProductId")) %>'><%# GetText(Eval("ProductName")) %></a></h4>
+                                    <p class="text-muted"><%# GetText(Eval("Description")) %></p>
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                        <p class="text-dark fs-5 fw-bold mb-0"><%# GetPrice(Eval("Price"), Eval("UnitOfMeasure")) %></p>
+                                        <a href='<%# GetProductUrl(Eval("ProductId")) %>' class="btn border border-secondary rounded-pill px-3 text-primary">View product</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
 
 
         </div>

@@ -216,81 +216,15 @@
                             </a>
 
 
-                            <!-- Shop -->
+                            <!-- Products -->
 
                             <a runat="server"
-                                href="~/Shop.aspx"
+                                href="~/AllProductsPage.aspx"
                                 class="nav-item nav-link">
 
-                                Shop
+                                Products
 
                             </a>
-
-
-                            <!-- Shop Detail -->
-
-                            <a runat="server"
-                                href="~/ShopDetail.aspx"
-                                class="nav-item nav-link">
-
-                                Shop Detail
-
-                            </a>
-
-
-                            <!-- Pages dropdown -->
-
-                            <div class="nav-item dropdown">
-
-                                <a href="#"
-                                    class="nav-link dropdown-toggle"
-                                    data-bs-toggle="dropdown">
-
-                                    Pages
-
-                                </a>
-
-
-                                <div class="dropdown-menu m-0 bg-secondary rounded-0">
-
-                                    <a runat="server"
-                                        href="~/Cart.aspx"
-                                        class="dropdown-item">
-
-                                        Cart
-
-                                    </a>
-
-
-                                    <a runat="server"
-                                        href="~/Checkout.aspx"
-                                        class="dropdown-item">
-
-                                        Checkout
-
-                                    </a>
-
-
-                                    <a runat="server"
-                                        href="~/Testimonial.aspx"
-                                        class="dropdown-item">
-
-                                        Testimonial
-
-                                    </a>
-
-
-                                    <a runat="server"
-                                        href="~/Error.aspx"
-                                        class="dropdown-item">
-
-                                        404 Page
-
-                                    </a>
-
-                                </div>
-
-                            </div>
 
 
                             <!-- Contact -->
@@ -313,6 +247,29 @@
                                 About
 
                             </a>
+
+                            <asp:PlaceHolder ID="customerNav" runat="server" Visible="false">
+                                <a id="customerProfileLink" runat="server" class="nav-item nav-link">My Profile</a>
+                                <a runat="server" href="~/ShoppingCart.aspx" class="nav-item nav-link">Cart</a>
+                            </asp:PlaceHolder>
+
+                            <asp:PlaceHolder ID="farmerNav" runat="server" Visible="false">
+                                <a id="farmerProfileLink" runat="server" class="nav-item nav-link">My Farm</a>
+                                <a runat="server" href="~/AddProduct.aspx" class="nav-item nav-link">Add Product</a>
+                            </asp:PlaceHolder>
+
+                            <asp:PlaceHolder ID="adminNav" runat="server" Visible="false">
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Administration</a>
+                                    <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                        <a runat="server" href="~/AdminProfile.aspx" class="dropdown-item">Dashboard</a>
+                                        <a runat="server" href="~/PendingFarmers.aspx" class="dropdown-item">Approve Farmers</a>
+                                        <a runat="server" href="~/ManageUsers.aspx" class="dropdown-item">Manage Users</a>
+                                        <a runat="server" href="~/ManageOrders.aspx" class="dropdown-item">Manage Orders</a>
+                                        <a runat="server" href="~/Reports.aspx" class="dropdown-item">Reports</a>
+                                    </div>
+                                </div>
+                            </asp:PlaceHolder>
 
                         </div>
 
@@ -337,7 +294,7 @@
                             <!-- Shopping cart -->
 
                             <a runat="server"
-                                href="~/Cart.aspx"
+                                href="~/ShoppingCart.aspx"
                                 class="position-relative me-4 my-auto">
 
                                 <i class="fa fa-shopping-bag fa-2x"></i>
@@ -355,13 +312,14 @@
 
                             <!-- User -->
 
-                            <a runat="server"
-                                href="~/Login.aspx"
-                                class="my-auto">
-
+                            <a id="loginLink" runat="server" href="~/LoginPage.aspx" class="my-auto" title="Log in">
                                 <i class="fas fa-user fa-2x"></i>
-
                             </a>
+
+                            <asp:PlaceHolder ID="authenticatedAccount" runat="server" Visible="false">
+                                <span class="my-auto me-2 text-primary"><asp:Literal ID="userRoleLabel" runat="server" /></span>
+                                <asp:LinkButton ID="logoutButton" runat="server" CssClass="btn btn-outline-primary btn-sm" CausesValidation="false" OnClick="logoutButton_Click">Log out</asp:LinkButton>
+                            </asp:PlaceHolder>
 
                         </div>
 
@@ -473,7 +431,7 @@
 
 
                         <a runat="server"
-                            href="~/Login.aspx"
+                            href="~/LoginPage.aspx"
                             class="d-block">
 
                             Login
@@ -482,7 +440,7 @@
 
 
                         <a runat="server"
-                            href="~/Register.aspx"
+                            href="~/registerPage.aspx"
                             class="d-block">
 
                             Register
@@ -491,7 +449,7 @@
 
 
                         <a runat="server"
-                            href="~/Cart.aspx"
+                            href="~/ShoppingCart.aspx"
                             class="d-block">
 
                             Shopping Cart

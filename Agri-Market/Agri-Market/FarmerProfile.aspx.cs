@@ -21,8 +21,8 @@ namespace Agri_Market
         {
             int farmerId;
 
-            // Get the farmer ID 
-            if (!int.TryParse(Request.QueryString["farmerId"], out farmerId))
+            // The session identity, rather than a query-string value, owns this profile.
+            if (!int.TryParse(Session["UserId"].ToString(), out farmerId))
             {
                 lblMessage.Text = "Farmer could not be identified.";
                 return;
@@ -76,7 +76,7 @@ namespace Agri_Market
         {
             int farmerId;
 
-            if (!int.TryParse(Request.QueryString["farmerId"], out farmerId))
+            if (!int.TryParse(Session["UserId"].ToString(), out farmerId))
             {
                 lblMessage.Text = "Farmer could not be identified.";
                 return;

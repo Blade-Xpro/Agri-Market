@@ -114,7 +114,8 @@ namespace AgriMarketService
 
         [OperationContract]
         InvoiceDTO getInvoiceByOrderId(int orderId);
-
+         [OperationContract]
+         int getDiscountID(string discountCode);
         [OperationContract]
         List<OrderItemDTO> getOrderItemsByOrderId(int orderId);
 
