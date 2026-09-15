@@ -110,7 +110,7 @@ namespace AgriMarketService
         int addToCartByName(int userId, string productName, int quantity);
 
         [OperationContract]
-        int processCheckout(int userId, string deliveryMethod);
+        int processCheckout(int userId, string deliveryMethod,int discountId );
 
         [OperationContract]
         InvoiceDTO getInvoiceByOrderId(int orderId);
