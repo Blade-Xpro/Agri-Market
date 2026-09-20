@@ -390,6 +390,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
         <xs:element minOccurs="0" name="deliveryMethod" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="discountId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -411,6 +412,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/AgriMarketService" minOccurs="0" name="getInvoiceByOrderIdResult" nillable="true" type="q20:InvoiceDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDiscountID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="discountCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDiscountIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getDiscountIDResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

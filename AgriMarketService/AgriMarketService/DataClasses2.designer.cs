@@ -60,6 +60,9 @@ namespace AgriMarketService
     partial void InsertUserTable(UserTable instance);
     partial void UpdateUserTable(UserTable instance);
     partial void DeleteUserTable(UserTable instance);
+    partial void InsertDiscount(Discount instance);
+    partial void UpdateDiscount(Discount instance);
+    partial void DeleteDiscount(Discount instance);
     #endregion
 		
 		public DataClasses2DataContext() : 
@@ -169,6 +172,14 @@ namespace AgriMarketService
 			get
 			{
 				return this.GetTable<UserTable>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Discount> Discounts
+		{
+			get
+			{
+				return this.GetTable<Discount>();
 			}
 		}
 	}
@@ -2990,6 +3001,116 @@ namespace AgriMarketService
 		{
 			this.SendPropertyChanging();
 			entity.UserTable = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Discounts")]
+	public partial class Discount : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _DiscountId;
+		
+		private string _DiscountCode;
+		
+		private decimal _DiscountAmount;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDiscountIdChanging(int value);
+    partial void OnDiscountIdChanged();
+    partial void OnDiscountCodeChanging(string value);
+    partial void OnDiscountCodeChanged();
+    partial void OnDiscountAmountChanging(decimal value);
+    partial void OnDiscountAmountChanged();
+    #endregion
+		
+		public Discount()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiscountId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int DiscountId
+		{
+			get
+			{
+				return this._DiscountId;
+			}
+			set
+			{
+				if ((this._DiscountId != value))
+				{
+					this.OnDiscountIdChanging(value);
+					this.SendPropertyChanging();
+					this._DiscountId = value;
+					this.SendPropertyChanged("DiscountId");
+					this.OnDiscountIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiscountCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DiscountCode
+		{
+			get
+			{
+				return this._DiscountCode;
+			}
+			set
+			{
+				if ((this._DiscountCode != value))
+				{
+					this.OnDiscountCodeChanging(value);
+					this.SendPropertyChanging();
+					this._DiscountCode = value;
+					this.SendPropertyChanged("DiscountCode");
+					this.OnDiscountCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiscountAmount", DbType="Decimal(10,2) NOT NULL")]
+		public decimal DiscountAmount
+		{
+			get
+			{
+				return this._DiscountAmount;
+			}
+			set
+			{
+				if ((this._DiscountAmount != value))
+				{
+					this.OnDiscountAmountChanging(value);
+					this.SendPropertyChanging();
+					this._DiscountAmount = value;
+					this.SendPropertyChanged("DiscountAmount");
+					this.OnDiscountAmountChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

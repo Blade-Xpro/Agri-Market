@@ -187,6 +187,12 @@
   <wsdl:message name="IService1_getInvoiceByOrderId_OutputMessage">
     <wsdl:part name="parameters" element="tns:getInvoiceByOrderIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getDiscountID_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDiscountID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getDiscountID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDiscountIDResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getOrderItemsByOrderId_InputMessage">
     <wsdl:part name="parameters" element="tns:getOrderItemsByOrderId" />
   </wsdl:message>
@@ -343,6 +349,10 @@
     <wsdl:operation name="getInvoiceByOrderId">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getInvoiceByOrderId" message="tns:IService1_getInvoiceByOrderId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getInvoiceByOrderIdResponse" message="tns:IService1_getInvoiceByOrderId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDiscountID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getDiscountID" message="tns:IService1_getDiscountID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getDiscountIDResponse" message="tns:IService1_getDiscountID_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getOrderItemsByOrderId">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getOrderItemsByOrderId" message="tns:IService1_getOrderItemsByOrderId_InputMessage" />
@@ -634,6 +644,15 @@
     </wsdl:operation>
     <wsdl:operation name="getInvoiceByOrderId">
       <soap:operation soapAction="http://tempuri.org/IService1/getInvoiceByOrderId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDiscountID">
+      <soap:operation soapAction="http://tempuri.org/IService1/getDiscountID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

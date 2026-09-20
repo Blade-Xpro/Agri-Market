@@ -131,4 +131,11 @@
       <Association Name="UserTable_ShoppingCart" Member="ShoppingCarts" ThisKey="Id" OtherKey="UserId" Type="ShoppingCart" />
     </Type>
   </Table>
+  <Table Name="dbo.Discounts" Member="Discounts">
+    <Type Name="Discount">
+      <Column Name="DiscountId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DiscountCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DiscountAmount" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

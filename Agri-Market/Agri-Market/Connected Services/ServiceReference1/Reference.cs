@@ -3259,16 +3259,22 @@ namespace Agri_Market.ServiceReference1 {
         System.Threading.Tasks.Task<int> addToCartByNameAsync(int userId, string productName, int quantity);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/processCheckout", ReplyAction="http://tempuri.org/IService1/processCheckoutResponse")]
-        int processCheckout(int userId, string deliveryMethod);
+        int processCheckout(int userId, string deliveryMethod, int discountId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/processCheckout", ReplyAction="http://tempuri.org/IService1/processCheckoutResponse")]
-        System.Threading.Tasks.Task<int> processCheckoutAsync(int userId, string deliveryMethod);
+        System.Threading.Tasks.Task<int> processCheckoutAsync(int userId, string deliveryMethod, int discountId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getInvoiceByOrderId", ReplyAction="http://tempuri.org/IService1/getInvoiceByOrderIdResponse")]
         Agri_Market.ServiceReference1.InvoiceDTO getInvoiceByOrderId(int orderId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getInvoiceByOrderId", ReplyAction="http://tempuri.org/IService1/getInvoiceByOrderIdResponse")]
         System.Threading.Tasks.Task<Agri_Market.ServiceReference1.InvoiceDTO> getInvoiceByOrderIdAsync(int orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getDiscountID", ReplyAction="http://tempuri.org/IService1/getDiscountIDResponse")]
+        int getDiscountID(string discountCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getDiscountID", ReplyAction="http://tempuri.org/IService1/getDiscountIDResponse")]
+        System.Threading.Tasks.Task<int> getDiscountIDAsync(string discountCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getOrderItemsByOrderId", ReplyAction="http://tempuri.org/IService1/getOrderItemsByOrderIdResponse")]
         Agri_Market.ServiceReference1.OrderItemDTO[] getOrderItemsByOrderId(int orderId);
@@ -3558,12 +3564,12 @@ namespace Agri_Market.ServiceReference1 {
             return base.Channel.addToCartByNameAsync(userId, productName, quantity);
         }
         
-        public int processCheckout(int userId, string deliveryMethod) {
-            return base.Channel.processCheckout(userId, deliveryMethod);
+        public int processCheckout(int userId, string deliveryMethod, int discountId) {
+            return base.Channel.processCheckout(userId, deliveryMethod, discountId);
         }
         
-        public System.Threading.Tasks.Task<int> processCheckoutAsync(int userId, string deliveryMethod) {
-            return base.Channel.processCheckoutAsync(userId, deliveryMethod);
+        public System.Threading.Tasks.Task<int> processCheckoutAsync(int userId, string deliveryMethod, int discountId) {
+            return base.Channel.processCheckoutAsync(userId, deliveryMethod, discountId);
         }
         
         public Agri_Market.ServiceReference1.InvoiceDTO getInvoiceByOrderId(int orderId) {
@@ -3572,6 +3578,14 @@ namespace Agri_Market.ServiceReference1 {
         
         public System.Threading.Tasks.Task<Agri_Market.ServiceReference1.InvoiceDTO> getInvoiceByOrderIdAsync(int orderId) {
             return base.Channel.getInvoiceByOrderIdAsync(orderId);
+        }
+        
+        public int getDiscountID(string discountCode) {
+            return base.Channel.getDiscountID(discountCode);
+        }
+        
+        public System.Threading.Tasks.Task<int> getDiscountIDAsync(string discountCode) {
+            return base.Channel.getDiscountIDAsync(discountCode);
         }
         
         public Agri_Market.ServiceReference1.OrderItemDTO[] getOrderItemsByOrderId(int orderId) {
