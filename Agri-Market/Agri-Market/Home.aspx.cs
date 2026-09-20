@@ -40,9 +40,11 @@ namespace Agri_Market
                 rptFeaturedProducts.DataSource = products;
                 rptFeaturedProducts.DataBind();
                 pnlProductCarousel.Visible = true;
+                rptFeaturedProducts.Visible = true;
 
                 rptProductCatalogue.DataSource = products;
                 rptProductCatalogue.DataBind();
+                rptProductCatalogue.Visible = true;
             }
             catch (Exception)
             {
