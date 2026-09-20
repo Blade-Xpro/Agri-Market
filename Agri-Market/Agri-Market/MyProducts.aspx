@@ -220,7 +220,8 @@
                                     runat="server"
                                     Text="Delete"
                                     CssClass="delete-btn"
-                                    CommandArgument='<%# Eval("ProductId") %>' />
+                                    CommandArgument='<%# Eval("ProductId") %>'
+                                    OnCommand="DeleteProduct_Command"/>
 
                             </div>
 

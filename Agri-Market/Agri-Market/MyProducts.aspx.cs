@@ -76,5 +76,14 @@ namespace Agri_Market
                 "EditProduct.aspx?productId=" + productId
             );
         }
+
+        protected void DeleteProduct_Command(object sender, CommandEventArgs e)
+        {
+            int productId = Convert.ToInt32(e.CommandArgument);
+
+            Response.Redirect(
+                "DeleteProduct.aspx?productId=" + productId
+            );
+        }
     }
 }

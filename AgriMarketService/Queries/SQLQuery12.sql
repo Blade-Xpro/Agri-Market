@@ -9,3 +9,5 @@ CREATE TABLE [dbo].[Discounts]
     CHECK ([DiscountAmount] >= 0)
 );
 
+
+

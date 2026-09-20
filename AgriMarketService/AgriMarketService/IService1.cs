@@ -46,14 +46,21 @@ namespace AgriMarketService
         [OperationContract]
         int removeCartItem(int cartItemId);
 
-        // [OperationContract]
-        // void AddProduct(Product product);
+        [OperationContract]
+        int deleteProduct(int productId, int farmerId);
 
-        // [OperationContract]
-        // void UpdateProduct(Product product);
-
-        // [OperationContract]
-        // void DeleteProduct(int productId);
+        [OperationContract]
+        int updateFarmerProduct(
+    int productId,
+    int farmerId,
+    int categoryId,
+    string productName,
+    string description,
+    decimal price,
+    string unitOfMeasure,
+    int stockQuantity,
+    string imageUrl
+);
 
         // Temporary cart integration
         [OperationContract]

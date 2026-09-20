@@ -3150,6 +3150,18 @@ namespace Agri_Market.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/removeCartItem", ReplyAction="http://tempuri.org/IService1/removeCartItemResponse")]
         System.Threading.Tasks.Task<int> removeCartItemAsync(int cartItemId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteProduct", ReplyAction="http://tempuri.org/IService1/deleteProductResponse")]
+        int deleteProduct(int productId, int farmerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteProduct", ReplyAction="http://tempuri.org/IService1/deleteProductResponse")]
+        System.Threading.Tasks.Task<int> deleteProductAsync(int productId, int farmerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateFarmerProduct", ReplyAction="http://tempuri.org/IService1/updateFarmerProductResponse")]
+        int updateFarmerProduct(int productId, int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateFarmerProduct", ReplyAction="http://tempuri.org/IService1/updateFarmerProductResponse")]
+        System.Threading.Tasks.Task<int> updateFarmerProductAsync(int productId, int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addToCart", ReplyAction="http://tempuri.org/IService1/addToCartResponse")]
         int addToCart(int userId, int productId, int quantity);
         
@@ -3418,6 +3430,22 @@ namespace Agri_Market.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> removeCartItemAsync(int cartItemId) {
             return base.Channel.removeCartItemAsync(cartItemId);
+        }
+        
+        public int deleteProduct(int productId, int farmerId) {
+            return base.Channel.deleteProduct(productId, farmerId);
+        }
+        
+        public System.Threading.Tasks.Task<int> deleteProductAsync(int productId, int farmerId) {
+            return base.Channel.deleteProductAsync(productId, farmerId);
+        }
+        
+        public int updateFarmerProduct(int productId, int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl) {
+            return base.Channel.updateFarmerProduct(productId, farmerId, categoryId, productName, description, price, unitOfMeasure, stockQuantity, imageUrl);
+        }
+        
+        public System.Threading.Tasks.Task<int> updateFarmerProductAsync(int productId, int farmerId, int categoryId, string productName, string description, decimal price, string unitOfMeasure, int stockQuantity, string imageUrl) {
+            return base.Channel.updateFarmerProductAsync(productId, farmerId, categoryId, productName, description, price, unitOfMeasure, stockQuantity, imageUrl);
         }
         
         public int addToCart(int userId, int productId, int quantity) {

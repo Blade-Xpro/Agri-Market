@@ -192,6 +192,88 @@ namespace AgriMarketService
             }
 
         }
+
+       
+        public int deleteProduct(int productId, int farmerId)
+        {
+            try
+            {
+                var product =
+                    (from a in db.Products
+                     where a.ProductId.Equals(productId)
+                        && a.FarmerId.Equals(farmerId)
+                     select a).SingleOrDefault();
+
+                if (product == null)
+                {
+                    return 1;
+                }
+                else
+                {
+                    product.IsActive = false;
+                }
+
+                db.SubmitChanges();
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 2;
+            }
+        }
+
+        public int updateFarmerProduct(
+    int productId,
+    int farmerId,
+    int categoryId,
+    string productName,
+    string description,
+    decimal price,
+    string unitOfMeasure,
+    int stockQuantity,
+    string imageUrl)
+        {
+            try
+            {
+                var product =
+                    (from p in db.Products
+                     where p.ProductId == productId
+                        && p.FarmerId == farmerId
+                     select p).SingleOrDefault();
+
+                if (product == null)
+                {
+                    return 1;
+                }
+
+                if (string.IsNullOrWhiteSpace(productName) ||
+                    price <= 0 ||
+                    stockQuantity < 0)
+                {
+                    return 2;
+                }
+
+                product.CategoryId = categoryId;
+                product.ProductName = productName.Trim();
+                product.Description = description;
+                product.Price = price;
+                product.UnitOfMeasure = unitOfMeasure;
+                product.StockQuantity = stockQuantity;
+
+                if (!string.IsNullOrWhiteSpace(imageUrl))
+                {
+                    product.ImageUrl = imageUrl;
+                }
+
+                db.SubmitChanges();
+
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 3;
+            }
+        }
         public Product GetProductById(int productId)
         {
             var p = (from product in db.Products
