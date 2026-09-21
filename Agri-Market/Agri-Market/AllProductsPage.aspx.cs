@@ -30,7 +30,18 @@ namespace Agri_Market
                 var filteredProducts =
                     products.Where(p => p.IsActive == true);
 
-               //sorting by category
+                string searchTerm = Request.QueryString["searchTerm"];
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    searchTerm = searchTerm.Trim().ToLower();
+
+                    filteredProducts =
+                        filteredProducts.Where(p =>
+                            p.ProductName.ToLower().Contains(searchTerm));
+                }
+
+                //sorting by category
                 int categoryId = 0;
 
                 if (ViewState["CategoryId"] != null)

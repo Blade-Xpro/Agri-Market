@@ -26,6 +26,9 @@ namespace Agri_Market
                 return;
             }
 
+            lnkReviews.NavigateUrl =
+    "ProductDetails.aspx?productId=" + productId;
+
             try
             {
                 Product product;

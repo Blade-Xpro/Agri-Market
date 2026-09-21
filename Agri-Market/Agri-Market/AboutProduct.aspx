@@ -1,4 +1,4 @@
-<%@ Page Title="Product details | Agri Market" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AboutProduct.aspx.cs" Inherits="Agri_Market.AboutProduct" %>
+﻿<%@ Page Title="Product details | Agri Market" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AboutProduct.aspx.cs" Inherits="Agri_Market.AboutProduct" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <section class="container-fluid py-5 mt-5">
         <div class="container py-5">
@@ -38,8 +38,17 @@
                         <a href="Home.aspx" class="btn border border-secondary rounded-pill px-4 py-2 text-primary">
                             <i class="fa fa-shopping-basket me-2"></i>Continue browsing
                         </a>
+
+                       
                     </div>
                 </div>
+
+                 <asp:HyperLink
+    ID="lnkReviews"
+    runat="server"
+    Text="⭐ Customer Reviews"
+    CssClass="btn btn-outline-success">
+</asp:HyperLink>
             </asp:Panel>
         </div>
     </section>

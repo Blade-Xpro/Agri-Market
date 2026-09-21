@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AboutProduct.aspx" />
     <Content Include="AddProduct.aspx" />
     <Content Include="AdminProfile.aspx" />
     <Content Include="AllProductsPage.aspx" />
