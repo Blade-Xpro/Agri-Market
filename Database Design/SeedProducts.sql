@@ -28,9 +28,7 @@ SELECT source.CategoryName, source.Description, 1
 FROM (VALUES
     ('Fruits', 'Fresh seasonal fruit'),
     ('Vegetables', 'Fresh farm vegetables'),
-    ('Grains', 'Whole grains and cereal crops'),
-    ('Legumes', 'Protein-rich beans and pulses'),
-    ('Herbs', 'Fresh culinary herbs')
+  
 ) AS source (CategoryName, Description)
 WHERE NOT EXISTS
 (
@@ -41,55 +39,105 @@ WHERE NOT EXISTS
 
 
 
-INSERT INTO @Products
-    (CategoryName, ProductName, Description, Price, UnitOfMeasure, StockQuantity, ImageUrl)
-VALUES
-    ('Fruits', 'Apples', 'Crisp, sweet apples picked fresh from the orchard.', 28.00, 'kg', 85.00, 'img/fruite-item-1.jpg'),
-    ('Fruits', 'Bananas', 'Naturally sweet bananas, ideal for snacks and smoothies.', 22.00, 'kg', 120.00, 'img/fruite-item-3.jpg'),
-    ('Fruits', 'Oranges', 'Juicy vitamin C rich oranges.', 30.00, 'kg', 95.00, 'img/fruite-item-4.jpg'),
-    ('Fruits', 'Table Grapes', 'Seedless grapes with a crisp, refreshing flavour.', 45.00, 'kg', 60.00, 'img/fruite-item-5.jpg'),
-    ('Fruits', 'Strawberries', 'Sweet strawberries packed in convenient punnets.', 35.00, 'punnet', 40.00, 'img/fruite-item-2.jpg'),
-    ('Vegetables', 'Tomatoes', 'Ripe red tomatoes for salads, sauces and cooking.', 26.00, 'kg', 110.00, 'img/vegetable-item-1.jpg'),
-    ('Vegetables', 'Spinach', 'Tender leafy spinach harvested daily.', 18.00, 'bunch', 75.00, 'img/vegetable-item-2.jpg'),
-    ('Vegetables', 'Carrots', 'Crunchy orange carrots, washed and ready to use.', 24.00, 'kg', 90.00, 'img/vegetable-item-3.png'),
-    ('Vegetables', 'Green Beans', 'Fresh green beans with a delicate, crisp texture.', 32.00, 'kg', 55.00, 'img/vegetable-item-4.jpg'),
-    ('Vegetables', 'Sweet Potatoes', 'Naturally sweet, earthy sweet potatoes.', 27.00, 'kg', 80.00, 'img/vegetable-item-5.jpg'),
-    ('Vegetables', 'Butternut Squash', 'Creamy butternut squash for roasting and soups.', 25.00, 'kg', 70.00, 'img/vegetable-item-6.jpg'),
-    ('Grains', 'White Maize Meal', 'Stone-ground white maize meal for traditional dishes.', 48.00, '5 kg bag', 50.00, 'img/fruite-item-6.jpg'),
-    ('Grains', 'Brown Rice', 'Nutty whole-grain brown rice.', 42.00, 'kg', 65.00, 'img/fruite-item-6.jpg'),
-    ('Grains', 'Rolled Oats', 'Whole-grain rolled oats for a hearty breakfast.', 38.00, 'kg', 45.00, 'img/fruite-item-6.jpg'),
-    ('Grains', 'Pearled Barley', 'Versatile pearled barley for soups and stews.', 36.00, 'kg', 40.00, 'img/fruite-item-6.jpg'),
-    ('Legumes', 'Sugar Beans', 'Dried sugar beans, high in plant protein.', 55.00, 'kg', 55.00, 'img/fruite-item-6.jpg'),
-    ('Legumes', 'Red Lentils', 'Quick-cooking red lentils for curries and soups.', 58.00, 'kg', 50.00, 'img/fruite-item-6.jpg'),
-    ('Legumes', 'Chickpeas', 'Nutritious dried chickpeas for salads and hummus.', 52.00, 'kg', 45.00, 'img/fruite-item-6.jpg'),
-    ('Herbs', 'Fresh Basil', 'Fragrant basil leaves, freshly picked.', 16.00, 'bunch', 35.00, 'img/fruite-item-1.jpg'),
-    ('Herbs', 'Fresh Coriander', 'Aromatic coriander for salads, curries and salsas.', 14.00, 'bunch', 40.00, 'img/fruite-item-2.jpg');
-
-INSERT INTO dbo.Products
-    (CategoryId, FarmerId, ProductName, Description, Price, UnitOfMeasure, StockQuantity, ImageUrl, IsActive)
-SELECT
-    categoryRow.CategoryId,
-    @FarmerId,
-    productRow.ProductName,
-    productRow.Description,
-    productRow.Price,
-    productRow.UnitOfMeasure,
-    productRow.StockQuantity,
-    productRow.ImageUrl,
-    1
-FROM @Products AS productRow
-INNER JOIN dbo.Categories AS categoryRow
-    ON categoryRow.CategoryName = productRow.CategoryName
-WHERE NOT EXISTS
+IINSERT INTO dbo.Products
 (
-    SELECT 1
-    FROM dbo.Products AS existingProduct
-    WHERE existingProduct.ProductName = productRow.ProductName
-);
+    CategoryId,
+    FarmerId,
+    ProductName,
+    Description,
+    Price,
+    UnitOfMeasure,
+    StockQuantity,
+    ImageUrl,
+    DateCreated,
+    IsActive
+)
+VALUES
 
-COMMIT TRANSACTION;
+-- FRUITS - CategoryId = 1
 
-SELECT ProductId, ProductName, Price, UnitOfMeasure, StockQuantity, IsActive
-FROM dbo.Products
-WHERE FarmerId = @FarmerId
-ORDER BY ProductName;
+(1, 1, 'Apples', 
+ 'Fresh and crispy apples', 
+ 28.00, 'kg', 50, 'img/apples.png', SYSDATETIME(), 1),
+
+(1, 1, 'Oranges', 
+ 'Fresh and juicy oranges', 
+ 30.00, 'kg', 45, 'img/oranges.png', SYSDATETIME(), 1),
+
+(1, 1, 'Grapes', 
+ 'Fresh sweet grapes', 
+ 45.00, 'kg', 35, 'img/grapes.png', SYSDATETIME(), 1),
+
+(1, 1, 'Bananas', 
+ 'Fresh ripe bananas', 
+ 22.00, 'kg', 60, 'img/bananas.png', SYSDATETIME(), 1),
+
+(1, 1, 'Apricots', 
+ 'Fresh ripe apricots', 
+ 30.00, 'kg', 30, 'img/apricots.png', SYSDATETIME(), 1),
+
+(1, 1, 'Raspberries', 
+ 'Fresh sweet raspberries', 
+ 40.00, 'kg', 25, 'img/raspberries.png', SYSDATETIME(), 1),
+
+(1, 1, 'Pears', 
+ 'Fresh and juicy pears', 
+ 27.00, 'kg', 40, 'img/pears.png', SYSDATETIME(), 1),
+
+(1, 1, 'Peaches', 
+ 'Fresh ripe peaches', 
+ 32.00, 'kg', 35, 'img/peaches.png', SYSDATETIME(), 1),
+
+(1, 1, 'Plums', 
+ 'Fresh ripe plums', 
+ 29.00, 'kg', 30, 'img/plums.png', SYSDATETIME(), 1),
+
+(1, 1, 'Lemons', 
+ 'Fresh lemons', 
+ 18.00, 'kg', 50, 'img/lemons.png', SYSDATETIME(), 1),
+
+(1, 1, 'Strawberries', 
+ 'Fresh sweet strawberries', 
+ 35.00, 'kg', 30, 'img/strawberries.png', SYSDATETIME(), 1),
+
+
+-- VEGETABLES - CategoryId=2
+(2, 1, 'Bell Peppers', 
+ 'Fresh colourful bell peppers', 
+ 28.00, 'kg', 30, 'img/bellpeppers.png', SYSDATETIME(), 1),
+
+(2, 1, 'Potatoes', 
+ 'Fresh farm potatoes', 
+ 18.00, 'kg', 70, 'img/potatoes.png', SYSDATETIME(), 1),
+
+(2, 1, 'Parsley', 
+ 'Fresh green parsley', 
+ 12.00, 'bunch', 40, 'img/parsley.png', SYSDATETIME(), 1),
+
+(2, 1, 'Tomatoes', 
+ 'Fresh ripe tomatoes', 
+ 26.00, 'kg', 55, 'img/tomatoes.png', SYSDATETIME(), 1),
+
+(2, 1, 'Carrots', 
+ 'Fresh crunchy carrots', 
+ 24.00, 'kg', 50, 'img/carrots.png', SYSDATETIME(), 1),
+
+(2, 1, 'Onions', 
+ 'Fresh farm onions', 
+ 17.00, 'kg', 65, 'img/onions.png', SYSDATETIME(), 1),
+
+(2, 1, 'Cabbage', 
+ 'Fresh green cabbage', 
+ 16.00, 'each', 35, 'img/cabbage.png', SYSDATETIME(), 1),
+
+(2, 1, 'Spinach', 
+ 'Fresh green spinach', 
+ 18.00, 'bunch', 45, 'img/spinach.png', SYSDATETIME(), 1),
+
+(2, 1, 'Cucumbers', 
+ 'Fresh crisp cucumbers', 
+ 21.00, 'kg', 40, 'img/cucumbers.png', SYSDATETIME(), 1),
+
+(2, 1, 'Broccoli', 
+ 'Fresh green broccoli', 
+ 26.00, 'kg', 30, 'img/broccoli.png', SYSDATETIME(), 1);
